@@ -1,0 +1,11 @@
+.footerWrapper {}
+
+footer {
+    height: 8vh;
+    background-color: #f1f1f1;
+    text-align: center;
+}
+
+h4 {
+    padding-top: 2vh;
+}

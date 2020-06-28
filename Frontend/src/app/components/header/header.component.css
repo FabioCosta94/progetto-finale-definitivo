@@ -1,0 +1,23 @@
+nav {
+    height: 8vh;
+}
+
+.headerWrapper {
+    background-color: #a4adff;
+    color: black;
+}
+
+a {
+    color: black;
+}
+
+a:hover {
+    color: white;
+}
+
+
+/* @media screen and (max-width: 750px) {
+    .navbar-brand {
+        display: none;
+    }
+} */

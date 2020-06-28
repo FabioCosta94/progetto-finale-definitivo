@@ -1,0 +1,64 @@
+.inizio {
+    text-align: center;
+}
+
+.row {
+    padding-top: 32px;
+    padding-bottom: 32px;
+}
+
+i {
+    font-size: 180px;
+    color: #f44336;
+    padding-top: 80px;
+}
+
+.testog {
+    text-align: justify;
+    font-size: 17px;
+}
+
+.griglia0 {
+    padding-top: 32px;
+    padding-bottom: 32px;
+    background-color: #f1f1f1;
+}
+
+.griglia2 {
+    background-color: #f1f1f1;
+}
+
+p {
+    color: grey;
+}
+
+.wrapper {
+    min-height: 84vh;
+}
+
+.compare {
+    display: none;
+}
+
+@media screen and (max-width: 1000px) {
+    .testog {
+        font-size: 15px;
+    }
+    i {
+        font-size: 100px;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    i {
+        display: none;
+    }
+    .col-5 {
+        display: none;
+    }
+    .compare {
+        display: grid;
+        padding-left: 10%;
+        padding-right: 10%;
+    }
+}
