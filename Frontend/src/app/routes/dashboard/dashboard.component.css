@@ -4,8 +4,11 @@
 
 .wrapper {
     min-height: 84vh;
-    background-color: rgba(199, 199, 255, 0.459);
+    background-color: rgba(226, 226, 251, 0.822);
 }
+
+
+/* background-color: rgba(199, 199, 255, 0.459) */
 
 th {
     color: rgb(228, 228, 228);
@@ -24,7 +27,7 @@ td {
 }
 
 span {
-    color: rgb(228, 228, 228);
+    color: rgb(29, 29, 29);
 }
 
 .table .thead-dark th {
@@ -33,5 +36,5 @@ span {
 }
 
 h1 {
-    color: rgb(228, 228, 228);
+    color: rgb(29, 29, 29);
 }
