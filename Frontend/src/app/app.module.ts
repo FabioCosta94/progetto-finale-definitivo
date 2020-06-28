@@ -29,6 +29,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthModule } from './auth/auth.module';
+import { ChartsModule } from 'ng2-charts';
+import { LineChartComponent } from './line-chart/line-chart.component';
+
+
 
 
 @NgModule({
@@ -50,6 +54,8 @@ import { AuthModule } from './auth/auth.module';
     FilterByTwoComponent,
     FilterByCountryComponent,
     TestApiComponent,
+    LineChartComponent,
+    
    
   ],
   imports: [
@@ -64,7 +70,8 @@ import { AuthModule } from './auth/auth.module';
     MatInputModule,
     MatFormFieldModule,
     AuthModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ChartsModule
   ],
   providers: [DataService],
   bootstrap: [AppComponent]
