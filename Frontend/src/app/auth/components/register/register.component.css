@@ -1,4 +1,6 @@
 .wrapper {
     min-height: 84vh;
     width: 99%;
+    background-color: rgba(199, 199, 255, 0.459);
+    color: rgb(228, 228, 228);
 }

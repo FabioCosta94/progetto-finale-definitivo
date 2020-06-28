@@ -19,12 +19,16 @@ export class FilterByCountryComponent implements OnInit {
 
   //per il grafico
   lineChartData: ChartDataSets[] = [
-    // { data: [85, 72, 78, 75, 77, 75, 0,0,0,0,0,0], label: 'Casi Coronavirus' },
-    {data: 
-      [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 100],
-       label: 'Casi coronavirus'},
+    //Qui ci vanno tutti i dati di una categoria specifica, ordinati per data giornaliera, 
+    //di una specifica country, ma i dati arrivano già in ordine di data quindi ok
+    // {data: this.dataService.getData().deathRate}
+    // {data: this.getEntries.deathRate}
+    //{data: [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 100],
+    {data: [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 100],
+      label: 'Casi coronavirus'},
   ];
 
+  //Le lables verranno probabilmente cancellate
   lineChartLabels: Label[] = 
   ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno','Luglio','Agosto','Settembre','Ottobre','Novembre','Dicembre'];
 
@@ -46,7 +50,7 @@ export class FilterByCountryComponent implements OnInit {
   myControl = new FormControl(); //per far funzionare il filtro
   countries : string[] = new Array(); // per il filtro dinamico
   filteredOptions: Observable<string[]>; //per il filtro
-  public covidData : CovidData []; //collegamento al database
+  public covidData : CovidData []; //appoggio per il collegamento al database
  
  
   public country:string; //per memorizzare la stringa dell’input
@@ -56,14 +60,14 @@ export class FilterByCountryComponent implements OnInit {
     return this.dataService.getData().subscribe( (response : CovidData[]) => {
       this.covidData = response;
       response.forEach(item => {
-        this.countries.push(item.country); //pusha nel vettore i dati di country
+        this.countries.push(item.country); //pusha nel vettore le country
         console.log(this.countries); //check
       })
-     
+    
     })
   }
   ngOnInit() {
-    this.getEntries() //filtro
+    this.getEntries() //prende i dati
     this.filteredOptions = this.myControl.valueChanges
       .pipe(  //filtro dimanico
         startWith(''),
