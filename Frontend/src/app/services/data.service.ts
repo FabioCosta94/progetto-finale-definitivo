@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { CovidData } from '../models/data.model';
 
 
+
 @Injectable({
   providedIn: 'root'
 })
