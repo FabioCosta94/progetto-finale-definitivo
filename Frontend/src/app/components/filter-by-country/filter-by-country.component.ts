@@ -135,10 +135,9 @@ filtroOsservDate = this.filtroCountry.pipe(
 }
 
    updGraph() {
-     for (let i = 0; i < this.chart.data.labels.length; i++) {
+     for (let i = 0; i < this.morti.length; i++) {
       this.removeData(this.chart);
      }
-    this.removeData(this.chart)
 
     for (let i = 0; i < this.morti.length; i++) {
       this.addData(this.chart, this.datesNumbers[i], this.morti[i])
