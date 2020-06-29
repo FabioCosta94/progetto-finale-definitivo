@@ -1,12 +1,13 @@
 <div class="wrapper">
     <div class="container p-5">
-        <h1>Filter by country</h1>
+        <!-- <h1>Filter by country</h1> -->
 
-
-        <canvas class="chart-wrapper" #chartwrapper id="chartwrapper">
+        <div id="divChart">
+            <canvas class="chart-wrapper" #chartwrapper id="chartwrapper">
             <!-- <canvas baseChart [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType" [plugins]="lineChartPlugins">
             </canvas> -->
-        </canvas>
+            </canvas>
+        </div>
 
         <button class="btn btn-primary mb-3" (click)="updGraph()">Aggiorna grafico</button>
 

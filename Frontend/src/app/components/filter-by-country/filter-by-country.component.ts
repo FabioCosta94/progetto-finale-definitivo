@@ -12,6 +12,7 @@ import { delay } from 'rxjs/operators';
 import {ElementRef, ViewChild} from '@angular/core';
 import * as Chart from 'chart.js';
 import { ɵELEMENT_PROBE_PROVIDERS } from '@angular/platform-browser';
+import { title } from 'process';
 
  
 @Component({
@@ -72,7 +73,6 @@ filtroOsservDate = this.filtroCountry.pipe(
   });
 
   
-  
   //tentativi patetici di far funzionare il grafico aspettando il caricamento dei dati
   // a = waits(2000);
   // setTimeout(() => {
@@ -83,6 +83,9 @@ filtroOsservDate = this.filtroCountry.pipe(
 
 
   chart : Chart;
+
+  arrayAppoggio : number[] = [5, 10, 15, 20]
+
 
   //Questo è una sorta di puntatore all'elemento html
   @ViewChild('chartwrapper') chartWrapper:ElementRef;
@@ -96,20 +99,40 @@ filtroOsservDate = this.filtroCountry.pipe(
       data: {
         labels: ['5', '10', '15', '20'],
         datasets: [{
-            label: '# of Votes',
-            data: [5, 10, 15, 20],
+          lineTension: 0,
+            label: '',
+            borderColor: 'rgba(54, 162, 235, 1)',
+            pointBorderColor: 'rgba(27, 81, 120, 1)',
+            data: this.arrayAppoggio,
             backgroundColor: [
-              'rgba(255, 99, 132, 1)',
+              'rgba(255, 99, 132, 0)',
               'rgba(54, 162, 235, 1)',
               'rgba(255, 206, 86, 1)'
             ],
-            borderWidth: 1
+            borderWidth: 5
           }]
         },
         options: {
-        responsive: false,
-        //display : true
+        responsive: true,
+        scales: {
+          yAxes: [
+            {
+              display: true,
+              ticks: {
+                suggestedMin: 0,
+
+                beginAtZero: true,
+              },
+            },
+          ],
+        },
+        title: {
+          display: true,
+          text: 'Filter by Country'
+        }
       }
+       
+
     })
     // for (let i = 0; i < this.morti.length; i++) {
     //   this.morti.pop();
@@ -140,7 +163,7 @@ filtroOsservDate = this.filtroCountry.pipe(
      }
 
     for (let i = 0; i < this.morti.length; i++) {
-      this.addData(this.chart, this.datesNumbers[i], this.morti[i])
+      this.addData(this.chart, this.dates[i], this.morti[i])
     }
    
   //  console.log(this.morti)

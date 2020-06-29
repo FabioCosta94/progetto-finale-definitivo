@@ -27,3 +27,12 @@ input {
 form {
     color: rgb(28, 28, 28);
 }
+
+
+/* #divChart, */
+
+#chartwrapper {
+    display: block;
+    height: 675px;
+    width: 1200px;
+}
