@@ -3,21 +3,34 @@ nav {
 }
 
 .headerWrapper {
-    background-color: #a4adff;
-    color: black;
+    background-color: #606b75a6;
+    border-color: #454d55;
 }
 
 a {
-    color: black;
+    color: rgb(228, 228, 228);
 }
 
 a:hover {
-    color: white;
+    color: rgb(255, 0, 0);
 }
 
+span {
+    color: rgb(228, 228, 228);
+    margin-top: 4px;
+}
 
-/* @media screen and (max-width: 750px) {
-    .navbar-brand {
-        display: none;
+.navbar-toggler {
+    background-color: #606b75a6;
+    border-color: #454d55;
+}
+
+@media screen and (max-width: 990px) {
+    #navbarNavDropdown {
+        background-color: #000000a6;
+        padding-left: 5%;
+        padding-right: 5%;
+        border-color: #454d55;
+        z-index: 1;
     }
-} */
+}

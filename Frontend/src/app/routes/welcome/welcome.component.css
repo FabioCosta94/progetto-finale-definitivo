@@ -8,9 +8,17 @@
 }
 
 i {
-    font-size: 180px;
-    color: #f44336;
-    padding-top: 80px;
+    font-size: 200px;
+    color: #f15b03ed;
+    padding-top: 50px;
+}
+
+.img1 {
+    padding-left: 10%;
+}
+
+.img3 {
+    padding-left: 20%;
 }
 
 .testog {
@@ -21,15 +29,20 @@ i {
 .griglia0 {
     padding-top: 32px;
     padding-bottom: 32px;
-    background-color: #f1f1f1;
+    background-color: #ffffffdf;
+}
+
+.griglia1,
+.griglia3 {
+    background-color: rgba(226, 226, 251, 0.822);
 }
 
 .griglia2 {
-    background-color: #f1f1f1;
+    background-color: #ffffffdf;
 }
 
 p {
-    color: grey;
+    color: rgb(28, 28, 28);
 }
 
 .wrapper {
@@ -53,7 +66,8 @@ p {
     i {
         display: none;
     }
-    .col-5 {
+    .col-5,
+    .col-7 {
         display: none;
     }
     .compare {
