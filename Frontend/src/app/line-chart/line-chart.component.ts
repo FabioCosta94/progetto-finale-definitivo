@@ -18,7 +18,8 @@ export class LineChartComponent {
 
   lineChartOptions = {
     responsive: true,
-  };
+    responsiveAnimationDuration:0,
+    };
 
   lineChartColors: Color[] = [
     {
