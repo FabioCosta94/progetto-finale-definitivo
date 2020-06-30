@@ -1,5 +1,5 @@
 const express = require('express');
-const users = express.Routes();
+const users = express.Router();
 const users = require('../models/index').users;
 
 
