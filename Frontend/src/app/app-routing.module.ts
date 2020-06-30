@@ -8,6 +8,8 @@ import { WelcomeComponent } from './routes/welcome/welcome.component';
 import { SortComponent } from './routes/sort/sort.component';
 import { FilterByComponent } from './routes/filter-by/filter-by.component';
 import { TestApiComponent } from './routes/test-api/test-api.component';
+import { RegisterComponent } from './routes/register/register.component';
+import { LoginComponent } from './routes/login/login.component';
 
 
 const routes: Routes = [
@@ -20,6 +22,8 @@ const routes: Routes = [
   { path: "filterBy", component: FilterByComponent},
   { path: "sort", component: SortComponent},
   { path: "testApi", component: TestApiComponent}
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent }
 ];
 
 @NgModule({

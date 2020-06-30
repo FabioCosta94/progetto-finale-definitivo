@@ -1,7 +1,7 @@
-import { UsersService } from './../../../services/users.service';
+import { UsersService } from '../../services/users.service';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { UsersData } from '../../../models/users.model';
+import { UsersData } from '../../models/users.model';
 import { Router } from '@angular/router';
 
 
@@ -15,18 +15,20 @@ export class RegisterComponent implements OnInit {
 
   constructor(private usersService: UsersService, private router: Router) { }
 
-  ngOnInit(): void {
 
+  ngOnInit(): void {
+    
   }
 
-usersEntry: UsersData
+usersEntry: UsersData;
 
 onSubmit(f: NgForm){
 
   this.usersEntry = f.form.value;
-    console.log(this.usersEntry);
+  
+    console.log("aaaa",this.usersEntry);
     this.usersService.addUser(this.usersEntry).subscribe(response => {
-      console.log(response);
+      console.log("prova",response);
       // this.router.navigate(['/dashboard']);
     })
 }
