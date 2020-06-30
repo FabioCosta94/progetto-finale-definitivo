@@ -1,18 +1,22 @@
 <div class="wrapper">
     <div class="container p-5">
-        <h1>Filter by country</h1>
+        <!-- <h1>Filter by country</h1> -->
 
-
-        <div class="chart-wrapper">
-            <canvas baseChart [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType" [plugins]="lineChartPlugins">
+        <div id="divChart">
+            <canvas class="chart-wrapper" #chartwrapper id="chartwrapper">
+            <!-- <canvas baseChart [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType" [plugins]="lineChartPlugins">
+            </canvas> -->
             </canvas>
         </div>
+
+        <button class="btn btn-primary mb-3" (click)="updGraph(form)">Update chart</button>
+
         <!-- <div class="form-group row">
-      <label for="country" class="col-sm-2 col-form-label">Country</label>
-      <div class="col-sm-10">
+    <label for="country" class="col-sm-2 col-form-label">Country</label>
+    <div class="col-sm-10">
         <input type="text" class="form-control" id="country" required [(ngModel)]="country">
     </div>
-  </div> -->
+    </div> -->
         <!-- <table class="table" ng-controller="myCtrl2" *ngIf="country" >
   <thead class="thead-dark">
       <tr>
@@ -33,6 +37,19 @@
             </mat-form-field>
         </form>
 
+
+        <!--FILTRO PER CATEGORIA-->
+        <form class="pt-5" #form="ngForm">
+            <div class="form-group row">
+                <label for="continent" class="col-sm-2 col-form-label">Choose category</label>
+                <div class="col-sm-10">
+                    <select class="form-control" id="sort" ngModel required name="sort">
+                        <option *ngFor="let option of sortingOptions"> {{option}} </option>
+                    </select>
+                </div>
+            </div>
+        </form>
+
         <!--Recupera l'id dal pipe. Se c'è una corrispondenza, stampa il nome della nazione del database-->
         <!-- <h3>Mettere nella searchbar un sistema per suggerire i campi esistenti</h3> -->
         <h1 id="nazione"></h1>
@@ -47,5 +64,12 @@
         <!-- </table> -->
     </div>
 
-
+    <!-- </table> -->
 </div>
+<a id="download" download="ChartImage.jpg" href="" class="btn btn-primary float-right bg-flat-color-1" title="Salvataggio Grafico">
+
+
+    <!-- Download Icon -->
+    <i class="fa fa-download"></i>
+
+</a>

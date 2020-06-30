@@ -1,12 +1,14 @@
 <div class="wrapper">
     <div *ngIf="dataEntry != null " class="container">
 
-        <div class="row p-4 my-2 mx-1 border shadow">
-            <button class="btn btn-primary mr-5" [routerLink]="['/dashboard']">Back</button>
-            <h3>Details</h3>
+        <div class="detailsWrapper">
+            <div class="row p-4 my-2 mx-1 border shadow">
+                <button class="btn btn-primary mr-5" [routerLink]="['/dashboard']">Back</button>
+                <h3>Details</h3>
+            </div>
         </div>
 
-        <div class="mt-5 p-4">
+        <!-- <div class="mt-5 p-4">
             <ul class="list-group">
                 <li class="list-group-item">Id : {{ dataEntry.id }}</li>
                 <li class="list-group-item">Country : {{dataEntry.country}}</li>
@@ -20,6 +22,26 @@
                 <li class="list-group-item">Classification : {{dataEntry.classification}}</li>
                 <li class="list-group-item">Date : {{dataEntry.date | date }}</li>
             </ul>
+        </div> -->
+        <div class="tableWrapper">
+            <table class="table">
+                <thead class="thead-dark"></thead>
+                <tbody>
+                    <tr class="pointer">
+                        <!-- <td class="list-group-item">Id : {{ dataEntry.id }}</td> -->
+                        <td class="list-group-item">Country : {{dataEntry.country}}</td>
+                        <td class="list-group-item">Population: {{dataEntry.population}}</td>
+                        <td class="list-group-item">Cases : {{dataEntry.cases}}</td>
+                        <td class="list-group-item">Deaths : {{dataEntry.deaths}}</td>
+                        <td class="list-group-item">Recoveries : {{dataEntry.recoveries}}</td>
+                        <td class="list-group-item">Recovery Rate : {{dataEntry.recoveryRate}}%</td>
+                        <td class="list-group-item">Fatality Rate : {{dataEntry.fatalityRate}}%</td>
+                        <td class="list-group-item">Continent : {{dataEntry.continent}}</td>
+                        <td class="list-group-item">Classification : {{dataEntry.classification}}</td>
+                        <td class="list-group-item">Date : {{dataEntry.date | date }}</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
 
         <div class="row">
