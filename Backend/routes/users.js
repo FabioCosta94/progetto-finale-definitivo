@@ -1,70 +1,70 @@
 const express = require('express');
-const rotta= express.Router();
-const users = require('../models/index').users;
+const usersRouter= express.Router();
+const usersEntry = require('../models/index').users;
 
 
 
 
-rotta.get('/', function (req, res, next) {
-    users.findAll({})
-        .then(users => res.json(users))
+usersRouter.get('/', function (req, res, next) {
+    usersEntry.findAll({})
+        .then(usersEntry => res.json(usersEntry))
         .catch(err => res.json(err))
     ;
 });
-rotta.get('/:id', function (req, res, next) {
-    users.findOne({
+usersRouter.get('/:id', function (req, res, next) {
+    usersEntry.findOne({
             where: {
                 id: req.params.id
             }
         }
     )
-        .then(users => res.json(users))
+        .then(usersEntry => res.json(usersEntry))
         .catch(err => res.json(err));
 });
 
-rotta.post('/', function (req, res, next) {
+usersRouter.post('/', function (req, res, next) {
     const {username, password,permissions} = req.body;
 
-    users.create({
+    usersEntry.create({
         username:username,
         password: password,
         permissions:permissions
     })
-        .then(users => res.status(201).json({
-            users
+        .then(usersEntry => res.status(201).json({
+            usersEntry
         }))
         .catch(error => res.status(500).json({
             error
         }));
 });
 
-rotta.put('/:id', function (req, res, next) {
-    const usersId = req.params.id;
+usersRouter.put('/:id', function (req, res, next) {
+    const usersEntryId = req.params.id;
     const { username, password,permissions } = req.body;
 
-    users.update({
+    usersEntry.update({
         username:username,
         password: password,
         permissions:permissions
     }, {
         where: {
-            id: usersId
+            id: usersEntryId
         }
     })
-        .then(users => res.status(201).json({
-            users
+        .then(usersEntry => res.status(201).json({
+            usersEntry
         }))
         .catch(error => res.status(500).json({
             error
         }));
 });
 
-rotta.delete('/:id', function (req, res, next) {
-    const users_id = req.params.id;
+usersRouter.delete('/:id', function (req, res, next) {
+    const usersEntry_id = req.params.id;
 
-    users.destroy({
+    usersEntry.destroy({
         where: {
-            id: users_id
+            id: usersEntry_id
         }
     })
         .then( status => res.status(201).json({
@@ -75,4 +75,4 @@ rotta.delete('/:id', function (req, res, next) {
         }));
 });
 
-module.exports = rotta;
+module.exports = usersRouter;
