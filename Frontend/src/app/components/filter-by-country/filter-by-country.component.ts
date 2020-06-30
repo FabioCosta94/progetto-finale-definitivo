@@ -50,51 +50,10 @@ export class FilterByCountryComponent implements OnInit {
 
   public sortOption:string; //variabile per la scelta
   
+  //Questo metodo salva la scelta di categoria dell'utente nella variabile sortOption
   sortBy(form : NgForm){
     this.sortOption = form.form.value;
   }
-
-  // filtroCat = this.dataService.getData().pipe(
-  // map( covidData => covidData.filter(element => element.country  == this.country)));
-  
-  
-  //showSortResult = false; 
-  // sortBy(form : NgForm){
-  //   this.sortOption = form.form.value.sort;
-    
-  //   //scrivere ['deaths'] o .deaths è la stessa cosa in js
-  //   this.covidData = this.covidData.sort((a, b) => 
-  //     a[this.sortOption]-b[this.sortOption]);
-  //   /*Si può anche scrivere come: 
-  //     this.covidData = this.covidData.sort(function(a, b) { 
-  //       return a[this.sortOption] - b[this.sortOption]; 
-  //   })*/
-  //   //in questo modo mostra i risultati solo quando ho premuto il pulsante
-  //   this.showSortResult=true; 
-  //   console.log("ordered: ", this.covidData)
-
-  // }
-
-  //il filtraggio per categoria termina QUI -------------------------------------
-
-  //funzione di delay utile per dopo
-//    delay(ms: number) {
-//     return new Promise( resolve => setTimeout(resolve, ms) );
-// }
-  //  filtroGraficoHard = this.dataService.getData().pipe((dataset) => dataset.filter((covidData) => covidData.country == "Italy"));
-  //recupero tutti gli elementi di covidData dal database,filtro e tengo solo gli elementi di italy
-  
-
-
-
-  //  QUESTO PEZZO ERA TUTTO DENTRO filtroPerGraficoDate
-    //   this.dates.forEach(date => {
-    //   let filtroNoTrattino : String[] = date.split("-");
-    //   let filtroUnito : string = filtroNoTrattino.join("");
-    //   let dataInNumero = parseInt(filtroUnito);
-    //   this.datesNumbers.push(dataInNumero);
-    //   console.log(this.datesNumbers);
-    // });
   
   //tentativi patetici di far funzionare il grafico aspettando il caricamento dei dati
   // a = waits(2000);
@@ -103,10 +62,6 @@ export class FilterByCountryComponent implements OnInit {
   // }, 2000)
   // await()
   //delay()
-
-
-  
-
 
   //Questo è una sorta di puntatore all'elemento html, ma alla fine non lo sto usando
   //@ViewChild('chartwrapper') chartWrapper:ElementRef;
@@ -178,10 +133,19 @@ export class FilterByCountryComponent implements OnInit {
     chart.update();
 }
 
-
+// resolveAfter2Seconds() {
+//   return new Promise(resolve => {
+//     setTimeout(() => {
+//       resolve('resolved');
+//     }, 2000);
+//   });
+// }
 
    updGraph(form: NgForm) {
 
+    // this.resolveAfter2Seconds();
+
+    //rest of the function below
     this.sortOption = form.form.value.sort;
     console.log(form.form.value.sort);
 

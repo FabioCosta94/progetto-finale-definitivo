@@ -1,36 +1,42 @@
-nav {
-    height: 8vh;
-}
-
-.headerWrapper {
-    background-color: #606b75a6;
-    border-color: #454d55;
-}
-
-a {
-    color: rgb(228, 228, 228);
-}
-
-a:hover {
-    color: rgb(255, 0, 0);
-}
-
-span {
-    color: rgb(228, 228, 228);
-    margin-top: 4px;
-}
-
-.navbar-toggler {
-    background-color: #606b75a6;
-    border-color: #454d55;
-}
-
-@media screen and (max-width: 990px) {
-    #navbarNavDropdown {
-        background-color: #000000a6;
-        padding-left: 5%;
-        padding-right: 5%;
-        border-color: #454d55;
-        z-index: 1;
+    nav {
+        height: 8vh;
     }
-}
+    
+    .headerWrapper {
+        background-color: #606b75a6;
+        border-color: #454d55;
+    }
+    
+    a {
+        color: rgb(228, 228, 228);
+    }
+    
+    a:hover {
+        color: rgb(255, 0, 0);
+    }
+    
+    span {
+        color: rgb(228, 228, 228);
+        margin-top: 4px;
+    }
+    
+    .scrittaLogin {
+        float: right;
+        clear: right;
+        text-align: right;
+    }
+    
+    .navbar-toggler {
+        background-color: #606b75a6;
+        border-color: #454d55;
+    }
+    
+    @media screen and (max-width: 990px) {
+        #navbarNavDropdown {
+            background-color: #000000a6;
+            padding-left: 5%;
+            padding-right: 5%;
+            border-color: #454d55;
+            z-index: 1;
+        }
+    }
