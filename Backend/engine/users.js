@@ -1,7 +1,7 @@
-const users = require('../models/index').users;
+const UsersEntry = require('../models/index').UsersEntry;
 
 const getUser = (req, res) => {
-  users.findAll({})
+  UsersEntry.findAll({})
     .then(entry => {
       return res.status(200).send(entry)
     })
@@ -37,7 +37,7 @@ const getUserById = (req, res) => {
 const createUser = (req, res) => {
   const {username,password,permissions} = req.body;
 
-  users.create({
+  UsersEntry.create({
    username:username,
    password:password,
    permissions:permissions
@@ -54,7 +54,7 @@ const editUser = (req, res) => {
   const userId = req.params.id;
   const {username,password,permissions} = req.body;
 
-  users.findOne({
+  UsersEntry.findOne({
     where: {
       id: userId
     }
@@ -68,7 +68,7 @@ const editUser = (req, res) => {
         })
       }
 
-      users.update({
+      UsersEntry.update({
        username:username,
        password:password,
        permissions:permissions
@@ -103,7 +103,7 @@ const editUser = (req, res) => {
 const deleteUser = (req, res) => {
   const userId = req.params.id;
 
-  users.destroy({
+  UsersEntry.destroy({
     where: {
       id: userId
     }
