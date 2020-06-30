@@ -1,18 +1,18 @@
 const express = require('express');
-const usersRouter= express.Router();
-const usersEntry = require('../models/index').users;
+const router= express.Router();
+const UsersEntry = require('../models/index').usersEntry;
 
 
 
 
-usersRouter.get('/', function (req, res, next) {
-    usersEntry.findAll({})
+router.get('/', function (req, res, next) {
+    UsersEntry.findAll({})
         .then(usersEntry => res.json(usersEntry))
         .catch(err => res.json(err))
     ;
 });
-usersRouter.get('/:id', function (req, res, next) {
-    usersEntry.findOne({
+router.get('/:id', function (req, res, next) {
+    UsersEntry.findOne({
             where: {
                 id: req.params.id
             }
@@ -22,10 +22,10 @@ usersRouter.get('/:id', function (req, res, next) {
         .catch(err => res.json(err));
 });
 
-usersRouter.post('/', function (req, res, next) {
+router.post('/', function (req, res, next) {
     const {username, password,permissions} = req.body;
 
-    usersEntry.create({
+    UsersEntry.create({
         username:username,
         password: password,
         permissions:permissions
@@ -38,17 +38,17 @@ usersRouter.post('/', function (req, res, next) {
         }));
 });
 
-usersRouter.put('/:id', function (req, res, next) {
-    const usersEntryId = req.params.id;
+router.put('/:id', function (req, res, next) {
+    const usersId = req.params.id;
     const { username, password,permissions } = req.body;
 
-    usersEntry.update({
+    UsersEntry.update({
         username:username,
         password: password,
         permissions:permissions
     }, {
         where: {
-            id: usersEntryId
+            id: usersId
         }
     })
         .then(usersEntry => res.status(201).json({
@@ -59,12 +59,12 @@ usersRouter.put('/:id', function (req, res, next) {
         }));
 });
 
-usersRouter.delete('/:id', function (req, res, next) {
-    const usersEntry_id = req.params.id;
+router.delete('/:id', function (req, res, next) {
+    const users_id = req.params.id;
 
-    usersEntry.destroy({
+    UsersEntry.destroy({
         where: {
-            id: usersEntry_id
+            id: users_id
         }
     })
         .then( status => res.status(201).json({
@@ -75,4 +75,4 @@ usersRouter.delete('/:id', function (req, res, next) {
         }));
 });
 
-module.exports = usersRouter;
+module.exports = router;
