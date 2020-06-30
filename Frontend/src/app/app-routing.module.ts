@@ -21,7 +21,7 @@ const routes: Routes = [
   { path: "edit/:id", component: EditComponent },
   { path: "filterBy", component: FilterByComponent},
   { path: "sort", component: SortComponent},
-  { path: "testApi", component: TestApiComponent}
+  { path: "testApi", component: TestApiComponent},
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent }
 ];

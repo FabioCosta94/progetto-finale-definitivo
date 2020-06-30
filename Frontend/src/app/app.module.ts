@@ -28,7 +28,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
-import { AuthModule } from './routes/auth/auth.module';
 import { ChartsModule } from 'ng2-charts';
 import { LineChartComponent } from './line-chart/line-chart.component';
 import { RegisterComponent } from './routes/register/register.component';
@@ -75,7 +74,6 @@ import { CommonModule } from '@angular/common';
     MatAutocompleteModule,
     MatInputModule,
     MatFormFieldModule,
-    AuthModule,
     ReactiveFormsModule,
     ChartsModule,
     
