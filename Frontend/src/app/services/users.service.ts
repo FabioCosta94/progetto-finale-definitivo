@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { UsersData } from '../models/users.model';
+import { UsersData } from '../models/data.model';
 
 
 @Injectable({
@@ -24,7 +24,7 @@ export class UsersService {
     return this.http.post<UsersData>(this.baseUrl, {
       "username": data.username,
       "password": data.password,
-      "permissions": data.permissions
+      // "permissions": data.permissions
     });
   };
 
