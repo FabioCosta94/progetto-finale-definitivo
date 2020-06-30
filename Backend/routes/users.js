@@ -1,17 +1,17 @@
 const express = require('express');
-const users = express.Router();
+const rotta= express.Router();
 const users = require('../models/index').users;
 
 
 
 
-users.get('/', function (req, res, next) {
+rotta.get('/', function (req, res, next) {
     users.findAll({})
         .then(users => res.json(users))
         .catch(err => res.json(err))
     ;
 });
-users.get('/:id', function (req, res, next) {
+rotta.get('/:id', function (req, res, next) {
     users.findOne({
             where: {
                 id: req.params.id
@@ -22,7 +22,7 @@ users.get('/:id', function (req, res, next) {
         .catch(err => res.json(err));
 });
 
-users.post('/', function (req, res, next) {
+rotta.post('/', function (req, res, next) {
     const {username, password,permissions} = req.body;
 
     users.create({
@@ -38,7 +38,7 @@ users.post('/', function (req, res, next) {
         }));
 });
 
-users.put('/:id', function (req, res, next) {
+rotta.put('/:id', function (req, res, next) {
     const usersId = req.params.id;
     const { username, password,permissions } = req.body;
 
@@ -59,7 +59,7 @@ users.put('/:id', function (req, res, next) {
         }));
 });
 
-users.delete('/:id', function (req, res, next) {
+rotta.delete('/:id', function (req, res, next) {
     const users_id = req.params.id;
 
     users.destroy({
@@ -75,4 +75,4 @@ users.delete('/:id', function (req, res, next) {
         }));
 });
 
-module.exports = users;
+module.exports = rotta;
