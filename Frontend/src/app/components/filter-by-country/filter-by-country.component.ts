@@ -49,39 +49,10 @@ export class FilterByCountryComponent implements OnInit {
   sortingOptions = ["cases", "population", "recoveries", "deaths"];
 
   public sortOption:string; //variabile per la scelta
-
-  // funzioneProva() {
-  //   switch (this.sortOption) {
-  //     case 'cases': {
-  //       let filtroCat = this.dataService.getData().pipe(
-  //         map( covidData => covidData.filter(element => element.cases)));
-  //       break;
-  //     }
-  //     case 'population': {
-  //       let filtroCat = this.dataService.getData().pipe(
-  //         map( covidData => covidData.filter(element => element.population)));
-  //       break;
-  //     }
-  //     case 'recoveries': {
-  //       let filtroCat = this.dataService.getData().pipe(
-  //         map( covidData => covidData.filter(element => element.recoveries)));
-  //       break;
-  //     }
-  //     case 'deaths': {
-  //       let filtroCat = this.dataService.getData().pipe(
-  //         map( covidData => covidData.filter(element => element.deaths)));
-  //       break;
-  //     }
-  //     default: {
-  //       console.log('ERRORE')
-  //       break;
-  //     }
-      
-  //   }
-  // }
   
-  
-
+  sortBy(form : NgForm){
+    this.sortOption = form.form.value;
+  }
 
   // filtroCat = this.dataService.getData().pipe(
   // map( covidData => covidData.filter(element => element.country  == this.country)));
@@ -207,16 +178,52 @@ export class FilterByCountryComponent implements OnInit {
     chart.update();
 }
 
-   updGraph() {
+
+
+   updGraph(form: NgForm) {
+
+    this.sortOption = form.form.value.sort;
+    console.log(form.form.value.sort);
+
     let filtroCountry = this.dataService.getData().pipe(
       map( covidData => covidData.filter(element => element.country  == this.country)));
+
+      let filtroOsservNum;
   
-    //trasformo da elementi di tipo covidData ad elementi di tipo covidData.deaths
-    
-      let filtroOsservNum = filtroCountry.pipe(
-    (map (dataSet => dataSet.map(covidData => covidData.deaths))));
+      //trasformo da elementi di tipo covidData ad elementi di tipo covidData.deaths (o covidData.quellochevuoi)
+      switch (this.sortOption) {
+        case 'cases': {
+          filtroOsservNum = filtroCountry.pipe(
+            (map (dataSet => dataSet.map(covidData => covidData.cases))));
+            console.log(filtroOsservNum)
+          break;
+        }
+        case 'population': {
+          filtroOsservNum = filtroCountry.pipe(
+            (map (dataSet => dataSet.map(covidData => covidData.population))));
+            console.log(filtroOsservNum)
+          break;
+        }
+        case 'recoveries': {
+          filtroOsservNum = filtroCountry.pipe(
+            (map (dataSet => dataSet.map(covidData => covidData.recoveries))));
+            console.log(filtroOsservNum)
+          break;
+        }
+        case 'deaths': {
+          filtroOsservNum = filtroCountry.pipe(
+            (map (dataSet => dataSet.map(covidData => covidData.deaths))));
+            console.log(filtroOsservNum)
+          break;
+        }
+        default: {
+          console.log('ERRORE')
+          break;
+        }
+      
+      }
   
-    //Assegno i valori di covidData.deaths presi dal db alla variabile 'morti'
+    //Assegno i valori di covidData.categoria presi dal db alla variabile 'morti'
     //filtroPerGrafico = this.filtroPerOsservabileNumeri.subscribe ((morti) => this.morti = morti);
     let filtroPerGraficoMorti = filtroOsservNum.subscribe(morti2 => {
       this.morti = morti2;
