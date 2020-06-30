@@ -37,6 +37,17 @@
             </mat-form-field>
         </form>
 
+
+        <!--FILTRO PER CATEGORIA-->
+        <div class="form-group row">
+            <label for="continent" class="col-sm-2 col-form-label">Sort by</label>
+            <div class="col-sm-10">
+                <select class="form-control" id="sort" ngModel required name="sort">
+                    <option *ngFor="let option of sortingOptions"> {{option}} </option>
+                </select>
+            </div>
+        </div>
+
         <!--Recupera l'id dal pipe. Se c'è una corrispondenza, stampa il nome della nazione del database-->
         <!-- <h3>Mettere nella searchbar un sistema per suggerire i campi esistenti</h3> -->
         <h1 id="nazione"></h1>
@@ -53,14 +64,10 @@
 
     <!-- </table> -->
 </div>
-<a id="download"
-        download="ChartImage.jpg" 
-        href=""
-        class="btn btn-primary float-right bg-flat-color-1"
-        title="Salvataggio Grafico">
-        
+<a id="download" download="ChartImage.jpg" href="" class="btn btn-primary float-right bg-flat-color-1" title="Salvataggio Grafico">
 
-        <!-- Download Icon -->
- <i class="fa fa-download"></i>
- 
- </a>
+
+    <!-- Download Icon -->
+    <i class="fa fa-download"></i>
+
+</a>

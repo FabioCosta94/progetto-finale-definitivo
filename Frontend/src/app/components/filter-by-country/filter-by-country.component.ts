@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../services/data.service';
 import { CovidData } from '../../models/data.model';
-import { FormControl } from '@angular/forms';
+import { FormControl, NgForm } from '@angular/forms';
 import { Observable, from } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { ChartDataSets, ChartOptions } from 'chart.js';
@@ -25,7 +25,86 @@ export class FilterByCountryComponent implements OnInit {
 
   constructor(private dataService:DataService) { }
 
+  //variabile in cui si memorizzano le morti
+  morti : number[];
+  //variabile in sui si memorizzano delle date sottoforma di stringhe
+  dates : String[]; 
+
+  //variabile in sui si memorizzano delle date sottoforma di numeri
+  // datesNumbers : number[] = [];
+
+  chart : Chart;
+
+  arrayAppoggio : number[] = [5, 10, 15, 20]
+
+  myControl = new FormControl(); //per far funzionare il filtro
+  countries : string[] = new Array(); // per il filtro dinamico
+  filteredOptions: Observable<string[]>; //per il filtro
+  public covidData : CovidData []; //appoggio per il collegamento al database
+ 
+ 
+  public country:string; //per memorizzare la stringa dell’input
   
+  //Base per costruire il sistema di filtraggio per categoria
+  sortingOptions = ["cases", "population", "recoveries", "deaths"];
+
+  public sortOption:string; //variabile per la scelta
+
+  // funzioneProva() {
+  //   switch (this.sortOption) {
+  //     case 'cases': {
+  //       let filtroCat = this.dataService.getData().pipe(
+  //         map( covidData => covidData.filter(element => element.cases)));
+  //       break;
+  //     }
+  //     case 'population': {
+  //       let filtroCat = this.dataService.getData().pipe(
+  //         map( covidData => covidData.filter(element => element.population)));
+  //       break;
+  //     }
+  //     case 'recoveries': {
+  //       let filtroCat = this.dataService.getData().pipe(
+  //         map( covidData => covidData.filter(element => element.recoveries)));
+  //       break;
+  //     }
+  //     case 'deaths': {
+  //       let filtroCat = this.dataService.getData().pipe(
+  //         map( covidData => covidData.filter(element => element.deaths)));
+  //       break;
+  //     }
+  //     default: {
+  //       console.log('ERRORE')
+  //       break;
+  //     }
+      
+  //   }
+  // }
+  
+  
+
+
+  // filtroCat = this.dataService.getData().pipe(
+  // map( covidData => covidData.filter(element => element.country  == this.country)));
+  
+  
+  //showSortResult = false; 
+  // sortBy(form : NgForm){
+  //   this.sortOption = form.form.value.sort;
+    
+  //   //scrivere ['deaths'] o .deaths è la stessa cosa in js
+  //   this.covidData = this.covidData.sort((a, b) => 
+  //     a[this.sortOption]-b[this.sortOption]);
+  //   /*Si può anche scrivere come: 
+  //     this.covidData = this.covidData.sort(function(a, b) { 
+  //       return a[this.sortOption] - b[this.sortOption]; 
+  //   })*/
+  //   //in questo modo mostra i risultati solo quando ho premuto il pulsante
+  //   this.showSortResult=true; 
+  //   console.log("ordered: ", this.covidData)
+
+  // }
+
+  //il filtraggio per categoria termina QUI -------------------------------------
 
   //funzione di delay utile per dopo
 //    delay(ms: number) {
@@ -33,45 +112,18 @@ export class FilterByCountryComponent implements OnInit {
 // }
   //  filtroGraficoHard = this.dataService.getData().pipe((dataset) => dataset.filter((covidData) => covidData.country == "Italy"));
   //recupero tutti gli elementi di covidData dal database,filtro e tengo solo gli elementi di italy
-  filtroCountry = this.dataService.getData().pipe(
-    map( covidData => covidData.filter(element => element.country  == 'Italy')));
+  
 
-  //trasformo da elementi di tipo covidData ad elementi di tipo covidData.deaths
-  morti : number[];
-    filtroOsservNum = this.filtroCountry.pipe(
-  (map (dataSet => dataSet.map(covidData => covidData.deaths))));
 
-  //Assegno i valori di covidData.deaths presi dal db alla variabile 'morti'
-  //filtroPerGrafico = this.filtroPerOsservabileNumeri.subscribe ((morti) => this.morti = morti);
-  filtroPerGraficoMorti = this.filtroOsservNum.subscribe(morti2 => {
-    this.morti = morti2;
-    console.log(this.morti);
-    // this.updGraph();
-});
 
-//trasformo da elementi di tipo covidData ad elementi di tipo covidData.date
-filtroOsservDate = this.filtroCountry.pipe(
-  (map ((dataSet) => dataSet.map((covidData) => covidData.date))));
-
-  dates : String[];
-
-  datesNumbers : number[] = [];
-//Assegno i valori di covidData.dates presi dal db alla variabile 'date', convertite in stringhe
-  filtroPerGraficoDate = this.filtroOsservDate.subscribe(dates => {
-    //console.log(dates);
-    this.dates = dates.map((date) => date.toString());
-    
-    this.dates.forEach(date => {
-      let filtroNoTrattino : String[] = date.split("-");
-      let filtroUnito : string = filtroNoTrattino.join("");
-      let dataInNumero = parseInt(filtroUnito);
-      this.datesNumbers.push(dataInNumero);
-      console.log(this.datesNumbers);
-    });
-    
-    // this.updGraph();
-  });
-
+  //  QUESTO PEZZO ERA TUTTO DENTRO filtroPerGraficoDate
+    //   this.dates.forEach(date => {
+    //   let filtroNoTrattino : String[] = date.split("-");
+    //   let filtroUnito : string = filtroNoTrattino.join("");
+    //   let dataInNumero = parseInt(filtroUnito);
+    //   this.datesNumbers.push(dataInNumero);
+    //   console.log(this.datesNumbers);
+    // });
   
   //tentativi patetici di far funzionare il grafico aspettando il caricamento dei dati
   // a = waits(2000);
@@ -82,13 +134,11 @@ filtroOsservDate = this.filtroCountry.pipe(
   //delay()
 
 
-  chart : Chart;
-
-  arrayAppoggio : number[] = [5, 10, 15, 20]
+  
 
 
-  //Questo è una sorta di puntatore all'elemento html
-  @ViewChild('chartwrapper') chartWrapper:ElementRef;
+  //Questo è una sorta di puntatore all'elemento html, ma alla fine non lo sto usando
+  //@ViewChild('chartwrapper') chartWrapper:ElementRef;
 
    createGraph() {
      let prova: any = document.getElementById('chartwrapper');
@@ -158,6 +208,35 @@ filtroOsservDate = this.filtroCountry.pipe(
 }
 
    updGraph() {
+    let filtroCountry = this.dataService.getData().pipe(
+      map( covidData => covidData.filter(element => element.country  == this.country)));
+  
+    //trasformo da elementi di tipo covidData ad elementi di tipo covidData.deaths
+    
+      let filtroOsservNum = filtroCountry.pipe(
+    (map (dataSet => dataSet.map(covidData => covidData.deaths))));
+  
+    //Assegno i valori di covidData.deaths presi dal db alla variabile 'morti'
+    //filtroPerGrafico = this.filtroPerOsservabileNumeri.subscribe ((morti) => this.morti = morti);
+    let filtroPerGraficoMorti = filtroOsservNum.subscribe(morti2 => {
+      this.morti = morti2;
+      console.log(this.morti);
+      // this.updGraph();
+  });
+  
+  //trasformo da elementi di tipo covidData ad elementi di tipo covidData.date
+  let filtroOsservDate = filtroCountry.pipe(
+    (map ((dataSet) => dataSet.map((covidData) => covidData.date))));
+  
+    
+  //Assegno i valori di covidData.dates presi dal db alla variabile 'date', convertite in stringhe
+    let filtroPerGraficoDate = filtroOsservDate.subscribe(dates => {
+      //console.log(dates);
+      this.dates = dates.map((date) => date.toString());
+      
+      // this.updGraph();
+    });
+
      for (let i = 0; i < this.morti.length; i++) {
       this.removeData(this.chart);
      }
@@ -171,78 +250,7 @@ filtroOsservDate = this.filtroCountry.pipe(
   }
    
 
-
-
-  // prova : number[];
-  // prova2 = this.morti.forEach(x => console.log(x))
-  
-  //per il grafico
-  // lineChartData: ChartDataSets[] = [
-  //   //Qui ci vanno tutti i dati di una categoria specifica, ordinati per data giornaliera, 
-  //   //di una specifica country, ma i dati arrivano già in ordine di data quindi ok
-  //   // {data: this.dataService.getData().deathRate}
-  //   // {data: this.getEntries.deathRate}
-  //   //{data: [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 100],
-  //   //ronaldinhosoccer = wait(50);
-
-    
-    
-  //   {data: //[5, 250, 50, 100],
-  //     this.morti,
-  //     //this.prova,
-  //     label: 'Casi coronavirus'},
-      
-  // ];
-
-  // //Le lables verranno probabilmente cancellate, oppure no. All'inizio era Label[].
-  // lineChartLabels: String[] = 
-  // //['Gennaio','Febbraio','Marzo','Aprile'];
-  // this.dates;
-
-  // lineChartOptions = {
-  //   responsive: true,
-  //   elements: {
-  //     line: {
-  //         tension: 0 // disables bezier curves
-  //     }
-  // },
-  //   scales: {
-  //     yAxes: [
-  //       {
-  //         display: true,
-  //         ticks: {
-  //           suggestedMin: 0,
-
-  //           beginAtZero: true,
-  //         },
-  //       },
-  //     ],
-  //   },
-  // };
-  
-  // lineTension: 0;
-  
-  // lineChartColors: Color[] = [
-  //   {
-  //     borderColor: 'black',
-  //     backgroundColor: 'rgba(255,255,0,0.28)',
-  //   },
-  // ];
-
-  // lineChartLegend = true;
-  // lineChartPlugins = [];
-  // lineChartType = 'line';
-
 //Le funzioni di grafico finiscono qui ---------------------------------------------
- 
-  myControl = new FormControl(); //per far funzionare il filtro
-  countries : string[] = new Array(); // per il filtro dinamico
-  filteredOptions: Observable<string[]>; //per il filtro
-  public covidData : CovidData []; //appoggio per il collegamento al database
- 
- 
-  public country:string; //per memorizzare la stringa dell’input
- 
  
   getEntries(){ //mi prendo i dati
     return this.dataService.getData().subscribe( (response : CovidData[]) => {
