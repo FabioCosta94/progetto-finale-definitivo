@@ -16,6 +16,32 @@
 
         </div>
 
+
+        <table class="table tabellaUtenti">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Permission level</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let submit of usersData ; let i = index">
+                    <th scope="row"> {{i + 1}}</th>
+                    <td>{{submit.username}}</td>
+                    <td>{{submit.permissions}}</td>
+                    <!--Le righe seguenti sostituiranno submit.permissions-->
+                    <!-- <td *ngIf="submit.permissions == 0">Admin</td>
+                    <td *ngIf="submit.permissions == 1">Press</td>
+                    <td *ngIf="submit.permissions == 2">User</td> -->
+                </tr>
+            </tbody>
+        </table>
+
+
+
+
+
         <table class="table">
             <thead class="thead-dark">
                 <tr>

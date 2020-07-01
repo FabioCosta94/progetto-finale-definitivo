@@ -1,3 +1,4 @@
+import { UsersData } from './../../models/users.model';
 import { Component, OnInit } from '@angular/core';
 import { DataService } from './../../services/data.service';
 import { CovidData } from 'src/app/models/data.model';
@@ -17,10 +18,15 @@ export class DashboardComponent implements OnInit {
   }
 
   public covidData: CovidData [];
+  public usersData: UsersData [];
 
   getEntries(){
     this.dataService.getData().subscribe( (response : any) => {
       this.covidData = response;
+    })
+
+    this.dataService.getData().subscribe((answer: any) => {
+        this.usersData = answer;
     })
   }
 
