@@ -1,11 +1,11 @@
 'use strict';
 
 module.exports = (sequelize, DataType) => {
-    let UsersEntry = sequelize.define('usersEntry', {
+    let UsersEntry = sequelize.define('UsersEntry', {
       // id missing because Sequelize adds it by default
       username:  DataType.STRING(20),
       password: DataType.STRING(20),
-      permissions: DataType.INTEGER
+      permissions: DataType.INTEGER(11)
       
     }, {
       freezeTableName: true,

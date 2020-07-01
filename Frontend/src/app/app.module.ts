@@ -1,3 +1,4 @@
+import { UsersService } from './services/users.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -78,7 +79,7 @@ import { CommonModule } from '@angular/common';
     ChartsModule,
     
   ],
-  providers: [DataService],
+  providers: [DataService,UsersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

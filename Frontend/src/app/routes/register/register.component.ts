@@ -4,8 +4,6 @@ import { NgForm } from '@angular/forms';
 import { UsersData } from '../../models/data.model';
 import { Router } from '@angular/router';
 
-
-
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -22,15 +20,17 @@ export class RegisterComponent implements OnInit {
 
 usersEntry: UsersData;
 
-onSubmit(f: NgForm){
+onSubmit(form: NgForm){
 
-  this.usersEntry = f.form.value;
+  this.usersEntry = form.form.value;
+  this.usersEntry.permissions =1
   
-    console.log("aaaa",this.usersEntry);
+  
+    console.log(this.usersEntry);
     
-    this.usersService.addUser(this.usersEntry).subscribe(response => {
-      console.log("prova",response);
-      // this.router.navigate(['/dashboard']);
+    this.usersService.register(this.usersEntry).subscribe(response => {
+      console.log(response);
+this.router.navigate(['/welcome']);
     })
 }
 }

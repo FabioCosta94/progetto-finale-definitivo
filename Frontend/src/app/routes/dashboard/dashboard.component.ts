@@ -1,8 +1,9 @@
-import { UsersData } from './../../models/users.model';
+import { UsersData } from './../../models/data.model';
 import { Component, OnInit } from '@angular/core';
 import { DataService } from './../../services/data.service';
 import { CovidData } from 'src/app/models/data.model';
 import { Router } from '@angular/router';
+import { UsersService } from '../../services/users.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,27 +12,33 @@ import { Router } from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor( private dataService: DataService, private router : Router) { }
+  constructor( private usersService: UsersService, private router : Router) { }
 
   ngOnInit(): void {
-    this.getEntries()
+    this.getUsers()
   }
 
-  public covidData: CovidData [];
+  // public covidData: CovidData [];
   public usersData: UsersData [];
 
-  getEntries(){
-    this.dataService.getData().subscribe( (response : any) => {
-      this.covidData = response;
-    })
+  getUsers(){
+    // this.dataService.getData().subscribe( (response : any) => {
+    //   this.covidData = response;
+    // })
 
-    this.dataService.getData().subscribe((answer: any) => {
+    this.usersService.getData().subscribe((answer: any) => {
         this.usersData = answer;
     })
   }
 
+// changePermissions(){
+//   this.usersService.editUser().subscribe((answer: any) => {
+//     this.usersData = answer;
+// })
+// }
+
   goToDetails(id){
-    this.router.navigateByUrl('/details/' + id);
-  }
+     this.router.navigateByUrl('/details/' + id);
+   }
 
 }

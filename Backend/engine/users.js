@@ -13,7 +13,7 @@ const getUser = (req, res) => {
 const getUserById = (req, res) => {
   const userId = req.params.id;
 
-  users.findOne({
+  UsersEntry.findOne({
     where: {
       id: userId
     }
