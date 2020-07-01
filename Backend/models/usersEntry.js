@@ -5,7 +5,7 @@ module.exports = (sequelize, DataType) => {
       // id missing because Sequelize adds it by default
       username:  DataType.STRING(20),
       password: DataType.STRING(20),
-      permissions: DataType.INTEGER()
+      permissions: DataType.INTEGER(11)
       
     }, {
       freezeTableName: true,
