@@ -80,7 +80,7 @@ export class FilterByCountryComponent implements OnInit {
         datasets: [{
           lineTension: 0,
             label: '',
-            borderColor: 'rgba(54, 162, 235, 1)',
+            borderColor: 'rgba(235, 136, 54, 0.952)',
             pointBorderColor: 'rgba(27, 81, 120, 1)',
             data: this.arrayAppoggio,
             backgroundColor: [
@@ -88,11 +88,13 @@ export class FilterByCountryComponent implements OnInit {
               'rgba(54, 162, 235, 1)',
               'rgba(255, 206, 86, 1)'
             ],
-            borderWidth: 5
+            borderWidth: 3
           }]
         },
         options: {
         responsive: true,
+        showLines: true,
+        spanGaps: true,
         scales: {
           yAxes: [
             {
@@ -127,6 +129,18 @@ export class FilterByCountryComponent implements OnInit {
     });
     chart.update();
   }
+
+//   creaPulsante() {
+//     {  
+//       var button = document.createElement('button');  
+//       button.innerText = "Add";  
+//       button.onclick = function()  
+//       {console.log("Successo");  }
+//       return button;
+// }
+// }
+  
+
   
   removeData(chart) {
     chart.data.labels.pop();
@@ -143,6 +157,8 @@ export class FilterByCountryComponent implements OnInit {
 //     }, 2000);
 //   });
 // }
+
+
 
    updGraph(form: NgForm) {
 
@@ -272,4 +288,59 @@ export class FilterByCountryComponent implements OnInit {
 //   });
 // }
  
+
+// public buttonsTexts:Array<string> = ['Add Data'];
+
+// public addButton(index:number):void {
+//   this.buttonsTexts = [...this.buttonsTexts, `Data ${index+2}`];
+// }
+
+
+public buttonsTexts:Array<string> = ['Add Data'];
+
+public addButton(index:number):void {
+  this.buttonsTexts = [...this.buttonsTexts, `Data ${index+2}`];
+}
+
+public testiPulsante:Array<string> = ['Agg Data quiiii'];
+
+public aggPulsante(index:number):void {
+  this.testiPulsante = [...this.testiPulsante, `Data ${index+2}`];
+}
+
+
+// add(){ 
+//   let row = document.createElement('div');   
+//     row.className = 'row'; 
+//     row.innerHTML = ` <br> <input type="text">`; 
+//     document.querySelector('.showInputField').appendChild(row); 
+// } 
+
+add(){ 
+  let row = document.createElement('div');   
+    row.className = 'row'; 
+    row.innerHTML = ` <form>
+    <mat-form-field>
+        <input type="text" placeholder="Choose a country" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto" id="country" required [(ngModel)]="country">
+        <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                {{option}}
+            </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+</form>
+<form class="pt-5" #form="ngForm">
+<div class="form-group row">
+    <label for="continent" class="col-sm-2 col-form-label">Choose category</label>
+    <div class="col-sm-10">
+        <select class="form-control" id="sort" ngModel required name="sort">
+            <option *ngFor="let option of sortingOptions"> {{option}} </option>
+        </select>
+    </div>
+</div>
+</form>`; 
+    document.querySelector('.showInputField').appendChild(row); 
+} 
+
+
 }
