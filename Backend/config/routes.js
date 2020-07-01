@@ -1,5 +1,5 @@
 const DataEngine = require('../engine/entry');
-const Users = require('../engine/users');
+const UsersEngine = require('../engine/users');
 const ErrorsEngine  = require('../engine/errors');
 
 module.exports = (app) => {
@@ -14,11 +14,11 @@ module.exports = (app) => {
   app.put(`${dataPath}/:id`, DataEngine.editEntry);
   app.delete(`${dataPath}/:id`, DataEngine.deleteEntry);
   /********** DATA REST APIs USERS**********/
-  app.get(usersPath, Users.getUser);
-  app.post(usersPath, Users.createUser);
-  app.get(`${usersPath}/:id`,Users.getUserById);
-  app.put(`${usersPath}/:id`, Users.editUser);
-  app.delete(`${usersPath}/:id`, Users.deleteUser);
+  app.get(usersPath, UsersEngine.getEntry);
+  app.post(usersPath, UsersEngine.createEntry);
+  app.get(`${usersPath}/:id`, UsersEngine.getEntryById);
+  app.put(`${usersPath}/:id`, UsersEngine.editEntry);
+  app.delete(`${usersPath}/:id`, UsersEngine.deleteEntry);
 
   /********** ERROR HANDLER **********/
   app.use(ErrorsEngine.page404);

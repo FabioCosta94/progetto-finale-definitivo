@@ -16,23 +16,23 @@ export class UsersService {
     return this.http.get<Array<UsersData>>(this.baseUrl)
   }
 
-  getUser( id ) {
+  getEntry( id ) {
     return this.http.get<UsersData>(this.baseUrl + "/" + id)
   }
 
-  addUser = (data: UsersData) => {
+  addEntry = (data: UsersData) => {
     return this.http.post<UsersData>(this.baseUrl, {
       "username": data.username,
       "password": data.password,
-      // "permissions": data.permissions
+      "permissions": data.permissions
     });
   };
 
-  deleteUser( id ){
+  deleteEntry( id ){
     return this.http.delete(this.baseUrl + "/" + id)
   }
 
-  editUser= (data: UsersData) => {
+  editEntry = (data: UsersData) => {
     return this.http.put(this.baseUrl + '/' + data.id, {
       "id": data.id,
       "username": data.username,
@@ -41,5 +41,4 @@ export class UsersService {
     });
   };
 
-  
 }

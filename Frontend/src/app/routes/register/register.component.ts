@@ -1,8 +1,10 @@
-import { UsersService } from '../../services/users.service';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { UsersData } from '../../models/data.model';
+import { UsersService } from '../../services/users.service';
 import { Router } from '@angular/router';
+import { UsersData } from '../../models/data.model';
+
+
 
 
 
@@ -16,21 +18,17 @@ export class RegisterComponent implements OnInit {
   constructor(private usersService: UsersService, private router: Router) { }
 
 
-  ngOnInit(): void {
-    
+  ngOnInit(): void { 
   }
 
-usersEntry: UsersData;
+usersEntry: UsersData
 
 onSubmit(f: NgForm){
-
-  this.usersEntry = f.form.value;
-  
-    console.log("aaaa",this.usersEntry);
-    
-    this.usersService.addUser(this.usersEntry).subscribe(response => {
-      console.log("prova",response);
-      // this.router.navigate(['/dashboard']);
+ this.usersEntry = f.form.value;
+console.log("vediamo se piglia i valori dal form",this.usersEntry);
+ this.usersService.addEntry(this.usersEntry).subscribe(response => {
+      console.log("caricameli nel db please",response);
+      this.router.navigate(['/dashboard']);
     })
 }
 }

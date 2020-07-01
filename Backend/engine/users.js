@@ -1,6 +1,6 @@
 const UsersEntry = require('../models/index').UsersEntry;
 
-const getUser = (req, res) => {
+const getEntry = (req, res) => {
   UsersEntry.findAll({})
     .then(entry => {
       return res.status(200).send(entry)
@@ -10,20 +10,20 @@ const getUser = (req, res) => {
     });
 };
 
-const getUserById = (req, res) => {
-  const userId = req.params.id;
+const getEntryById = (req, res) => {
+  const entryId = req.params.id;
 
-  users.findOne({
+  UsersEntry.findOne({
     where: {
-      id: userId
+      id: entryId
     }
   })
     .then(entry => {
       if (!entry) {
         return res.status(404).send({
           error: true,
-          message: 'The requested user does not exist.',
-          userId
+          message: 'The requested data does not exist.',
+          entryId
         })
       }
 
@@ -34,13 +34,13 @@ const getUserById = (req, res) => {
     })
 };
 
-const createUser = (req, res) => {
+const createEntry = (req, res) => {
   const {username,password,permissions} = req.body;
 
   UsersEntry.create({
-   username:username,
-   password:password,
-   permissions:permissions
+    username:username,
+    password:password,
+    permissions:permissions
   })
     .then(entry => {
       return res.status(201).send(entry);
@@ -50,43 +50,43 @@ const createUser = (req, res) => {
     });
 };
 
-const editUser = (req, res) => {
-  const userId = req.params.id;
+const editEntry = (req, res) => {
+  const entryId = req.params.id;
   const {username,password,permissions} = req.body;
 
   UsersEntry.findOne({
     where: {
-      id: userId
+      id: entryId
     }
   })
     .then(entry => {
       if (!entry) {
         return res.status(404).send({
           error: true,
-          message: 'Cannot update a user that does not exist.',
-          userId
+          message: 'Cannot update a entry that does not exist.',
+          entryId
         })
       }
 
       UsersEntry.update({
-       username:username,
-       password:password,
-       permissions:permissions
+        username:username,
+        password:password,
+        permissions:permissions
       }, {
         where: {
-          id: userId
+          id: entryId
         }
       })
         .then(updated => {
           if(updated.pop() === 1) {
             return res.status(201).send({
               updated: true,
-              userId
+              entryId
             });
           } else {
             return res.status(400).send({
               updated: false,
-              userId
+              entryId
             })
           }
         })
@@ -100,12 +100,12 @@ const editUser = (req, res) => {
     })
 };
 
-const deleteUser = (req, res) => {
-  const userId = req.params.id;
+const deleteEntry = (req, res) => {
+  const entryId = req.params.id;
 
   UsersEntry.destroy({
     where: {
-      id: userId
+      id: entryId
     }
   })
     .then( res => {
@@ -117,9 +117,9 @@ const deleteUser = (req, res) => {
 };
 
 module.exports = {
-  getUser,
-  getUserById,
-  editUser,
-  deleteUser,
-  createUser
+  getEntry,
+  getEntryById,
+  editEntry,
+  deleteEntry,
+  createEntry
 };
