@@ -10,6 +10,8 @@ export class UsersService {
 
   baseURL = 'http://localhost:3000/users';
 
+ 
+
   constructor( private http : HttpClient) { }
 
   getData () {
@@ -20,11 +22,11 @@ export class UsersService {
     return this.http.get<UsersData>(this.baseURL + "/" + id)
   }
 
-  addUser = (user: UsersData) => {
+  register = (user: UsersData) => {
     return this.http.post<UsersData>(this.baseURL, {
       "username": user.username,
       "password": user.password,
-      "permissions": 1
+      "permissions": 3
     });
   };
 
@@ -37,7 +39,7 @@ export class UsersService {
       "id": user.id,
       "username":user.username,
       "password": user.password,
-      "permissions": user.permissions
+      "permissions": 3
     });
   };
 

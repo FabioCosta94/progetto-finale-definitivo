@@ -28,7 +28,7 @@ onSubmit(form: NgForm){
   
     console.log(this.usersEntry);
     
-    this.usersService.addUser(this.usersEntry).subscribe(response => {
+    this.usersService.register(this.usersEntry).subscribe(response => {
       console.log(response);
 this.router.navigate(['/welcome']);
     })
