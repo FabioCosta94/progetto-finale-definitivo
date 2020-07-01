@@ -8,37 +8,38 @@ import { UsersData } from '../models/data.model';
 })
 export class UsersService {
 
-  baseUrl = 'http://localhost:3000/users';
+  baseURL = 'http://localhost:3000/users';
 
   constructor( private http : HttpClient) { }
 
   getData () {
-    return this.http.get<Array<UsersData>>(this.baseUrl)
+    return this.http.get<Array<UsersData>>(this.baseURL)
   }
 
-  getEntry( id ) {
-    return this.http.get<UsersData>(this.baseUrl + "/" + id)
+  getUser( id ) {
+    return this.http.get<UsersData>(this.baseURL + "/" + id)
   }
 
-  addEntry = (data: UsersData) => {
-    return this.http.post<UsersData>(this.baseUrl, {
-      "username": data.username,
-      "password": data.password,
-      "permissions": data.permissions
+  addUser = (user: UsersData) => {
+    return this.http.post<UsersData>(this.baseURL, {
+      "username": user.username,
+      "password": user.password,
+      "permissions": 1
     });
   };
 
-  deleteEntry( id ){
-    return this.http.delete(this.baseUrl + "/" + id)
+  deleteUser( id ){
+    return this.http.delete(this.baseURL + "/" + id)
   }
 
-  editEntry = (data: UsersData) => {
-    return this.http.put(this.baseUrl + '/' + data.id, {
-      "id": data.id,
-      "username": data.username,
-      "password": data.password,
-      "permissions": data.permissions
+  editUser= (user: UsersData) => {
+    return this.http.put(this.baseURL + '/' + user.id, {
+      "id": user.id,
+      "username":user.username,
+      "password": user.password,
+      "permissions": user.permissions
     });
   };
 
+  
 }
