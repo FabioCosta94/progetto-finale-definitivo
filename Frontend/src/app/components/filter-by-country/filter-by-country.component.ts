@@ -13,7 +13,7 @@ import {ElementRef, ViewChild} from '@angular/core';
 import * as Chart from 'chart.js';
 import { ɵELEMENT_PROBE_PROVIDERS } from '@angular/platform-browser';
 import { title } from 'process';
-
+import { saveAs } from 'file-saver';
  
 @Component({
   selector: 'app-filter-by-country',
@@ -25,8 +25,8 @@ export class FilterByCountryComponent implements OnInit {
 
   constructor(private dataService:DataService) { }
 
-  //variabile in cui si memorizzano le morti
-  morti : number[];
+  //variabile in cui si memorizzano i dati nell'asse Y
+  asseY : number[];
   //variabile in sui si memorizzano delle date sottoforma di stringhe
   dates : String[]; 
 
@@ -35,7 +35,8 @@ export class FilterByCountryComponent implements OnInit {
 
   chart : Chart;
 
-  arrayAppoggio : number[] = [5, 10, 15, 20]
+  //Array utilizzato per creare il grafico la prima volta
+  arrayAppoggio : number[] = [0, 10, 20, 30]
 
   myControl = new FormControl(); //per far funzionare il filtro
   countries : string[] = new Array(); // per il filtro dinamico
@@ -51,9 +52,10 @@ export class FilterByCountryComponent implements OnInit {
   public sortOption:string; //variabile per la scelta
   
   //Questo metodo salva la scelta di categoria dell'utente nella variabile sortOption
-  sortBy(form : NgForm){
-    this.sortOption = form.form.value;
-  }
+  // sortBy(form : NgForm){
+  //   this.sortOption = form.form.value;
+  // }
+
   
   //tentativi patetici di far funzionare il grafico aspettando il caricamento dei dati
   // a = waits(2000);
@@ -65,15 +67,16 @@ export class FilterByCountryComponent implements OnInit {
 
   //Questo è una sorta di puntatore all'elemento html, ma alla fine non lo sto usando
   //@ViewChild('chartwrapper') chartWrapper:ElementRef;
+  
 
    createGraph() {
-     let prova: any = document.getElementById('chartwrapper');
+    let prova: any = document.getElementById('chartwrapper');
      //var canvas : any = document.getElementById("mycanvas");
     let ctx = prova.getContext("2d");
-     this.chart = new Chart(ctx, {
+    this.chart = new Chart(ctx, {
       type: 'line',
       data: {
-        labels: ['5', '10', '15', '20'],
+        labels: this.arrayAppoggio,
         datasets: [{
           lineTension: 0,
             label: '',
@@ -104,7 +107,7 @@ export class FilterByCountryComponent implements OnInit {
         },
         title: {
           display: true,
-          text: 'Filter by Country'
+          text: 'Country Chart'
         }
       }
        
@@ -145,16 +148,19 @@ export class FilterByCountryComponent implements OnInit {
 
     // this.resolveAfter2Seconds();
 
-    //rest of the function below
+    //Memorizzo l'input categoria dell'utente
     this.sortOption = form.form.value.sort;
     console.log(form.form.value.sort);
 
+    //Memorizzo l'input nazione dell'utente
     let filtroCountry = this.dataService.getData().pipe(
       map( covidData => covidData.filter(element => element.country  == this.country)));
+
 
       let filtroOsservNum;
   
       //trasformo da elementi di tipo covidData ad elementi di tipo covidData.deaths (o covidData.quellochevuoi)
+      //in base a ciò che l'utente ha scelto
       switch (this.sortOption) {
         case 'cases': {
           filtroOsservNum = filtroCountry.pipe(
@@ -187,11 +193,11 @@ export class FilterByCountryComponent implements OnInit {
       
       }
   
-    //Assegno i valori di covidData.categoria presi dal db alla variabile 'morti'
+    //Assegno i valori di covidData.categoria presi dal db alla variabile 'asseY'
     //filtroPerGrafico = this.filtroPerOsservabileNumeri.subscribe ((morti) => this.morti = morti);
-    let filtroPerGraficoMorti = filtroOsservNum.subscribe(morti2 => {
-      this.morti = morti2;
-      console.log(this.morti);
+    let filtroPerGraficoAsseY = filtroOsservNum.subscribe(valore => {
+      this.asseY = valore;
+      console.log(this.asseY);
       // this.updGraph();
   });
   
@@ -208,12 +214,13 @@ export class FilterByCountryComponent implements OnInit {
       // this.updGraph();
     });
 
-     for (let i = 0; i < this.morti.length; i++) {
+    //svuoto il vettore dei dati che aveva già
+     for (let i = 0; i < this.asseY.length; i++) {
       this.removeData(this.chart);
      }
-
-    for (let i = 0; i < this.morti.length; i++) {
-      this.addData(this.chart, this.dates[i], this.morti[i])
+     //riempo il vettore con i nuovi dati
+    for (let i = 0; i < this.asseY.length; i++) {
+      this.addData(this.chart, this.dates[i], this.asseY[i])
     }
    
   //  console.log(this.morti)
@@ -223,6 +230,7 @@ export class FilterByCountryComponent implements OnInit {
 
 //Le funzioni di grafico finiscono qui ---------------------------------------------
  
+
   getEntries(){ //mi prendo i dati
     return this.dataService.getData().subscribe( (response : CovidData[]) => {
       this.covidData = response;
@@ -249,15 +257,19 @@ export class FilterByCountryComponent implements OnInit {
  
     return this.countries.filter(option => option.toLowerCase().includes(filterValue));
   }
- 
- 
+  
+  
+
+  
+  
+//    save(ev: any) {
+//  a : HTMLCanvasElement;
+
+//    $('#canvas')[0].toBlob((blob) => {
+//     let URLObj = window.URL || window.webkitURL;
+//     ev.target.href = URLObj.createObjectURL(blob)
+//     ev.target.download = "untitled.png";
+//   });
+// }
  
 }
-// document.getElementById("download").addEventListener('click', function(){
-//   /*Get image of canvas element*/
-//   var url_base64jp = document.getElementById("lineChart").toDataURL("image/jpg");
-//   /*get download button (tag: <a></a>) */
-//   var a =  document.getElementById("download");
-//   /*insert chart image url to download button (tag: <a></a>) */
-//   a.href = url_base64jp;
-// });
