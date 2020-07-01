@@ -28,9 +28,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
-import { AuthModule } from './auth/auth.module';
 import { ChartsModule } from 'ng2-charts';
 import { LineChartComponent } from './line-chart/line-chart.component';
+import { RegisterComponent } from './routes/register/register.component';
+import { LoginComponent } from './routes/login/login.component';
+import { CommonModule } from '@angular/common';
 
 
 
@@ -55,12 +57,15 @@ import { LineChartComponent } from './line-chart/line-chart.component';
     FilterByCountryComponent,
     TestApiComponent,
     LineChartComponent,
+    LoginComponent, 
+    RegisterComponent
     
    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    CommonModule,
     NgbModule,
     HttpClientModule,
     FormsModule,
@@ -69,9 +74,9 @@ import { LineChartComponent } from './line-chart/line-chart.component';
     MatAutocompleteModule,
     MatInputModule,
     MatFormFieldModule,
-    AuthModule,
     ReactiveFormsModule,
-    ChartsModule
+    ChartsModule,
+    
   ],
   providers: [DataService],
   bootstrap: [AppComponent]

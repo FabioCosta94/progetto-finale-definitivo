@@ -1,48 +1,48 @@
 const express = require('express');
-const users = express.Routes();
-const users = require('../models/index').users;
+const router= express.Router();
+const UsersEntry = require('../models/index').usersEntry;
 
 
 
 
-users.get('/', function (req, res, next) {
-    users.findAll({})
-        .then(users => res.json(users))
+router.get('/', function (req, res, next) {
+    UsersEntry.findAll({})
+        .then(usersEntry => res.json(usersEntry))
         .catch(err => res.json(err))
     ;
 });
-users.get('/:id', function (req, res, next) {
-    users.findOne({
+router.get('/:id', function (req, res, next) {
+    UsersEntry.findOne({
             where: {
                 id: req.params.id
             }
         }
     )
-        .then(users => res.json(users))
+        .then(usersEntry => res.json(usersEntry))
         .catch(err => res.json(err));
 });
 
-users.post('/', function (req, res, next) {
+router.post('/', function (req, res, next) {
     const {username, password,permissions} = req.body;
 
-    users.create({
+    UsersEntry.create({
         username:username,
         password: password,
         permissions:permissions
     })
-        .then(users => res.status(201).json({
-            users
+        .then(usersEntry => res.status(201).json({
+            usersEntry
         }))
         .catch(error => res.status(500).json({
             error
         }));
 });
 
-users.put('/:id', function (req, res, next) {
+router.put('/:id', function (req, res, next) {
     const usersId = req.params.id;
     const { username, password,permissions } = req.body;
 
-    users.update({
+    UsersEntry.update({
         username:username,
         password: password,
         permissions:permissions
@@ -51,18 +51,18 @@ users.put('/:id', function (req, res, next) {
             id: usersId
         }
     })
-        .then(users => res.status(201).json({
-            users
+        .then(usersEntry => res.status(201).json({
+            usersEntry
         }))
         .catch(error => res.status(500).json({
             error
         }));
 });
 
-users.delete('/:id', function (req, res, next) {
+router.delete('/:id', function (req, res, next) {
     const users_id = req.params.id;
 
-    users.destroy({
+    UsersEntry.destroy({
         where: {
             id: users_id
         }
@@ -75,4 +75,4 @@ users.delete('/:id', function (req, res, next) {
         }));
 });
 
-module.exports = users;
+module.exports = router;

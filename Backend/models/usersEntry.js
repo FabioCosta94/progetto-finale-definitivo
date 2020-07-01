@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = (sequelize, DataType) => {
-    let users = sequelize.define('users', {
+    let UsersEntry = sequelize.define('usersEntry', {
       // id missing because Sequelize adds it by default
       username:  DataType.STRING(20),
       password: DataType.STRING(20),
@@ -14,10 +14,10 @@ module.exports = (sequelize, DataType) => {
     });
   
     // Association to other models (foreign keys)
-    users.associate = function (models) {
+    UsersEntry.associate = function (models) {
   
     };
   
-    return users;
+    return UsersEntry;
   };
   
