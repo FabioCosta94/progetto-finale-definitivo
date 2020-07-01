@@ -24,13 +24,13 @@ onSubmit(form: NgForm){
 
   this.usersEntry = form.form.value;
   this.usersEntry.permissions =1
-  // this.usersEntry.id = 5
   
-    console.log("aaaa",this.usersEntry);
+  
+    console.log(this.usersEntry);
     
     this.usersService.addUser(this.usersEntry).subscribe(response => {
-      console.log("prova",response);
-      // this.router.navigate(['/dashboard']);
+      console.log(response);
+this.router.navigate(['/welcome']);
     })
 }
 }
