@@ -39,7 +39,7 @@ export class UsersService {
       "id": user.id,
       "username":user.username,
       "password": user.password,
-      "permissions": 3
+      "permissions": user.permissions
     });
   };
 
