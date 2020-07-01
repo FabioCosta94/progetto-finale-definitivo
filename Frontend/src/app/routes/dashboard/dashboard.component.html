@@ -29,7 +29,9 @@
                 <tr *ngFor="let submit of usersData ; let i = index">
                     <th scope="row"> {{i + 1}}</th>
                     <td>{{submit.username}}</td>
-                    <td>{{submit.permissions}}</td>
+                    <td *ngIf="submit.permissions == 1">Admin</td>
+                    <td *ngIf="submit.permissions == 2">Press</td>
+                    <td *ngIf="submit.permissions == 3">Burdo</td>
                     <!--Le righe seguenti sostituiranno submit.permissions-->
                     <!-- <td *ngIf="submit.permissions == 0">Admin</td>
                     <td *ngIf="submit.permissions == 1">Press</td>
@@ -41,7 +43,7 @@
 
 
 
-<!-- 
+
         <table class="table">
             <thead class="thead-dark">
                 <tr>
@@ -52,14 +54,14 @@
                 </tr>
             </thead>
             <tbody>
-                 <tr class="pointer" *ngFor="let entry of covidData ; let i = index" (click)="goToDetails(entry.id)">
+                <tr class="pointer" *ngFor="let entry of covidData ; let i = index" (click)="goToDetails(entry.id)">
                     <th scope="row"> {{i + 1}}</th>
                     <td>{{entry.country}}</td>
                     <td>{{entry.cases}}</td>
                     <td>{{entry.date | date}}</td>
-                </tr> -->
-            <!-- </tbody>
-        </table>  -->
+                </tr>
+            </tbody>
+        </table>
 
     </div>
 </div>

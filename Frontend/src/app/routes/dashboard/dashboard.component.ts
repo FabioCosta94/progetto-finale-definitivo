@@ -12,13 +12,14 @@ import { UsersService } from '../../services/users.service';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor( private usersService: UsersService, private router : Router) { }
+  constructor( private usersService: UsersService, private dataService: DataService, private router : Router) { }
 
   ngOnInit(): void {
     this.getUsers()
+    this.getEntries()
   }
 
-  // public covidData: CovidData [];
+  public covidData: CovidData [];
   public usersData: UsersData [];
 
   getUsers(){
@@ -36,6 +37,11 @@ export class DashboardComponent implements OnInit {
 //     this.usersData = answer;
 // })
 // }
+
+getEntries(){
+  this.dataService.getData().subscribe( (response : any) => {
+    this.covidData = response;
+  })}
 
   goToDetails(id){
      this.router.navigateByUrl('/details/' + id);
