@@ -2,31 +2,36 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <header>
     <div class="headerWrapper">
         <nav class="navbar navbar-expand-lg">
-            <a class="navbar-brand" href="#">Welcome</a>
+            <a class="fas fa-home navbar-brand" href="#"> Welcome</a>
+            <!-- <a class="navbar-brand" href="#">Welcome</a> -->
+
             <div class="pulsante">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon">M</span>
                 </button>
             </div>
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <div class="collapse navbar-collapse navWrapper" id="navbarNavDropdown">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" [routerLink]="['/dashboard']">Covid DATA <span class="sr-only">(current)</span></a>
+                        <a class="nav-link fas fa-database" [routerLink]="['/dashboard']"> Covid DATA <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" [routerLink]='["/filterBy"]'>Charts</a>
+                        <a class="nav-link fas fa-chart-line" [routerLink]='["/filterBy"]'> Charts</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" [routerLink]='["/sort"]'>3D Charts</a>
+                        <a class="nav-link fas fa-chart-line" [routerLink]='["/sort"]'> 3D Charts</a>
                     </li>
-                    <li class="nav-item scrittaLogin">
-                        <a class="nav-link " [routerLink]='["/login"]'>Login</a>
-                    </li>
+                    <div class="scrittaLogin topnav-right">
+                        <li class="nav-item">
+                            <a class="nav-link fas fa-fw fa-user" [routerLink]='["/login"]'>Login</a>
+                        </li>
+                    </div>
                 </ul>
             </div>
         </nav>

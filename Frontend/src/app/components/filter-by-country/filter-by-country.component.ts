@@ -150,19 +150,21 @@ export class FilterByCountryComponent implements OnInit {
     chart.update();
 }
 
-// resolveAfter2Seconds() {
-//   return new Promise(resolve => {
-//     setTimeout(() => {
-//       resolve('resolved');
-//     }, 2000);
-//   });
-// }
+//Funzione per fare in modo che aspetti che l'array venga popolato prima di caricare
+ resolveAfter2Seconds() {
+   return new Promise(resolve => {
+     setTimeout(() => {
+       resolve('resolved');
+     }, 2000);
+   });
+ }
 
 
 
-   updGraph(form: NgForm) {
+   async updGraph(form: NgForm) {
 
-    // this.resolveAfter2Seconds();
+    //Chiamata della funzione per far caricare l'array
+    await this.resolveAfter2Seconds();
 
     //Memorizzo l'input categoria dell'utente
     this.sortOption = form.form.value.sort;
