@@ -22,13 +22,13 @@ export class UsersService {
     return this.http.get<UsersData>(this.baseURL + "/" + id)
   }
 
-  getUserDetails (username,password,permissions){
-    return this.http.post<UsersData>(this.baseURL,{
-      username,
-      password,
-      permissions
-    })
-  }
+  // getUserDetails (username,password,permissions){
+  //   return this.http.get<UsersData>(this.baseURL,{
+  //     username,
+  //     password,
+  //     permissions
+  //   })
+  // }
 
 
 

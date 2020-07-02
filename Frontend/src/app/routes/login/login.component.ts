@@ -14,27 +14,32 @@ export class LoginComponent implements OnInit {
   constructor(private usersService: UsersService, private router: Router) { }
 
 usersEntry: UsersData;
+ public dbData:UsersData [];
 
   ngOnInit(): void {
-    
+
+    this.fetchEntry();
+    console.log("db",this.dbData);
   }
+
+
+  fetchEntry(){
+    this.usersService.getData().subscribe( (res: any ) => {
+      this.dbData = res;
+    })
+  }
+
+
+
+
 
   onSubmit(f: NgForm){
-    this.usersEntry.username= f.form.value;
-    this.usersEntry.password= f.form.value;
-    this.usersEntry.permissions=1
+    this.usersEntry = f.form.value;
+    console.log(this.usersEntry);
+    this.usersEntry.permissions=1&&2&&3
     console.log("ngform",this.usersEntry);
     
-  this.usersService.getUserDetails(this.usersEntry.username,this.usersEntry.password,this.usersEntry.permissions).subscribe(data => {
-    console.log("bao",data);
-  if(this.usersEntry.username==data.username&&this.usersEntry.password==data.password&&this.usersEntry.permissions==data.permissions){
-  console.log("welcome,user")
-    //  this.router.navigate(['/welcome']);
-    }else{
-      console.log("user doesn't exist")
-    }
-    
-      })
+//  this.usersEntry.password&&this.usersEntry.
+
   }
 }
-
