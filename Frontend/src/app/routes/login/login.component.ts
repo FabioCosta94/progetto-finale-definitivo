@@ -13,33 +13,37 @@ export class LoginComponent implements OnInit {
 
   constructor(private usersService: UsersService, private router: Router) { }
 
-usersEntry: UsersData;
- public dbData:UsersData [];
+public usersData: UsersData [];
+public usersEntry: UsersData;
 
   ngOnInit(): void {
-
-    this.fetchEntry();
-    console.log("db",this.dbData);
+    console.log("ciao")
+   this.fetchEntry();
   }
-
 
   fetchEntry(){
     this.usersService.getData().subscribe( (res: any ) => {
-      this.dbData = res;
+      this.usersData = res;
+      console.log("valori db:",this.usersData);
+
     })
   }
 
-
-
-
-
   onSubmit(f: NgForm){
-    this.usersEntry = f.form.value;
-    console.log(this.usersEntry);
-    this.usersEntry.permissions=1&&2&&3
-    console.log("ngform",this.usersEntry);
+
+    // this.usersEntry = f.form.value;
+    // this.usersEntry.permissions=1;
+
+    // console.log(this.usersEntry);
     
-//  this.usersEntry.password&&this.usersEntry.
+    //     for(let i=0;i<this.usersData.length;i++){
+    //       if (this.usersEntry.username==this.usersData[i].username&&
+    //         this.usersEntry.password==this.usersData[i].password&&
+    //         this.usersEntry.permissions==this.usersData[i].permissions) {
+    //       console.log("Admin is logged in",this.usersEntry.username)
+    //         }else
+    //         console.log("sei una programmatrice di merda")
+    //     }
 
   }
-}
+ }
