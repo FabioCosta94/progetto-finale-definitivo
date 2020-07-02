@@ -20,13 +20,6 @@
         margin-top: 4px;
     }
     
-    .scrittaLogin,
-    .navWrapper {
-        float: right;
-        clear: right;
-        text-align: right;
-    }
-    
     .navbar-toggler {
         background-color: #606b75a6;
         border-color: #454d55;
