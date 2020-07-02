@@ -13,7 +13,7 @@
                     <span class="navbar-toggler-icon">M</span>
                 </button>
             </div>
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <div class="collapse navbar-collapse navWrapper" id="navbarNavDropdown">
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link" [routerLink]="['/dashboard']">Covid DATA <span class="sr-only">(current)</span></a>
@@ -24,9 +24,11 @@
                     <li class="nav-item">
                         <a class="nav-link" [routerLink]='["/sort"]'>3D Charts</a>
                     </li>
-                    <li class="nav-item scrittaLogin">
-                        <a class="nav-link " [routerLink]='["/login"]'>Login</a>
-                    </li>
+                    <div class="scrittaLogin">
+                        <li class="nav-item">
+                            <a class="nav-link " [routerLink]='["/login"]'>Login</a>
+                        </li>
+                    </div>
                 </ul>
             </div>
         </nav>

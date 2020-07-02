@@ -20,7 +20,8 @@
         margin-top: 4px;
     }
     
-    li.scrittaLogin {
+    .scrittaLogin,
+    .navWrapper {
         float: right;
         clear: right;
         text-align: right;
