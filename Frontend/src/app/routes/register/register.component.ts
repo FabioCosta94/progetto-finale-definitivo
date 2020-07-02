@@ -23,7 +23,7 @@ usersEntry: UsersData;
 onSubmit(form: NgForm){
 
   this.usersEntry = form.form.value;
-  this.usersEntry.permissions =1
+  this.usersEntry.permissions =3
   
   
     console.log(this.usersEntry);

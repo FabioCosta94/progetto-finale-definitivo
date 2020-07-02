@@ -8,8 +8,8 @@ const UsersEntry = require('../models/index').usersEntry;
 router.get('/', function (req, res, next) {
     UsersEntry.findAll({})
         .then(usersEntry => res.json(usersEntry))
-        .catch(err => res.json(err))
-    ;
+        .catch(err => res.json(err));
+    
 });
 router.get('/:id', function (req, res, next) {
     UsersEntry.findOne({
@@ -74,5 +74,13 @@ router.delete('/:id', function (req, res, next) {
             error: false
         }));
 });
+
+
+
+
+
+
+
+
 
 module.exports = router;
