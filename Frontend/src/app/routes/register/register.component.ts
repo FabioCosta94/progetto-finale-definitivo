@@ -24,13 +24,11 @@ onSubmit(form: NgForm){
 
   this.usersEntry = form.form.value;
   this.usersEntry.permissions =3
-  
-  
-    console.log(this.usersEntry);
+  console.log(this.usersEntry);
     
-    this.usersService.register(this.usersEntry).subscribe(response => {
-      console.log(response);
-this.router.navigate(['/welcome']);
+  this.usersService.register(this.usersEntry).subscribe(response => {
+  console.log(response);
+  this.router.navigate(['/welcome']);
     })
-}
-}
+                        }
+                            }
