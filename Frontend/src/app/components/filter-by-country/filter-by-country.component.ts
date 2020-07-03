@@ -244,6 +244,13 @@ export class FilterByCountryComponent implements OnInit {
   //  console.log(this.morti)
   //  console.log(this.datesNumbers)
   }
+   saveAsImage(){
+    var chartHtml = document.getElementById('chartwrapper')as HTMLCanvasElement;
+    var urlImage= chartHtml.toDataURL('image/png');
+    var saveLink = document.getElementById('downloadLink') as HTMLAnchorElement;
+    saveLink.href=urlImage;
+     
+   }
    
 
 //Le funzioni di grafico finiscono qui ---------------------------------------------
