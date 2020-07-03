@@ -1,5 +1,17 @@
+// export interface ApiCountry{
+//     data: ApiCountryData
+// }
+
 export interface ApiCountry{
-    data: ApiCountryData
+    name: string,
+    population: number,
+    confirmed: number,
+    deaths: number,
+    recovered: number,
+    recovery_rate: number,
+    death_rate: number,
+    updated_at: string
+
 }
 
 export interface ApiCountryData{

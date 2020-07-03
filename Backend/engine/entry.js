@@ -35,7 +35,7 @@ const getEntryById = (req, res) => {
 };
 
 const createEntry = (req, res) => {
-  const {country, population, cases, deaths, recoveries, recoveryRate, fatalityRate, continent, classification, date} = req.body;
+  const {country, population, cases, deaths, recoveries, recoveryRate, fatalityRate, date} = req.body;
 
   DataEntry.create({
     country: country,
@@ -45,8 +45,6 @@ const createEntry = (req, res) => {
     recoveries: recoveries,
     recoveryRate: recoveryRate,
     fatalityRate: fatalityRate,
-    continent: continent,
-    classification: classification,
     date: date
   })
     .then(entry => {
@@ -59,7 +57,7 @@ const createEntry = (req, res) => {
 
 const editEntry = (req, res) => {
   const entryId = req.params.id;
-  const {country, population, cases, deaths, recoveries, recoveryRate, fatalityRate, continent, classification, date} = req.body;
+  const {country, population, cases, deaths, recoveries, recoveryRate, fatalityRate, date} = req.body;
 
   DataEntry.findOne({
     where: {
@@ -83,8 +81,6 @@ const editEntry = (req, res) => {
         recoveries: recoveries,
         recoveryRate: recoveryRate,
         fatalityRate: fatalityRate,
-        continent: continent,
-        classification: classification,
         date: date
       }, {
         where: {

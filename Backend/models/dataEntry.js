@@ -10,9 +10,7 @@ module.exports = (sequelize, DataType) => {
     recoveries: DataType.INTEGER(11),
     recoveryRate: DataType.FLOAT,
     fatalityRate: DataType.FLOAT,
-    continent: DataType.STRING(12),
-    classification: DataType.STRING(12),
-    date: DataType.INTEGER(12)
+    date: DataType.STRING(30)
   }, {
     freezeTableName: true,
     timestamps: false,
