@@ -21,7 +21,7 @@ router.get('/:id', function (req, res, next) {
 });
 
 router.post('/', function (req, res, next) {
-    const {country, population, cases, deaths, recoveries, recoveryRate, fatalityRate, continent, classification, date} = req.body;
+    const {country, population, cases, deaths, recoveries, recoveryRate, fatalityRate,date} = req.body;
 
     DataEntry.create({
         country: country,
@@ -31,8 +31,6 @@ router.post('/', function (req, res, next) {
         recoveries: recoveries,
         recoveryRate: recoveryRate,
         fatalityRate: fatalityRate,
-        continent: continent,
-        classification: classification,
         date: date
     })
         .then(dataEntry => res.status(201).json({
@@ -45,7 +43,7 @@ router.post('/', function (req, res, next) {
 
 router.put('/:id', function (req, res, next) {
     const dataId = req.params.id;
-    const { country, population, cases, deaths, recoveries, recoveryRate, fatalityRate, continent, classification, date } = req.body;
+    const { country, population, cases, deaths, recoveries, recoveryRate, fatalityRate, date } = req.body;
 
     DataEntry.update({
         country: country,
@@ -55,8 +53,6 @@ router.put('/:id', function (req, res, next) {
         recoveries: recoveries,
         recoveryRate: recoveryRate,
         fatalityRate: fatalityRate,
-        continent: continent,
-        classification: classification,
         date: date
     }, {
         where: {
