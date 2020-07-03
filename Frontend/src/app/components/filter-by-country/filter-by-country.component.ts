@@ -342,7 +342,7 @@ public aggPulsante(index:number):void {
 //     document.querySelector('.showInputField').appendChild(row); 
 // } 
 
-add(){ 
+async add(){ 
   let menu = document.createElement('form');   
     menu.className = ''; 
     menu.innerHTML = `
