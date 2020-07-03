@@ -10,6 +10,9 @@
     a {
         color: rgb(228, 228, 228);
     }
+    /* div.topnav-right li.navitem a.nav-link {
+        float: right;
+    } */
     
     a:hover {
         color: rgb(255, 0, 0);

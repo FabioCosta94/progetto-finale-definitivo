@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
+import { CovidData } from '../../models/data.model';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-autocomplete-filter',
@@ -10,11 +12,29 @@ import {map, startWith} from 'rxjs/operators';
 })
 export class AutocompleteFilterComponent implements OnInit {
 
+  constructor(private dataService:DataService) { }
+
+  countries : string[] = new Array(); // per il filtro dinamico
   myControl = new FormControl();
-  options: string[] = ['One', 'Two', 'Three'];
+  sortingOptions = ["cases", "population", "recoveries", "deaths"];
   filteredOptions: Observable<string[]>;
+  public covidData : CovidData []; //appoggio per il collegamento al database
+
+
+  getEntries(){ //mi prendo i dati
+    return this.dataService.getData().subscribe( (response : CovidData[]) => {
+      this.covidData = response;
+      response.forEach(item => {
+        this.countries.push(item.country); //pusha nel vettore le country
+        console.log(this.countries); //check
+      })
+    
+    })
+  }
+
 
   ngOnInit() {
+    this.getEntries
     this.filteredOptions = this.myControl.valueChanges
       .pipe(
         startWith(''),
@@ -25,7 +45,7 @@ export class AutocompleteFilterComponent implements OnInit {
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
 
-    return this.options.filter(option => option.toLowerCase().includes(filterValue));
+    return this.countries.filter(option => option.toLowerCase().includes(filterValue));
   }
 }
 
