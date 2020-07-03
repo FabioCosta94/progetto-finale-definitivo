@@ -30,6 +30,10 @@ i {
     padding-top: 32px;
     padding-bottom: 32px;
     background-color: #ffffffdf;
+    background-image: url(https://i.imgur.com/Mo4CXDZ.png);
+    background-size: 100% 100%;
+    /* padding-bottom: 800px; */
+    padding-bottom: 500px;
 }
 
 .griglia1,
@@ -53,12 +57,6 @@ p {
     display: none;
 }
 
-.griglia0 {
-    background-image: url(https://i.imgur.com/Mo4CXDZ.png);
-    background-size: 100% 100%;
-    padding-bottom: 800px;
-}
-
 @media screen and (max-width: 1000px) {
     .testog {
         font-size: 15px;
@@ -67,7 +65,7 @@ p {
         font-size: 100px;
     }
     .griglia0 {
-        padding-bottom: 700px;
+        /* padding-bottom: 700px; */
     }
 }
 
@@ -85,12 +83,12 @@ p {
         padding-right: 10%;
     }
     .griglia0 {
-        padding-bottom: 600px;
+        /* padding-bottom: 600px; */
     }
 }
 
 @media screen and (max-width: 600px) {
     .griglia0 {
-        padding-bottom: 500px;
+        /* padding-bottom: 500px; */
     }
 }
