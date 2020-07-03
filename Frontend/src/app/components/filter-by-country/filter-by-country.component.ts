@@ -12,7 +12,7 @@ import { delay } from 'rxjs/operators';
 import {ElementRef, ViewChild} from '@angular/core';
 import * as Chart from 'chart.js';
 import { ɵELEMENT_PROBE_PROVIDERS } from '@angular/platform-browser';
-import { title } from 'process';
+import { title, config } from 'process';
 import { saveAs } from 'file-saver';
  
 @Component({
@@ -31,7 +31,7 @@ export class FilterByCountryComponent implements OnInit {
   dates : String[]; 
 
   //variabile in sui si memorizzano delle date sottoforma di numeri
-  // datesNumbers : number[] = [];
+  datesNumbers : number[] = [];
 
   chart : Chart;
 
@@ -76,7 +76,7 @@ export class FilterByCountryComponent implements OnInit {
     this.chart = new Chart(ctx, {
       type: 'line',
       data: {
-        labels: this.arrayAppoggio,
+        labels: ['Jan', 'Feb', 'Mar', 'Apr'],
         datasets: [{
           lineTension: 0,
             label: '',
@@ -124,9 +124,12 @@ export class FilterByCountryComponent implements OnInit {
 
    addData(chart, label, data) {
     chart.data.labels.push(label);
+    //chart.data.data.push(data);
     chart.data.datasets.forEach((dataset) => {
         dataset.data.push(data);
     });
+    console.log('provalabel', label)
+    console.log('provadata', data)
     chart.update();
   }
 
@@ -163,8 +166,7 @@ export class FilterByCountryComponent implements OnInit {
 
    async updGraph(form: NgForm) {
 
-    //Chiamata della funzione per far caricare l'array
-    await this.resolveAfter2Seconds();
+    
 
     //Memorizzo l'input categoria dell'utente
     this.sortOption = form.form.value.sort;
@@ -176,6 +178,7 @@ export class FilterByCountryComponent implements OnInit {
 
 
       let filtroOsservNum;
+      
   
       //trasformo da elementi di tipo covidData ad elementi di tipo covidData.deaths (o covidData.quellochevuoi)
       //in base a ciò che l'utente ha scelto
@@ -183,7 +186,7 @@ export class FilterByCountryComponent implements OnInit {
         case 'cases': {
           filtroOsservNum = filtroCountry.pipe(
             (map (dataSet => dataSet.map(covidData => covidData.cases))));
-            console.log(filtroOsservNum)
+            console.log(filtroOsservNum);
           break;
         }
         case 'population': {
@@ -215,30 +218,51 @@ export class FilterByCountryComponent implements OnInit {
     //filtroPerGrafico = this.filtroPerOsservabileNumeri.subscribe ((morti) => this.morti = morti);
     let filtroPerGraficoAsseY = filtroOsservNum.subscribe(valore => {
       this.asseY = valore;
-      console.log(this.asseY);
+      //console.log(this.asseY);
       // this.updGraph();
   });
   
   //trasformo da elementi di tipo covidData ad elementi di tipo covidData.date
-  let filtroOsservDate = filtroCountry.pipe(
+    let filtroOsservDate = filtroCountry.pipe(
     (map ((dataSet) => dataSet.map((covidData) => covidData.date))));
   
     
   //Assegno i valori di covidData.dates presi dal db alla variabile 'date', convertite in stringhe
     let filtroPerGraficoDate = filtroOsservDate.subscribe(dates => {
       //console.log(dates);
-      this.dates = dates.map((date) => date.toString());
       
+      this.dates = dates.map((date) => date.toString());
+
+      //Usare un asincrono
+      // for (let i = 0; i < this.datesNumbers.length; i++) {
+      //   this.datesNumbers.pop();
+      // }
+
+      // this.dates.forEach(date => {
+      //   let filtroNoTrattino : String[] = date.split("-");
+      //   let filtroUnito : string = filtroNoTrattino.join("");
+      //   let dataInNumero = parseInt(filtroUnito);
+      //   this.datesNumbers.push(dataInNumero);
+        
+      // });
+      // console.log('dataN1', this.datesNumbers);
       // this.updGraph();
     });
+
+      
 
     //svuoto il vettore dei dati che aveva già
      for (let i = 0; i < this.asseY.length; i++) {
       this.removeData(this.chart);
      }
+
+//Chiamata della funzione per far caricare l'array
+await this.resolveAfter2Seconds();
+
      //riempo il vettore con i nuovi dati
     for (let i = 0; i < this.asseY.length; i++) {
       this.addData(this.chart, this.dates[i], this.asseY[i])
+      console.log('provaprova', this.dates);
     }
    
   //  console.log(this.morti)
