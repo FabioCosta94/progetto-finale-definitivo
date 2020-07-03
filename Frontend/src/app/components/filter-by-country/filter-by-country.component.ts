@@ -343,9 +343,9 @@ public aggPulsante(index:number):void {
 // } 
 
 add(){ 
-  let row = document.createElement('div');   
-    row.className = 'row'; 
-    row.innerHTML = ` <form>
+  let menu = document.createElement('form');   
+    menu.className = ''; 
+    menu.innerHTML = `
     <mat-form-field>
         <input type="text" placeholder="Choose a country" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto" id="country" required [(ngModel)]="country">
         <mat-autocomplete #auto="matAutocomplete">
@@ -355,7 +355,7 @@ add(){
         </mat-autocomplete>
     </mat-form-field>
 </form>
-<form class="pt-5" #form="ngForm">
+<class="pt-5" #form="ngForm">
 <div class="form-group row">
     <label for="continent" class="col-sm-2 col-form-label">Choose category</label>
     <div class="col-sm-10">
@@ -363,9 +363,8 @@ add(){
             <option *ngFor="let option of sortingOptions"> {{option}} </option>
         </select>
     </div>
-</div>
-</form>`; 
-    document.querySelector('.showInputField').appendChild(row); 
+</div>`; 
+    document.querySelector('.showInputField').appendChild(menu); 
 } 
 
 
