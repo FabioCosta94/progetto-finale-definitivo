@@ -95,6 +95,8 @@ export class GraficoGiornoComponent implements OnInit {
   filteredOptions: Observable<string[]>; //per il filtro
   public covidData : CovidData []; //appoggio per il collegamento al database
   filtratoPerNazione = new Array();
+
+  covidScelto = new Array();
   
   giornoCorrente; //Conterrà la selezione della data
   
@@ -164,7 +166,7 @@ export class GraficoGiornoComponent implements OnInit {
     });
     //console.log("Risultato finale",filtroPerNazione);
    }
-    
+    console.log("AAAAAAAA", filtroPerNazione)
   return filtroPerNazione;
  }
 
@@ -174,7 +176,7 @@ filtroCountry;
 
    async updGraph(form: NgForm) {
 
-    console.log(this.giornoCorrente);
+    console.log("Giorno corrente", this.giornoCorrente);
 
 
 
@@ -219,12 +221,28 @@ filtroCountry;
       this.removeData(this.chart);
      }
 
-      // this.asseY.push(filtroPerGraficoDate.population);
-      // this.asseY.push(filtroPerGraficoDate.cases);
-      // this.asseY.push(filtroPerGraficoDate.deaths);
-      // this.asseY.push(filtroPerGraficoDate.recoveries);
-      // this.asseY.push(filtroPerGraficoDate.recoveryRate);
-      // this.asseY.push(filtroPerGraficoDate.fatalityRate);
+//------------------------------------------------------------------------------
+    
+let filtroPerData = new Array();
+ this.dataFilter().filter((item) => {
+   if (item.date === this.giornoCorrente) {
+     filtroPerData.push(item)
+     //console.log("BECCATO!", item)
+   }
+ });
+ console.log("VVVVVVVVVVVVV",filtroPerData)
+ //console.log("Risultato finale",filtroPerNazione);
+
+
+  let valorefinaleY = filtroPerData[0];
+  let vettoreFinaleY = new Array();
+
+      vettoreFinaleY.push(valorefinaleY.population);
+      vettoreFinaleY.push(valorefinaleY.cases);
+      vettoreFinaleY.push(valorefinaleY.deaths);
+      vettoreFinaleY.push(valorefinaleY.recoveries);
+      vettoreFinaleY.push(valorefinaleY.recoveryRate);
+      vettoreFinaleY.push(valorefinaleY.fatalityRate);
 
 
 //Chiamata della funzione per far caricare l'array
@@ -232,7 +250,7 @@ await this.resolveAfter2Seconds();
 
      //riempo il vettore con i nuovi dati
     for (let i = 0; i < this.asseX.length; i++) {
-      this.addData(this.chart, this.asseX[i], this.asseY[i])
+      this.addData(this.chart, this.asseX[i], vettoreFinaleY[i])
       console.log('provaprova', this.dates);
     }
 

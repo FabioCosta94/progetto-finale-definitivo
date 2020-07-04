@@ -82,7 +82,7 @@ export class FilterByCountryComponent implements OnInit {
             label: '',
             borderColor: 'rgba(235, 136, 54, 0.952)',
             pointBorderColor: 'rgba(27, 81, 120, 1)',
-            data: this.arrayAppoggio,
+            data: [0, 10, 20, 30],
             backgroundColor: [
               'rgba(255, 99, 132, 0)',
               'rgba(54, 162, 235, 1)',
@@ -291,8 +291,9 @@ await this.resolveAfter2Seconds();
     })
   }
   ngOnInit() {
-    this.createGraph();
+    
     this.getEntries() //prende i dati
+    this.createGraph();
     this.filteredOptions = this.myControl.valueChanges
       .pipe(  //filtro dimanico
         startWith(''),
