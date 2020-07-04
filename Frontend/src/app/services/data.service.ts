@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { CovidData } from '../models/data.model';
+import { CovidData, CountriesData } from '../models/data.model';
 
 
 
@@ -29,12 +29,25 @@ export class DataService {
       "deaths": data.deaths,
       "recoveries": data.recoveries,
       "recoveryRate": data.recoveryRate,
-      "fatalityRate": data.fatalityRate,
-      "continent": data.continent,
-      "classification": data.classification,
+      "fatalityRate": data.fatalityRate, 
       "date": data.date
     });
   };
+
+  addCountries = (data: CountriesData) => {
+    return this.http.post<CountriesData>(this.baseURL, {
+      "country": data.name,
+      "population": data.population,
+      "cases": data.confirmed,
+      "deaths": data.deaths,
+      "recoveries": data.recovered,
+      "recoveryRate": data.recovery_rate,
+      "fatalityRate": data.death_rate, 
+      "date": data.updated_at
+    });
+  };
+
+
 
   deleteEntry( id ){
     return this.http.delete(this.baseURL + "/" + id)
@@ -50,8 +63,6 @@ export class DataService {
       "recoveries": data.recoveries,
       "recoveryRate": data.recoveryRate,
       "fatalityRate": data.fatalityRate,
-      "continent": data.continent,
-      "classification": data.classification,
       "date": data.date
     });
   };

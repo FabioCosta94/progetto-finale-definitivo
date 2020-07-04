@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../services/api.service';
 import { ApiCountry } from '../../models/apiCountry.model';
+import { DataService } from 'src/app/services/data.service';
+
+
 
 @Component({
   selector: 'app-test-api',
@@ -9,64 +12,33 @@ import { ApiCountry } from '../../models/apiCountry.model';
 })
 export class TestApiComponent implements OnInit {
 
-  constructor(private apiService : ApiService) { }
 
-  public countries;
-  apiCountry : ApiCountry;
-  italyData : ApiCountry;
-  italyDataArray : Array<ApiCountry>=[];
-  countryCode: string;
-  showResult = false;
-  singleCountryDataArray : Array<ApiCountry>=[];
+  constructor(private apiService: ApiService, private dataService: DataService) { }
+
+ allCountries:ApiCountry;
+ allCountriesArray: Array<ApiCountry>=[];
+
 
   ngOnInit() {
-    this.getCountries();
+this.getAllCountries();
   }
 
-  getCountries(){
-    this.apiService.getCountries().subscribe(
-      data => {this.countries = {...data}},
+  getAllCountries() {
+    this.apiService.getCountries().subscribe((data: ApiCountry) =>
+    {
+      this.allCountries= { ...data };
+      this.allCountriesArray.push(this.allCountries);
+    },
       err => console.log(err),
-      () => console.log("done loading countries", this.countries, 
-      "JSON.stringify ", JSON.stringify(this.countries))
-    );
-
-    // this.apiService.getCountries().subscribe((data: ApiCountry) =>
-    //   this.apiCountry = {...data},
-    //   err => console.log(err),
-    //   () => console.log("done loading countries", this.apiCountry)
-    // );
+      () => console.log("done loading countries", this.allCountries, "Altro Array si spera",this.allCountriesArray)
+    );  
   }
 
 
-
-
- // getData(){
-  //   this.getSingleCountry(this.countryCode);
-  //   this.showResult=true;
-  // }
-
-  // getItaly(){
-  //   this.apiService.getSpecificCountry("IT").subscribe((data: ApiCountry) =>
-  //     {
-  //       this.italyData = {...data};
-  //       this.italyDataArray.push(this.italyData);
-  //     },
-  //     err => console.log(err),
-  //     () => console.log("done loading italy countries", this.italyData, "array:", 
-  //     this.italyDataArray)
-  // );
-  // }
-
-  // getSingleCountry(codeCountry: string){
-  //   this.apiService.getSpecificCountry(codeCountry).subscribe((data: ApiCountry) =>
-  //     {
-  //       //facendo la push ovviamente aggiunge ogni entry all'array
-  //       this.singleCountryDataArray.push({...data});
-  //     },
-  //     err => console.log(err),
-  //     () => console.log("done loading specific countries", this.singleCountryDataArray)
-  // );
-  // }
+saveCountries(){
+  this.dataService.addCountries(this.allCountries).subscribe(response => {
+    console.log("postandomeli",response);
+  })
+}
 
 }
