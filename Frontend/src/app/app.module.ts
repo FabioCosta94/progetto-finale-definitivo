@@ -1,3 +1,4 @@
+import { GraficoGiornoComponent } from './graficoGiorno/graficoGiorno.component';
 import { UsersService } from './services/users.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -59,7 +60,8 @@ import { CommonModule } from '@angular/common';
     TestApiComponent,
     LineChartComponent,
     LoginComponent, 
-    RegisterComponent
+    RegisterComponent,
+    GraficoGiornoComponent
     
    
   ],

@@ -1,3 +1,4 @@
+import { GraficoGiornoComponent } from './graficoGiorno/graficoGiorno.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './routes/dashboard/dashboard.component'
@@ -23,7 +24,8 @@ const routes: Routes = [
   { path: "sort", component: SortComponent},
   { path: "testApi", component: TestApiComponent},
   { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent }
+  { path: 'register', component: RegisterComponent },
+  { path: 'graficoGiorno', component: GraficoGiornoComponent}
 ];
 
 @NgModule({

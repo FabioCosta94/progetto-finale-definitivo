@@ -1,6 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { DataService } from '../../services/data.service';
-import { CovidData } from '../../models/data.model';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { FormControl, NgForm } from '@angular/forms';
 import { Observable, from } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
@@ -14,75 +12,33 @@ import * as Chart from 'chart.js';
 import { ɵELEMENT_PROBE_PROVIDERS } from '@angular/platform-browser';
 import { title, config } from 'process';
 import { saveAs } from 'file-saver';
- 
-@Component({
-  selector: 'app-filter-by-country',
-  templateUrl: './filter-by-country.component.html',
-  styleUrls: ['./filter-by-country.component.css']
-})
+import { DataService } from '../services/data.service';
+import { CovidData } from '../models/data.model';
 
-export class FilterByCountryComponent implements OnInit {
+@Component({
+  selector: 'app-graficoGiorno',
+  templateUrl: './graficoGiorno.component.html',
+  styleUrls: ['./graficoGiorno.component.css']
+})
+export class GraficoGiornoComponent implements OnInit {
 
   constructor(private dataService:DataService) { }
 
-  //variabile in cui si memorizzano i dati nell'asse Y
-  asseY : number[];
-  //variabile in sui si memorizzano delle date sottoforma di stringhe
-  dates : String[]; 
-
-  //variabile in sui si memorizzano delle date sottoforma di numeri
-  datesNumbers : number[] = [];
-
-  chart : Chart;
-
-  //Array utilizzato per creare il grafico la prima volta
-  arrayAppoggio : number[] = [0, 10, 20, 30]
-
-  myControl = new FormControl(); //per far funzionare il filtro
-  countries : string[] = new Array(); // per il filtro dinamico
-  filteredOptions: Observable<string[]>; //per il filtro
-  public covidData : CovidData []; //appoggio per il collegamento al database
- 
- 
-  public country:string; //per memorizzare la stringa dell’input
-  
-  //Base per costruire il sistema di filtraggio per categoria
-  sortingOptions = ["cases", "population", "recoveries", "deaths"];
-
-  public sortOption:string; //variabile per la scelta
-  
-  //Questo metodo salva la scelta di categoria dell'utente nella variabile sortOption
-  // sortBy(form : NgForm){
-  //   this.sortOption = form.form.value;
-  // }
-
-  
-  //tentativi patetici di far funzionare il grafico aspettando il caricamento dei dati
-  // a = waits(2000);
-  // setTimeout(() => {
-  //   console.log('aaa');
-  // }, 2000)
-  // await()
-  //delay()
-
-  //Questo è una sorta di puntatore all'elemento html, ma alla fine non lo sto usando
-  //@ViewChild('chartwrapper') chartWrapper:ElementRef;
-  
-
-   createGraph() {
+  createGraph() {
     let prova: any = document.getElementById('chartwrapper');
      //var canvas : any = document.getElementById("mycanvas");
     let ctx = prova.getContext("2d");
     this.chart = new Chart(ctx, {
-      type: 'line',
+      type: 'bar',
       data: {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr'],
+        labels: ['Population', 'Cases', 'Deaths', 'Recoveries', 'Rec. Rate', 'Fat. Rate'],
         datasets: [{
           lineTension: 0,
             label: '',
             borderColor: 'rgba(235, 136, 54, 0.952)',
             pointBorderColor: 'rgba(27, 81, 120, 1)',
-            data: this.arrayAppoggio,
+            //data: [5, 10, 15, 20, 25, 30],
+            data: [3,3,3,3,3,3],
             backgroundColor: [
               'rgba(255, 99, 132, 0)',
               'rgba(54, 162, 235, 1)',
@@ -122,6 +78,52 @@ export class FilterByCountryComponent implements OnInit {
 
    };
 
+  //variabile in cui si memorizzano i dati nell'asse Y
+  asseX = ['Population', 'Cases', 'Deaths', 'Recoveries', 'Rec. Rate', 'Fat. Rate'];
+  asseY : number[] = [5,6,4,2,3,5];
+  //variabile in sui si memorizzano delle date sottoforma di stringhe
+  dates : Date[] = []; 
+
+  //variabile in sui si memorizzano delle date sottoforma di numeri
+  datesNumbers : number[] = [];
+
+  chart : Chart;
+  //Array utilizzato per creare il grafico la prima volta
+
+  myControl = new FormControl(); //per far funzionare il filtro
+  countries : string[] = new Array(); // per il filtro dinamico
+  filteredOptions: Observable<string[]>; //per il filtro
+  public covidData : CovidData []; //appoggio per il collegamento al database
+  filtratoPerNazione = new Array();
+  
+  giornoCorrente; //Conterrà la selezione della data
+  
+  public country:string; //per memorizzare la stringa dell’input
+  
+  //Base per costruire il sistema di filtraggio per categoria
+  
+  public sortOption:string; //variabile per la scelta della data
+  
+  //Questo metodo salva la scelta di categoria dell'utente nella variabile sortOption
+  // sortBy(form : NgForm){
+  //   this.sortOption = form.form.value;
+  // }
+
+  
+  //tentativi patetici di far funzionare il grafico aspettando il caricamento dei dati
+  // a = waits(2000);
+  // setTimeout(() => {
+  //   console.log('aaa');
+  // }, 2000)
+  // await()
+  //delay()
+
+  //Questo è una sorta di puntatore all'elemento html, ma alla fine non lo sto usando
+  //@ViewChild('chartwrapper') chartWrapper:ElementRef;
+  
+
+   
+
    addData(chart, label, data) {
     chart.data.labels.push(label);
     //chart.data.data.push(data);
@@ -130,27 +132,13 @@ export class FilterByCountryComponent implements OnInit {
     });
     //console.log('provalabel', label)
     //console.log('provadata', data)
-    chart.update();
   }
-
-//   creaPulsante() {
-//     {  
-//       var button = document.createElement('button');  
-//       button.innerText = "Add";  
-//       button.onclick = function()  
-//       {console.log("Successo");  }
-//       return button;
-// }
-// }
-  
-
   
   removeData(chart) {
     chart.data.labels.pop();
     chart.data.datasets.forEach((dataset) => {
         dataset.data.pop();
     });
-    chart.update();
 }
 
 //Funzione per fare in modo che aspetti che l'array venga popolato prima di caricare
@@ -160,110 +148,95 @@ export class FilterByCountryComponent implements OnInit {
        resolve('resolved');
      }, 2000);
    });
+   
+ }
+
+ dataFilter () {
+
+   let filtroPerNazione = new Array();
+   if (this.country != '' || this.country != null) {
+    this.covidData.filter((item) => {
+      if (item.country === this.country) {
+        filtroPerNazione.push(item)
+        this.filtratoPerNazione.push(item);
+        //console.log("BECCATO!", item)
+      }
+    });
+    //console.log("Risultato finale",filtroPerNazione);
+   }
+    
+  return filtroPerNazione;
  }
 
 
 
+filtroCountry;
+
    async updGraph(form: NgForm) {
 
-    
+    console.log(this.giornoCorrente);
 
-    //Memorizzo l'input categoria dell'utente
+
+
+    //Memorizzo l'input data dell'utente
     this.sortOption = form.form.value.sort;
     //console.log(form.form.value.sort);
 
     //Memorizzo l'input nazione dell'utente
-    let filtroCountry = this.dataService.getData().pipe(
+    this.filtroCountry = this.dataService.getData().pipe(
       map( covidData => covidData.filter(element => element.country  == this.country)));
 
+  //     let filtroOsservNum;
+  
+  //   //Assegno i valori di covidData.categoria presi dal db alla variabile 'asseY'
+  //   //filtroPerGrafico = this.filtroPerOsservabileNumeri.subscribe ((morti) => this.morti = morti);
+  //   let filtroPerGraficoAsseY = filtroOsservNum.subscribe(valore => {
+  //     this.asseY = valore;
+  //     //console.log(this.asseY);
+  //     // this.updGraph();
+  // });
+  
+  //trasformo da elementi di tipo covidData ad elementi di tipo obersvable covidData.date
 
-      let filtroOsservNum;
-      
-  
-      //trasformo da elementi di tipo covidData ad elementi di tipo covidData.deaths (o covidData.quellochevuoi)
-      //in base a ciò che l'utente ha scelto
-      switch (this.sortOption) {
-        case 'cases': {
-          filtroOsservNum = filtroCountry.pipe(
-            (map (dataSet => dataSet.map(covidData => covidData.cases))));
-            //console.log(filtroOsservNum);
-          break;
-        }
-        case 'population': {
-          filtroOsservNum = filtroCountry.pipe(
-            (map (dataSet => dataSet.map(covidData => covidData.population))));
-            //console.log(filtroOsservNum)
-          break;
-        }
-        case 'recoveries': {
-          filtroOsservNum = filtroCountry.pipe(
-            (map (dataSet => dataSet.map(covidData => covidData.recoveries))));
-            //console.log(filtroOsservNum)
-          break;
-        }
-        case 'deaths': {
-          filtroOsservNum = filtroCountry.pipe(
-            (map (dataSet => dataSet.map(covidData => covidData.deaths))));
-            //console.log(filtroOsservNum)
-          break;
-        }
-        default: {
-          console.log('ERRORE')
-          break;
-        }
-      
-      }
-  
-    //Assegno i valori di covidData.categoria presi dal db alla variabile 'asseY'
-    //filtroPerGrafico = this.filtroPerOsservabileNumeri.subscribe ((morti) => this.morti = morti);
-    let filtroPerGraficoAsseY = filtroOsservNum.subscribe(valore => {
-      this.asseY = valore;
-      //console.log(this.asseY);
-      // this.updGraph();
-  });
-  
-  //trasformo da elementi di tipo covidData ad elementi di tipo covidData.date
-    let filtroOsservDate = filtroCountry.pipe(
-    (map ((dataSet) => dataSet.map((covidData) => covidData.date))));
+    // let filtroOsservDate = filtroCountry.pipe(
+    // (map ((dataSet) => dataSet.map((covidData) => covidData.date))));
   
     
   //Assegno i valori di covidData.dates presi dal db alla variabile 'date', convertite in stringhe
-    let filtroPerGraficoDate = filtroOsservDate.subscribe(dates => {
-      //console.log(dates);
-      
-      this.dates = dates.map((date) => date.toString());
+    // let filtroPerGraficoDate = filtroOsservDate.subscribe
+    // (dates => {
+    //   //console.log(dates);
+    //   this.dates = dates//.map((date) => date.toString());
 
       //Usare un asincrono
       // for (let i = 0; i < this.datesNumbers.length; i++) {
       //   this.datesNumbers.pop();
       // }
 
-      // this.dates.forEach(date => {
-      //   let filtroNoTrattino : String[] = date.split("-");
-      //   let filtroUnito : string = filtroNoTrattino.join("");
-      //   let dataInNumero = parseInt(filtroUnito);
-      //   this.datesNumbers.push(dataInNumero);
-        
-      // });
-      // console.log('dataN1', this.datesNumbers);
-      // this.updGraph();
-    });
-
       
-
     //svuoto il vettore dei dati che aveva già
-     for (let i = 0; i < this.asseY.length; i++) {
+     for (let i = 0; i < 6; i++) {
       this.removeData(this.chart);
      }
+
+      // this.asseY.push(filtroPerGraficoDate.population);
+      // this.asseY.push(filtroPerGraficoDate.cases);
+      // this.asseY.push(filtroPerGraficoDate.deaths);
+      // this.asseY.push(filtroPerGraficoDate.recoveries);
+      // this.asseY.push(filtroPerGraficoDate.recoveryRate);
+      // this.asseY.push(filtroPerGraficoDate.fatalityRate);
+
 
 //Chiamata della funzione per far caricare l'array
 await this.resolveAfter2Seconds();
 
      //riempo il vettore con i nuovi dati
-    for (let i = 0; i < this.asseY.length; i++) {
-      this.addData(this.chart, this.dates[i], this.asseY[i])
-      //console.log('provaprova', this.dates);
+    for (let i = 0; i < this.asseX.length; i++) {
+      this.addData(this.chart, this.asseX[i], this.asseY[i])
+      console.log('provaprova', this.dates);
     }
+
+    this.chart.update();
    
   //  console.log(this.morti)
   //  console.log(this.datesNumbers)
@@ -278,21 +251,29 @@ await this.resolveAfter2Seconds();
    
 
 //Le funzioni di grafico finiscono qui ---------------------------------------------
- 
+   
+
 
   getEntries(){ //mi prendo i dati
     return this.dataService.getData().subscribe( (response : CovidData[]) => {
       this.covidData = response;
+      //console.log("fammi vedere", this.covidData);
       response.forEach(item => {
         this.countries.push(item.country); //pusha nel vettore le country
-        console.log(this.countries); //check
+        //console.log(this.countries); //check
       })
-    
+      this.createGraph();
     })
   }
+
   ngOnInit() {
-    this.createGraph();
     this.getEntries() //prende i dati
+
+    // for (let i = 0; i < this.covidData.length; i++) {
+    //   this.dates.push(this.covidData[i].date)
+    // }
+    //console.log('provaDates', this.dates);
+
     this.filteredOptions = this.myControl.valueChanges
       .pipe(  //filtro dimanico
         startWith(''),
@@ -307,27 +288,7 @@ await this.resolveAfter2Seconds();
     return this.countries.filter(option => option.toLowerCase().includes(filterValue));
   }
   
-  
-
-  
-  
-//    save(ev: any) {
-//  a : HTMLCanvasElement;
-
-//    $('#canvas')[0].toBlob((blob) => {
-//     let URLObj = window.URL || window.webkitURL;
-//     ev.target.href = URLObj.createObjectURL(blob)
-//     ev.target.download = "untitled.png";
-//   });
-// }
- 
-
-// public buttonsTexts:Array<string> = ['Add Data'];
-
-// public addButton(index:number):void {
-//   this.buttonsTexts = [...this.buttonsTexts, `Data ${index+2}`];
-// }
-
+//----------------------------------------------------------------------------------------------------
 
 public buttonsTexts:Array<string> = ['Add Data'];
 
@@ -367,12 +328,11 @@ async add(){
     <label for="continent" class="col-sm-2 col-form-label">Choose category</label>
     <div class="col-sm-10">
         <select class="form-control" id="sort" ngModel required name="sort">
-            <option *ngFor="let option of sortingOptions"> {{option}} </option>
+            <option *ngFor="let option of dates"> {{option}} </option>
         </select>
     </div>
 </div>`; 
     document.querySelector('.showInputField').appendChild(menu); 
 } 
-
 
 }

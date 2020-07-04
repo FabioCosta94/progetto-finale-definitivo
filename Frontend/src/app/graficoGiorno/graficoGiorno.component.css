@@ -1,0 +1,38 @@
+#nazione {
+    text-align: center;
+}
+
+.wrapper {
+    min-height: 84vh;
+    color: rgb(28, 28, 28);
+    background-color: rgba(226, 226, 251, 0.822);
+}
+
+h1 {
+    color: rgb(28, 28, 28);
+}
+
+.pointer {
+    color: rgb(28, 28, 28);
+}
+
+#country {
+    color: rgb(28, 28, 28);
+}
+
+input {
+    color: rgb(28, 28, 28);
+}
+
+form {
+    color: rgb(28, 28, 28);
+}
+
+
+/* #divChart, */
+
+#chartwrapper {
+    display: block;
+    height: 675px;
+    width: 1200px;
+}
