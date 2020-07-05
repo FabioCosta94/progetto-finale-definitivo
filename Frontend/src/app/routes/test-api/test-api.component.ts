@@ -15,30 +15,27 @@ export class TestApiComponent implements OnInit {
 
   constructor(private apiService: ApiService, private dataService: DataService) { }
 
- allCountries:ApiCountry;
- allCountriesArray: Array<ApiCountry>=[];
+  allCountries: ApiCountry;
+
 
 
   ngOnInit() {
-this.getAllCountries();
+    this.getAllCountries();
   }
 
   getAllCountries() {
     this.apiService.getCountries().subscribe((data: ApiCountry) =>
-    {
-      this.allCountries= { ...data };
-      this.allCountriesArray.push(this.allCountries);
-    },
+      this.allCountries = { ...data },
       err => console.log(err),
-      () => console.log("done loading countries", this.allCountries, "Altro Array si spera",this.allCountriesArray)
-    );  
+      () => console.log("done loading countries", this.allCountries)
+    );
   }
 
 
-saveCountries(){
-  this.dataService.addCountries(this.allCountries).subscribe(response => {
-    console.log("postandomeli",response);
-  })
-}
+  saveCountries() {
+    this.dataService.addCountries(this.allCountries).subscribe(response => {
+      console.log("postandomeli", response);
+    })
+  }
 
 }

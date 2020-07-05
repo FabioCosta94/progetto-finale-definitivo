@@ -3,6 +3,7 @@
 // }
 
 export interface ApiCountry{
+
     name: string,
     population: number,
     confirmed: number,

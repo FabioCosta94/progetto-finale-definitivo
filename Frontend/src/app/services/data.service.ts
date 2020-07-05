@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { CovidData, CountriesData } from '../models/data.model';
+import { CovidData } from '../models/data.model';
+import { ApiCountryData, ApiCountry } from '../models/apiCountry.model';
 
 
 
@@ -21,21 +22,22 @@ export class DataService {
     return this.http.get<CovidData>(this.baseURL + "/" + id)
   }
 
-  addEntry = (data: CovidData) => {
-    return this.http.post<CovidData>(this.baseURL, {
-      "country": data.country,
-      "population": data.population,
-      "cases": data.cases,
-      "deaths": data.deaths,
-      "recoveries": data.recoveries,
-      "recoveryRate": data.recoveryRate,
-      "fatalityRate": data.fatalityRate, 
-      "date": data.date
-    });
-  };
+  // addEntry = (data: CovidData) => {
+  //   return this.http.post<CovidData>(this.baseURL, {
+  //     "country": data.country,
+  //     "population": data.population,
+  //     "cases": data.cases,
+  //     "deaths": data.deaths,
+  //     "recoveries": data.recoveries,
+  //     "recoveryRate": data.recoveryRate,
+  //     "fatalityRate": data.fatalityRate, 
+  //     "date": data.date
+  //   });
+  // };
 
-  addCountries = (data: CountriesData) => {
-    return this.http.post<CountriesData>(this.baseURL, {
+  addCountries = (data: ApiCountry) => {
+    return this.http.post<ApiCountry>(this.baseURL, {
+  
       "country": data.name,
       "population": data.population,
       "cases": data.confirmed,

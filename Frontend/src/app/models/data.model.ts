@@ -10,16 +10,7 @@ export interface CovidData {
     date:           Date;
 }
 
-export interface CountriesData{
-    name: string,
-    population: number,
-    confirmed: number,
-    deaths: number,
-    recovered: number,
-    recovery_rate: number,
-    death_rate: number,
-    updated_at: string
-}
+
 
 
 
