@@ -1,4 +1,4 @@
-<button (click)="saveCountries()">Submit Countries</button>
+
 <!-- <button (click)="getItaly()">TAKE ITALY</button> --> -->
 <div class="wrapper">
 <div class="container p-5">
@@ -11,7 +11,7 @@
             <input type="text" class="form-control" id="countryCode" required [(ngModel)]="countryCode">
         </div> -->
     </div>
-    <button (click)="getAllCountries()">GO</button>
+    <button (click)="getItaly()">Get Countries</button>
     <table class="table"> 
         <thead class="thead-dark">
             <tr>
@@ -41,4 +41,5 @@
         </tbody> -->
 
     </table>
+     <button (click)="saveCountries()">Submit Countries</button> 
 </div>

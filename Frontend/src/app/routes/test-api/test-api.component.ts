@@ -15,41 +15,66 @@ export class TestApiComponent implements OnInit {
 
   constructor(private apiService: ApiService, private dataService: DataService) { }
 
-  allCountries: ApiCountry;
-   allCountriesDataArray : Array<ApiCountry>=[];
+ public  allCountries: ApiCountry[];
+ public countries;
+  apiCountry : ApiCountry;
+  italyData : ApiCountry;
+  italyDataArray : Array<ApiCountry>=[];
+  countryCode: string;
+  showResult = false;
+  singleCountryDataArray : Array<ApiCountry>=[];
 
 
 
   ngOnInit() {
-    // this.getAllCountries();
+  
   }
 
-  // getAllCountries() {
-  //   this.apiService.getCountries().subscribe((data: ApiCountry) =>
+  //  getAllCountries() {
+  //    this.apiService.getCountries().subscribe((data: ApiCountry) =>
   //     this.allCountries = { ...data },
-  //     err => console.log(err),
-  //     () => console.log("done loading countries", this.allCountries)
-  //   );
-  // }
+  //      err => console.log(err),
+  //      () => console.log("done loading countries", this.allCountries)
+  //    );
+  //  }
 
-  getAllCountries(){
-    this.apiService.getCountries().subscribe((data: ApiCountry) =>
+  // getAllCountries() {
+  //   this.apiService.getCountries().subscribe((response: any) => {
+  //     this.allCountries = response;
+  //     console.log("POBA",this.allCountries);
+  //     let prova=this.allCountries[0].data.name;
+  //   console.log("prova",prova);
+  //   }
+  //   );
+    
+
+  // }
+  getItaly(){
+    this.apiService.getSpecificCountry("IT").subscribe((data: ApiCountry) =>
       {
-        this.allCountries = {...data};
-        this.allCountriesDataArray.push(data);
+        this.italyData = {...data};
+        this.italyDataArray.push(this.italyData);
       },
       err => console.log(err),
-      () => console.log("done loading all countries", this.allCountries, "array:", 
-      this.allCountriesDataArray)
+      () => console.log("done loading italy countries", this.italyData, "array:", 
+      this.italyDataArray)
   );
   }
 
-
-
   saveCountries() {
-    this.dataService.addCountries(this.allCountries).subscribe(response => {
-      console.log("post", response);
-    })
+    // this.apiService.getCountries().subscribe((response: any) => {
+    //   this.allCountries = response;
+    //   console.log("POBA",this.allCountries);
+    // }
+    // );
+    this.dataService.addCountries(this.italyData).subscribe(response => {
+      console.log(response);
+  
+        })
+
   }
+
+
+
 
 }

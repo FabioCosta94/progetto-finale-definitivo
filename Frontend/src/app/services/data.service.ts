@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CovidData } from '../models/data.model';
-import { ApiCountry } from '../models/apiCountry.model';
+import { ApiCountry, Calculated } from '../models/apiCountry.model';
 
 
 
@@ -22,32 +22,32 @@ export class DataService {
     return this.http.get<CovidData>(this.baseURL + "/" + id)
   }
 
-  // addEntry = (data: CovidData) => {
-  //   return this.http.post<CovidData>(this.baseURL, {
-  //     "country": data.country,
-  //     "population": data.population,
-  //     "cases": data.cases,
-  //     "deaths": data.deaths,
-  //     "recoveries": data.recoveries,
-  //     "recoveryRate": data.recoveryRate,
-  //     "fatalityRate": data.fatalityRate, 
-  //     "date": data.date
-  //   });
-  // };
+   addEntry = (data: CovidData) => {
+     return this.http.post<CovidData>(this.baseURL, {
+       "country": data.country,
+       "population": data.population,
+      "cases": data.cases,
+      "deaths": data.deaths,
+      "recoveries": data.recoveries,
+      "recoveryRate": data.recoveryRate,
+      "fatalityRate": data.fatalityRate, 
+    "date": data.date
+     });
+   };
 
-  addCountries = (data: ApiCountry) => {
+   addCountries = (data: ApiCountry) => {
     return this.http.post<ApiCountry>(this.baseURL, {
   
-      "country": data.name,
-      "population": data.population,
-      "cases": data.confirmed,
-      "deaths": data.deaths,
-      "recoveries": data.recovered,
-      "recoveryRate": data.recovery_rate,
-      "fatalityRate": data.death_rate, 
-      "date": data.updated_at
-    });
-  };
+      "country": data.data.name,
+      "population": data.data.population,
+      "cases": data.data.latest_data.confirmed,
+       "deaths": data.data.latest_data.deaths,
+      "recoveries": data.data.latest_data.recovered,
+      "recoveryRate": data.data.latest_data.calculated.recovery_rate,
+       "fatalityRate": data.data.latest_data.calculated.death_rate,
+       "date": data.data.updated_at
+     });
+   };
 
 
 
