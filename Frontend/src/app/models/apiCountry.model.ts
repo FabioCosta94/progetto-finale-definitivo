@@ -4,6 +4,7 @@
 
 export interface ApiCountry{
 
+    index:number,
     name: string,
     population: number,
     confirmed: number,

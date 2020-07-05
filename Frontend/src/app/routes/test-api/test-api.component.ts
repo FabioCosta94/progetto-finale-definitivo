@@ -16,6 +16,7 @@ export class TestApiComponent implements OnInit {
   constructor(private apiService: ApiService, private dataService: DataService) { }
 
   allCountries: ApiCountry;
+   allCountriesDataArray : Array<ApiCountry>=[];
 
 
 
@@ -23,13 +24,26 @@ export class TestApiComponent implements OnInit {
     this.getAllCountries();
   }
 
-  getAllCountries() {
+  // getAllCountries() {
+  //   this.apiService.getCountries().subscribe((data: ApiCountry) =>
+  //     this.allCountries = { ...data },
+  //     err => console.log(err),
+  //     () => console.log("done loading countries", this.allCountries)
+  //   );
+  // }
+
+  getAllCountries(){
     this.apiService.getCountries().subscribe((data: ApiCountry) =>
-      this.allCountries = { ...data },
+      {
+        this.allCountries = {...data};
+        this.allCountriesDataArray.push(data);
+      },
       err => console.log(err),
-      () => console.log("done loading countries", this.allCountries)
-    );
+      () => console.log("done loading italy countries", this.allCountries, "array:", 
+      this.allCountriesDataArray)
+  );
   }
+
 
 
   saveCountries() {

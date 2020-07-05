@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CovidData } from '../models/data.model';
-import { ApiCountryData, ApiCountry } from '../models/apiCountry.model';
+import { ApiCountry } from '../models/apiCountry.model';
 
 
 
