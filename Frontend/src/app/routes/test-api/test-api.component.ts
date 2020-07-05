@@ -21,7 +21,7 @@ export class TestApiComponent implements OnInit {
 
 
   ngOnInit() {
-    this.getAllCountries();
+    // this.getAllCountries();
   }
 
   // getAllCountries() {
@@ -39,7 +39,7 @@ export class TestApiComponent implements OnInit {
         this.allCountriesDataArray.push(data);
       },
       err => console.log(err),
-      () => console.log("done loading italy countries", this.allCountries, "array:", 
+      () => console.log("done loading all countries", this.allCountries, "array:", 
       this.allCountriesDataArray)
   );
   }
@@ -48,7 +48,7 @@ export class TestApiComponent implements OnInit {
 
   saveCountries() {
     this.dataService.addCountries(this.allCountries).subscribe(response => {
-      console.log("postandomeli", response);
+      console.log("post", response);
     })
   }
 
