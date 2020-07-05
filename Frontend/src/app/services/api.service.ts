@@ -19,17 +19,3 @@ constructor(private http: HttpClient) { }
     return this.http.get<ApiCountry>(`${this.baseUrl}/countries/`+code);
   }
 }
-// saveCountries(data: ApiCountry) => {
-//   return this.http.post<ApiCountry>(this.baseURL, {
-    
-//    "name" : data.name,
-//     "population": data.population,
-//     "confirmed" :data.confirmed,
-//     "deaths":data.deaths,
-//     "recovered":data.recovered,
-//     "recovery_rate" : data.recovery_rate,
-//     "death_rate":data.death_rate,
-//     "updated_at ":data.updated_at
-   
-//   });
-// };

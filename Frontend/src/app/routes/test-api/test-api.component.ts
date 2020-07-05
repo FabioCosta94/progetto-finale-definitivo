@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../services/api.service';
 import { ApiCountry } from '../../models/apiCountry.model';
+import { DataService } from 'src/app/services/data.service';
+
+
 
 @Component({
   selector: 'app-test-api',
@@ -9,9 +12,11 @@ import { ApiCountry } from '../../models/apiCountry.model';
 })
 export class TestApiComponent implements OnInit {
 
-  constructor(private apiService : ApiService) { }
 
-  public countries;
+  constructor(private apiService: ApiService, private dataService: DataService) { }
+
+ public  allCountries: ApiCountry[];
+ public countries;
   apiCountry : ApiCountry;
   italyData : ApiCountry;
   italyDataArray : Array<ApiCountry>=[];
@@ -19,54 +24,57 @@ export class TestApiComponent implements OnInit {
   showResult = false;
   singleCountryDataArray : Array<ApiCountry>=[];
 
+
+
   ngOnInit() {
-    this.getCountries();
+  
   }
 
-  getCountries(){
-    this.apiService.getCountries().subscribe(
-      data => {this.countries = {...data}},
+  //  getAllCountries() {
+  //    this.apiService.getCountries().subscribe((data: ApiCountry) =>
+  //     this.allCountries = { ...data },
+  //      err => console.log(err),
+  //      () => console.log("done loading countries", this.allCountries)
+  //    );
+  //  }
+
+  // getAllCountries() {
+  //   this.apiService.getCountries().subscribe((response: any) => {
+  //     this.allCountries = response;
+  //     console.log("POBA",this.allCountries);
+  //     let prova=this.allCountries[0].data.name;
+  //   console.log("prova",prova);
+  //   }
+  //   );
+    
+
+  // }
+  getItaly(){
+    this.apiService.getSpecificCountry("IT").subscribe((data: ApiCountry) =>
+      {
+        this.italyData = {...data};
+        this.italyDataArray.push(this.italyData);
+      },
       err => console.log(err),
-      () => console.log("done loading countries", this.countries, 
-      "JSON.stringify ", JSON.stringify(this.countries))
-    );
+      () => console.log("done loading italy countries", this.italyData, "array:", 
+      this.italyDataArray)
+  );
+  }
 
-    // this.apiService.getCountries().subscribe((data: ApiCountry) =>
-    //   this.apiCountry = {...data},
-    //   err => console.log(err),
-    //   () => console.log("done loading countries", this.apiCountry)
+  saveCountries() {
+    // this.apiService.getCountries().subscribe((response: any) => {
+    //   this.allCountries = response;
+    //   console.log("POBA",this.allCountries);
+    // }
     // );
+    this.dataService.addCountries(this.italyData).subscribe(response => {
+      console.log(response);
+  
+        })
+
   }
 
 
 
-
- // getData(){
-  //   this.getSingleCountry(this.countryCode);
-  //   this.showResult=true;
-  // }
-
-  // getItaly(){
-  //   this.apiService.getSpecificCountry("IT").subscribe((data: ApiCountry) =>
-  //     {
-  //       this.italyData = {...data};
-  //       this.italyDataArray.push(this.italyData);
-  //     },
-  //     err => console.log(err),
-  //     () => console.log("done loading italy countries", this.italyData, "array:", 
-  //     this.italyDataArray)
-  // );
-  // }
-
-  // getSingleCountry(codeCountry: string){
-  //   this.apiService.getSpecificCountry(codeCountry).subscribe((data: ApiCountry) =>
-  //     {
-  //       //facendo la push ovviamente aggiunge ogni entry all'array
-  //       this.singleCountryDataArray.push({...data});
-  //     },
-  //     err => console.log(err),
-  //     () => console.log("done loading specific countries", this.singleCountryDataArray)
-  // );
-  // }
 
 }

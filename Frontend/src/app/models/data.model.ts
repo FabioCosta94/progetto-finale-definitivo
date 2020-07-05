@@ -7,10 +7,12 @@ export interface CovidData {
     recoveries:     number;
     recoveryRate:   number;
     fatalityRate:   number;
-    continent:      string;
-    classification: string;
     date:           Date;
 }
+
+
+
+
 
 export interface UsersData {
     id:             number;
