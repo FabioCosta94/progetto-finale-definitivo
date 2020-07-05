@@ -13,7 +13,9 @@
             </canvas>
         </div>
 
-        <button class="btn btn-primary mb-3" (click)="updGraph(form)">Update chart</button>
+        <button class="btn btn-primary mb-3" *ngIf="flaggrafico==false" disabled>Update chart</button>
+
+        <button class="btn btn-primary mb-3" (click)="updGraph(form)" *ngIf="flaggrafico ">Update chart</button>
 
 
 
@@ -87,7 +89,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <a id="downloadLink" download="filename.png" (click)="saveAsImage()" title="Salvataggio Grafico">salva </a>
 
-</div> 
+</div>
 <!--<button id="download" class="btn btn-primary float-right bg-flat-color-1" (click)="save()" title="Salvataggio Grafico"> </button><-->
 
 

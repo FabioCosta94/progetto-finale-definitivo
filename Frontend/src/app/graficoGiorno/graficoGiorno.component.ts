@@ -170,11 +170,13 @@ export class GraficoGiornoComponent implements OnInit {
   return filtroPerNazione;
  }
 
-
+  flagGrafico = true;
 
 filtroCountry;
 
    async updGraph(form: NgForm) {
+
+    this.flagGrafico = false;
 
     console.log("Giorno corrente", this.giornoCorrente);
 
@@ -255,6 +257,7 @@ await this.resolveAfter2Seconds();
     }
 
     this.chart.update();
+    this.flagGrafico = true;
    
   //  console.log(this.morti)
   //  console.log(this.datesNumbers)

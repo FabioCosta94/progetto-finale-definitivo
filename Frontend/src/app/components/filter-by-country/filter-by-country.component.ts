@@ -162,11 +162,16 @@ export class FilterByCountryComponent implements OnInit {
    });
  }
 
-
+ flaggrafico = true;
+ flagNum = 0;
 
    async updGraph(form: NgForm) {
 
-    
+    this.flagNum = this.flagNum+1
+    if (this.flagNum > 1) {
+      this.flaggrafico=false;
+    }
+  
 
     //Memorizzo l'input categoria dell'utente
     this.sortOption = form.form.value.sort;
@@ -252,9 +257,9 @@ export class FilterByCountryComponent implements OnInit {
       
 
     //svuoto il vettore dei dati che aveva già
-     for (let i = 0; i < this.asseY.length; i++) {
+    for (let i = 0; i < this.asseY.length; i++) {
       this.removeData(this.chart);
-     }
+    }
 
 //Chiamata della funzione per far caricare l'array
 await this.resolveAfter2Seconds();
@@ -265,6 +270,8 @@ await this.resolveAfter2Seconds();
       //console.log('provaprova', this.dates);
     }
    
+
+    this.flaggrafico=true;
   //  console.log(this.morti)
   //  console.log(this.datesNumbers)
   }

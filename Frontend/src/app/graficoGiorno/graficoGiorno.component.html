@@ -13,7 +13,10 @@
             </canvas>
         </div>
 
-        <button class="btn btn-primary mb-3" (click)="updGraph(form)">Update chart</button>
+        <!--Questo e' stato fatto in smart working. In altre parole: Smorking-->
+        <button class="btn btn-primary mb-3" *ngIf="flagGrafico==false" disabled>Update chart</button>
+
+        <button class="btn btn-primary mb-3" (click)="updGraph(form)" *ngIf="flagGrafico">Update chart</button>
 
 
 
