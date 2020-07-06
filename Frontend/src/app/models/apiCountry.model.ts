@@ -1,25 +1,25 @@
- export interface ApiCountry{
-     data: ApiCountryData
- }
- 
+export interface ApiCountry {
+    data: ApiCountryData
+}
 
 
 
-export interface ApiCountryData{
+
+export interface ApiCountryData {
     code: string,
     coordinates: Coords,
-    latest_data : LatestData,
+    latest_data: LatestData,
     name: string,
     population: number,
     today: TodayData,
     updated_at: string
 }
 
-export interface Coords{
+export interface Coords {
     latitude: number,
     longitude: number
 }
-export interface LatestData{
+export interface LatestData {
     calculated: Calculated,
     confirmed: number,
     critical: number,
@@ -32,7 +32,7 @@ export interface Calculated {
     recovered_vs_death_ratio: number,
     recovery_rate: number
 }
-export interface TodayData{
+export interface TodayData {
     confirmed: number,
     deaths: number
 }

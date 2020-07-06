@@ -35,9 +35,9 @@ export class LoginComponent implements OnInit {
     for (let i = 0; i < this.usersData.length; i++) {
       if (this.usersEntry.username == this.usersData[i].username &&
         this.usersEntry.password == this.usersData[i].password) {
-        console.log(this.usersEntry.username, " is logged in")
+        console.log(this.usersEntry.username, " is logged in");
       } else
-        console.log("users doesn't exist")
+        console.log("users doesn't exist");
     }
   }
 }
