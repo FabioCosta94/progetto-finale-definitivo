@@ -1,22 +1,22 @@
-
-
 .loginWrapper {
     padding-top: 150px;
 }
 form{
-	background-color:rgba(226, 226, 251, 0.822);
+    background-color:rgba(226, 226, 251, 0.822);
+    border-radius: 30px;
 }
-/* set padding and size of th form */
+
 .form-container{
-	border-radius: 30px;
+	
     padding: 30px;
     border-color: black;
 }
 body{
-	
-    padding-top: 15vh;	
+	padding-top: 15vh;	
     min-height: 84vh;
+    padding-right: 2%; 
     width: 100%;
     background-color: rgba(226, 226, 251, 0.822);
     color: rgb(28, 28, 28);
 }
+
