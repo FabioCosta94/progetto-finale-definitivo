@@ -1,41 +1,26 @@
 .loginWrapper {
-    /* padding-top: 150px; */
-    width: 500px;
-    padding: 30px;
-    position: absolute;
-    left: 30%; 
-    text-align: left;
-    transition: 0.25s;
-    margin-top: 100px
+    padding-top: 150px;
 }
 
-.h3{
-    text-align: center;
-}
-
-form{
-    background-color:rgba(255, 255, 255, 0.822);
-    border-radius: 20px; 
-}
-
-
-.wrapper{
-min-height: 84vh;
-background-color: rgba(226, 226, 251, 0.822);
-}
-
-
-.form-container{
-	
-    padding: 30px;
+form {
+    background-color: rgba(226, 226, 251, 0.822);
+    border-radius: 30px;
+    padding-top: 5%;
+    padding-right: 5%;
+    padding-left: 5%;
+    padding-bottom: 2%;
     border-color: black;
 }
-body{
-	padding-top: 15vh;	
+
+body {
+    /* padding-top: 15vh; */
     min-height: 84vh;
-    padding-right: 2%; 
+    padding-right: 2%;
     width: 100%;
     background-color: rgba(226, 226, 251, 0.822);
     color: rgb(28, 28, 28);
 }
 
+#registerThing {
+    padding-top: 5px;
+}
