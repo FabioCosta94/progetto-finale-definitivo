@@ -14,6 +14,7 @@ import * as Chart from 'chart.js';
 import { ɵELEMENT_PROBE_PROVIDERS } from '@angular/platform-browser';
 import { title, config } from 'process';
 import { saveAs } from 'file-saver';
+import { AngularCsv } from 'angular7-csv/dist/Angular-csv';
  
 @Component({
   selector: 'app-filter-by-country',
@@ -76,13 +77,13 @@ export class FilterByCountryComponent implements OnInit {
     this.chart = new Chart(ctx, {
       type: 'line',
       data: {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr'],
+        labels: [],
         datasets: [{
           lineTension: 0,
             label: '',
             borderColor: 'rgba(235, 136, 54, 0.952)',
             pointBorderColor: 'rgba(27, 81, 120, 1)',
-            data: [0, 10, 20, 30],
+            data: [],
             backgroundColor: [
               'rgba(255, 99, 132, 0)',
               'rgba(54, 162, 235, 1)',
@@ -275,6 +276,8 @@ await this.resolveAfter2Seconds();
   //  console.log(this.morti)
   //  console.log(this.datesNumbers)
   }
+
+
    saveAsImage(){
     var chartHtml = document.getElementById('chartwrapper')as HTMLCanvasElement;
     var urlImage= chartHtml.toDataURL('image/png');
@@ -382,5 +385,34 @@ async add(){
     document.querySelector('.showInputField').appendChild(menu); 
 } 
 
+//Salvataggio in formato CSV--------------------------------------------------------------------------------
+
+csvOptions = {
+  fieldSeparator: ',',
+  quoteStrings: '"',
+  decimalseparator: '.',
+  showLabels: true,
+  showTitle: true,
+  title: 'Covid List :',
+  useBom: true,
+  noDownload: false,
+  headers: ["id", "country", "population", "cases", "deaths", "recoveries", "recoveryRate", "fatalityRate", "date"]
+};
+
+
+pushArray(){
+  let nuovoArray = [];
+  console.log("QuiLeDate", this.dates)
+  console.log("QuiL'asseY", this.asseY)
+    for(let i=0; i< this.dates.length;i++){
+      nuovoArray.push(this.dates[i]);
+      nuovoArray.push(this.asseY[i]);
+      return nuovoArray;
+    }
+  }
+
+  downloadCSV(){
+    //funzione che trasforma i dati dal database in formato Csv
+    new  AngularCsv(this.pushArray(), "Covid", this.csvOptions);}
 
 }
