@@ -2,7 +2,7 @@ import { GraficoGiornoComponent } from './graficoGiorno/graficoGiorno.component'
 import { UsersService } from './services/users.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { SortFieldPipe } from './pipes/sortField.pipe';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -49,6 +49,7 @@ import { CommonModule } from '@angular/common';
     FooterComponent,
     UpperCasePipe,
     LoadingScreenComponent,
+    SortFieldPipe,
     CountryPipe,
     WelcomeComponent,
     ContinentclassificationPipe,

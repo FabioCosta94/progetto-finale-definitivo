@@ -42,3 +42,23 @@ h1 {
 .tabellaUtenti {
     margin-bottom: 100px;
 }
+
+
+
+.flex-contianer {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.left-btn {
+    width: 100px;
+    
+}
+
+.right-btn {
+    
+    width: 100px;
+
+}
+

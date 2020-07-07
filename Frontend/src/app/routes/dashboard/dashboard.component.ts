@@ -7,6 +7,8 @@ import { UsersService } from '../../services/users.service';
 import { ApiCountry } from 'src/app/models/apiCountry.model';
 import { ApiService } from 'src/app/services/api.service';
 
+
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -38,9 +40,7 @@ getEntries(){
     this.covidData = response;
   })}
 
-  goToDetails(id){
-     this.router.navigateByUrl('/details/' + id);
-   }
+  
 
 //Funzioni per ottenere i dati dall'Api e salvarli nel database
 getCountries() {
