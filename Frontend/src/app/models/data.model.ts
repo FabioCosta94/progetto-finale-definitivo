@@ -7,7 +7,7 @@ export interface CovidData {
     recoveries:     number;
     recoveryRate:   number;
     fatalityRate:   number;
-    date:           Date;
+    date:           string;
 }
 
 

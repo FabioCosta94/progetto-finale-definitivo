@@ -14,6 +14,7 @@ import { title, config } from 'process';
 import { saveAs } from 'file-saver';
 import { DataService } from '../services/data.service';
 import { CovidData } from '../models/data.model';
+import { AngularCsv } from 'angular7-csv/dist/Angular-csv'
 
 @Component({
   selector: 'app-graficoGiorno',
@@ -38,7 +39,7 @@ export class GraficoGiornoComponent implements OnInit {
             borderColor: 'rgba(235, 136, 54, 0.952)',
             pointBorderColor: 'rgba(27, 81, 120, 1)',
             //data: [5, 10, 15, 20, 25, 30],
-            data: [3,3,3,3,3,3],
+            data: [3,8,1,6,1,9],
             backgroundColor: [
               'rgba(255, 99, 132, 0)',
               'rgba(54, 162, 235, 1)',
@@ -79,8 +80,8 @@ export class GraficoGiornoComponent implements OnInit {
    };
 
   //variabile in cui si memorizzano i dati nell'asse Y
-  asseX = ['Population', 'Cases', 'Deaths', 'Recoveries', 'Rec. Rate', 'Fat. Rate'];
-  asseY : number[] = [5,6,4,2,3,5];
+  asseX = ['Cases', 'Deaths', 'Recoveries', 'Rec. Rate', 'Fat. Rate'];
+  asseY : number[] = [6,4,2,3,5];
   //variabile in sui si memorizzano delle date sottoforma di stringhe
   dates : Date[] = []; 
 
@@ -166,7 +167,7 @@ export class GraficoGiornoComponent implements OnInit {
     });
     //console.log("Risultato finale",filtroPerNazione);
    }
-    console.log("AAAAAAAA", filtroPerNazione)
+    //console.log("AAAAAAAA", filtroPerNazione)
   return filtroPerNazione;
  }
 
@@ -191,31 +192,6 @@ filtroCountry;
       map( covidData => covidData.filter(element => element.country  == this.country)));
 
   //     let filtroOsservNum;
-  
-  //   //Assegno i valori di covidData.categoria presi dal db alla variabile 'asseY'
-  //   //filtroPerGrafico = this.filtroPerOsservabileNumeri.subscribe ((morti) => this.morti = morti);
-  //   let filtroPerGraficoAsseY = filtroOsservNum.subscribe(valore => {
-  //     this.asseY = valore;
-  //     //console.log(this.asseY);
-  //     // this.updGraph();
-  // });
-  
-  //trasformo da elementi di tipo covidData ad elementi di tipo obersvable covidData.date
-
-    // let filtroOsservDate = filtroCountry.pipe(
-    // (map ((dataSet) => dataSet.map((covidData) => covidData.date))));
-  
-    
-  //Assegno i valori di covidData.dates presi dal db alla variabile 'date', convertite in stringhe
-    // let filtroPerGraficoDate = filtroOsservDate.subscribe
-    // (dates => {
-    //   //console.log(dates);
-    //   this.dates = dates//.map((date) => date.toString());
-
-      //Usare un asincrono
-      // for (let i = 0; i < this.datesNumbers.length; i++) {
-      //   this.datesNumbers.pop();
-      // }
 
       
     //svuoto il vettore dei dati che aveva già
@@ -227,7 +203,8 @@ filtroCountry;
     
 let filtroPerData = new Array();
  this.dataFilter().filter((item) => {
-   if (item.date === this.giornoCorrente) {
+   console.log(item.date)
+   if (item.date == this.giornoCorrente) {
      filtroPerData.push(item)
      //console.log("BECCATO!", item)
    }
@@ -239,7 +216,7 @@ let filtroPerData = new Array();
   let valorefinaleY = filtroPerData[0];
   let vettoreFinaleY = new Array();
 
-      vettoreFinaleY.push(valorefinaleY.population);
+      //vettoreFinaleY.push(valorefinaleY.population);
       vettoreFinaleY.push(valorefinaleY.cases);
       vettoreFinaleY.push(valorefinaleY.deaths);
       vettoreFinaleY.push(valorefinaleY.recoveries);
@@ -250,11 +227,16 @@ let filtroPerData = new Array();
 //Chiamata della funzione per far caricare l'array
 await this.resolveAfter2Seconds();
 
+
+
      //riempo il vettore con i nuovi dati
     for (let i = 0; i < this.asseX.length; i++) {
       this.addData(this.chart, this.asseX[i], vettoreFinaleY[i])
-      console.log('provaprova', this.dates);
+      console.log('provaprova', this.asseX);
+      console.log("guarda QUI", vettoreFinaleY)
     }
+
+    //await this.resolveAfter2Seconds();
 
     this.chart.update();
     this.flagGrafico = true;
@@ -355,5 +337,7 @@ async add(){
 </div>`; 
     document.querySelector('.showInputField').appendChild(menu); 
 } 
+
+
 
 }
