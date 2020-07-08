@@ -43,6 +43,7 @@ export class FilterByCountryComponent implements OnInit {
   countries : string[] = new Array(); // per il filtro dinamico
   filteredOptions: Observable<string[]>; //per il filtro
   public covidData : CovidData []; //appoggio per il collegamento al database
+  public covidCSV : CovidData;
  
  
   public country:string; //per memorizzare la stringa dell’input
@@ -277,14 +278,7 @@ await this.resolveAfter2Seconds();
   //  console.log(this.datesNumbers)
   }
 
-
-   saveAsImage(){
-    var chartHtml = document.getElementById('chartwrapper')as HTMLCanvasElement;
-    var urlImage= chartHtml.toDataURL('image/png');
-    var saveLink = document.getElementById('downloadLink') as HTMLAnchorElement;
-    saveLink.href=urlImage;
-     
-   }
+  
    
 
 //Le funzioni di grafico finiscono qui ---------------------------------------------
@@ -385,11 +379,20 @@ async add(){
     document.querySelector('.showInputField').appendChild(menu); 
 } 
 
-//Salvataggio in formato CSV--------------------------------------------------------------------------------
+//Salvataggio su png--------------------------------------------------------------------------------
+saveAsImage(){
+  var chartHtml = document.getElementById('chartwrapper')as HTMLCanvasElement;
+  var urlImage= chartHtml.toDataURL('image/png');
+  var saveLink = document.getElementById('downloadLink') as HTMLAnchorElement;
+  saveLink.href=urlImage;
+   
+ }
+
+//Salvataggio in formato CSV
 
 csvOptions = {
-  fieldSeparator: ',',
-  quoteStrings: '"',
+  //fieldSeparator: ',',
+  //quoteStrings: '"',
   decimalseparator: '.',
   showLabels: true,
   showTitle: true,
@@ -401,18 +404,20 @@ csvOptions = {
 
 
 pushArray(){
-  let nuovoArray = [];
+  var nuovoArray = [];
   console.log("QuiLeDate", this.dates)
   console.log("QuiL'asseY", this.asseY)
     for(let i=0; i< this.dates.length;i++){
       nuovoArray.push(this.dates[i]);
       nuovoArray.push(this.asseY[i]);
-      return nuovoArray;
     }
+    console.log("Nuovo array", nuovoArray);
+    return nuovoArray;
+    
   }
 
   downloadCSV(){
     //funzione che trasforma i dati dal database in formato Csv
-    new  AngularCsv(this.pushArray(), "Covid", this.csvOptions);}
+    new AngularCsv(this.covidData, "Covid", this.csvOptions);}
 
 }

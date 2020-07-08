@@ -32,14 +32,14 @@ export class GraficoGiornoComponent implements OnInit {
     this.chart = new Chart(ctx, {
       type: 'bar',
       data: {
-        labels: ['Population', 'Cases', 'Deaths', 'Recoveries', 'Rec. Rate', 'Fat. Rate'],
+        labels: ['Cases/P', 'Deaths/P', 'Recoveries/P'],
         datasets: [{
           lineTension: 0,
             label: '',
             borderColor: 'rgba(235, 136, 54, 0.952)',
             pointBorderColor: 'rgba(27, 81, 120, 1)',
             //data: [5, 10, 15, 20, 25, 30],
-            data: [3,8,1,6,1,9],
+            data: [3,8,1],
             backgroundColor: [
               'rgba(255, 99, 132, 0)',
               'rgba(54, 162, 235, 1)',
@@ -76,12 +76,60 @@ export class GraficoGiornoComponent implements OnInit {
     //   this.morti.pop();
     //   this.datesNumbers.pop();
     // }
+    let prova2: any = document.getElementById('chartwrapper2');
+     //var canvas : any = document.getElementById("mycanvas");
+    let ctx2 = prova2.getContext("2d");
+    this.chart2 = new Chart(ctx2, {
+      type: 'bar',
+      data: {
+        labels: ['Rec. Rate', 'Fat. Rate'],
+        datasets: [{
+          lineTension: 0,
+            label: '',
+            borderColor: 'rgba(235, 136, 54, 0.952)',
+            pointBorderColor: 'rgba(27, 81, 120, 1)',
+            //data: [5, 10, 15, 20, 25, 30],
+            data: [5,5],
+            backgroundColor: [
+              'rgba(255, 99, 132, 0)',
+              'rgba(54, 162, 235, 1)',
+              'rgba(255, 206, 86, 1)'
+            ],
+            borderWidth: 3
+          }]
+        },
+        options: {
+        responsive: true,
+        showLines: true,
+        spanGaps: true,
+        scales: {
+          yAxes: [
+            {
+              display: true,
+              ticks: {
+                suggestedMin: 0,
 
+                beginAtZero: true,
+              },
+            },
+          ],
+        },
+        title: {
+          display: true,
+          text: 'Country Chart'
+        }
+      }
+       
+
+    })
    };
 
   //variabile in cui si memorizzano i dati nell'asse Y
-  asseX = ['Cases', 'Deaths', 'Recoveries', 'Rec. Rate', 'Fat. Rate'];
+  asseX = ['Cases/P', 'Deaths/P', 'Recoveries/P'];
+  asseX2 = ['Rec. Rate', 'Fat. Rate'];
   asseY : number[] = [6,4,2,3,5];
+  arrayPerCSVY = [];
+
   //variabile in sui si memorizzano delle date sottoforma di stringhe
   dates : Date[] = []; 
 
@@ -89,6 +137,7 @@ export class GraficoGiornoComponent implements OnInit {
   datesNumbers : number[] = [];
 
   chart : Chart;
+  chart2 : Chart;
   //Array utilizzato per creare il grafico la prima volta
 
   myControl = new FormControl(); //per far funzionare il filtro
@@ -195,8 +244,16 @@ filtroCountry;
 
       
     //svuoto il vettore dei dati che aveva già
-     for (let i = 0; i < 6; i++) {
+     for (let i = 0; i < 3; i++) {
       this.removeData(this.chart);
+     }
+
+     for (let i = 0; i < 2; i++) {
+      this.removeData(this.chart2);
+     }
+
+     for (let i = 0; i < this.arrayPerCSVY.length; i++){
+       this.arrayPerCSVY.pop()
      }
 
 //------------------------------------------------------------------------------
@@ -216,12 +273,21 @@ let filtroPerData = new Array();
   let valorefinaleY = filtroPerData[0];
   let vettoreFinaleY = new Array();
 
-      //vettoreFinaleY.push(valorefinaleY.population);
-      vettoreFinaleY.push(valorefinaleY.cases);
-      vettoreFinaleY.push(valorefinaleY.deaths);
-      vettoreFinaleY.push(valorefinaleY.recoveries);
-      vettoreFinaleY.push(valorefinaleY.recoveryRate);
-      vettoreFinaleY.push(valorefinaleY.fatalityRate);
+      //vettoreFinaleY.push(valorefinaleY.population/1000);
+      vettoreFinaleY.push(valorefinaleY.cases/valorefinaleY.population);
+      vettoreFinaleY.push(valorefinaleY.deaths/valorefinaleY.population);
+      vettoreFinaleY.push(valorefinaleY.recoveries/valorefinaleY.population);
+
+      let vettoreFinaleY2 = new Array();
+      vettoreFinaleY2.push(valorefinaleY.recoveryRate);
+      vettoreFinaleY2.push(valorefinaleY.fatalityRate);
+
+      this.arrayPerCSVY.push(valorefinaleY.population);
+      this.arrayPerCSVY.push(valorefinaleY.cases);
+      this.arrayPerCSVY.push(valorefinaleY.deaths);
+      this.arrayPerCSVY.push(valorefinaleY.recovieries);
+      this.arrayPerCSVY.push(valorefinaleY.recoveryRate);
+      this.arrayPerCSVY.push(valorefinaleY.fatalityRate);
 
 
 //Chiamata della funzione per far caricare l'array
@@ -236,21 +302,21 @@ await this.resolveAfter2Seconds();
       console.log("guarda QUI", vettoreFinaleY)
     }
 
+    for (let i = 0; i < this.asseX2.length; i++) {
+      this.addData(this.chart2, this.asseX2[i], vettoreFinaleY2[i])
+      console.log('provaprova', this.asseX2);
+      console.log("guarda QUI", vettoreFinaleY2)
+    }
+
     //await this.resolveAfter2Seconds();
 
     this.chart.update();
+    this.chart2.update();
     this.flagGrafico = true;
    
   //  console.log(this.morti)
   //  console.log(this.datesNumbers)
   }
-   saveAsImage(){
-    var chartHtml = document.getElementById('chartwrapper')as HTMLCanvasElement;
-    var urlImage= chartHtml.toDataURL('image/png');
-    var saveLink = document.getElementById('downloadLink') as HTMLAnchorElement;
-    saveLink.href=urlImage;
-     
-   }
    
 
 //Le funzioni di grafico finiscono qui ---------------------------------------------
@@ -272,11 +338,6 @@ await this.resolveAfter2Seconds();
   ngOnInit() {
     this.getEntries() //prende i dati
 
-    // for (let i = 0; i < this.covidData.length; i++) {
-    //   this.dates.push(this.covidData[i].date)
-    // }
-    //console.log('provaDates', this.dates);
-
     this.filteredOptions = this.myControl.valueChanges
       .pipe(  //filtro dimanico
         startWith(''),
@@ -292,6 +353,8 @@ await this.resolveAfter2Seconds();
   }
   
 //----------------------------------------------------------------------------------------------------
+
+
 
 public buttonsTexts:Array<string> = ['Add Data'];
 
@@ -338,6 +401,57 @@ async add(){
     document.querySelector('.showInputField').appendChild(menu); 
 } 
 
+//Salvataggio su png--------------------------------------------------------------------------------
+saveAsImage(){
+  var chartHtml = document.getElementById('chartwrapper')as HTMLCanvasElement;
+  var urlImage= chartHtml.toDataURL('image/png');
+  var saveLink = document.getElementById('downloadLink') as HTMLAnchorElement;
+  saveLink.href=urlImage;
+   
+ }
 
+ saveAsImage2(){
+  var chartHtml = document.getElementById('chartwrapper2')as HTMLCanvasElement;
+  var urlImage= chartHtml.toDataURL('image/png');
+  var saveLink = document.getElementById('downloadLink2') as HTMLAnchorElement;
+  saveLink.href=urlImage;
+   
+ }
+
+//Salvataggio in formato CSV
+
+csvOptions = {
+  fieldSeparator: ',',
+  quoteStrings: '"',
+  decimalseparator: '.',
+  showLabels: true,
+  showTitle: true,
+  title: 'Covid List :',
+  useBom: true,
+  noDownload: false,
+  headers: ["id", "country", "population", "cases", "deaths", "recoveries", "recoveryRate", "fatalityRate", "date"]
+};
+
+
+pushArray(){
+  let nuovoArray = [];
+  console.log("QuiLeDate", this.dates)
+  console.log("QuiL'asseY", this.asseY)
+    for(let i=0; i< this.asseX.length;i++){
+      nuovoArray.push(this.asseX[i]);
+      nuovoArray.push(this.arrayPerCSVY[i]);
+    }
+    nuovoArray.push(this.asseX2[0])
+    nuovoArray.push(this.arrayPerCSVY[3])
+    nuovoArray.push(this.asseX2[1])
+    nuovoArray.push(this.arrayPerCSVY[4])
+    return nuovoArray;
+  }
+
+
+
+  downloadCSV(){
+    //funzione che trasforma i dati dal database in formato Csv
+    new  AngularCsv(this.pushArray(), "Covid", this.csvOptions);}
 
 }
