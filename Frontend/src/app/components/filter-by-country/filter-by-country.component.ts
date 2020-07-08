@@ -43,7 +43,6 @@ export class FilterByCountryComponent implements OnInit {
   countries : string[] = new Array(); // per il filtro dinamico
   filteredOptions: Observable<string[]>; //per il filtro
   public covidData : CovidData []; //appoggio per il collegamento al database
-  public covidCSV : CovidData;
  
  
   public country:string; //per memorizzare la stringa dell’input
@@ -167,6 +166,7 @@ export class FilterByCountryComponent implements OnInit {
  flaggrafico = true;
  flagNum = 0;
 
+
    async updGraph(form: NgForm) {
 
     this.flagNum = this.flagNum+1
@@ -185,6 +185,7 @@ export class FilterByCountryComponent implements OnInit {
 
 
       let filtroOsservNum;
+      
       
   
       //trasformo da elementi di tipo covidData ad elementi di tipo covidData.deaths (o covidData.quellochevuoi)
@@ -391,33 +392,33 @@ saveAsImage(){
 //Salvataggio in formato CSV
 
 csvOptions = {
-  //fieldSeparator: ',',
-  //quoteStrings: '"',
+  fieldSeparator: ',',
+  quoteStrings: '"',
   decimalseparator: '.',
   showLabels: true,
   showTitle: true,
   title: 'Covid List :',
   useBom: true,
   noDownload: false,
-  headers: ["id", "country", "population", "cases", "deaths", "recoveries", "recoveryRate", "fatalityRate", "date"]
+  headers: ["date", "category value"]
 };
 
 
 pushArray(){
-  var nuovoArray = [];
-  console.log("QuiLeDate", this.dates)
-  console.log("QuiL'asseY", this.asseY)
-    for(let i=0; i< this.dates.length;i++){
-      nuovoArray.push(this.dates[i]);
-      nuovoArray.push(this.asseY[i]);
-    }
-    console.log("Nuovo array", nuovoArray);
+  var nuovoArray = new Array()
+
+  for (let i = 0; i < this.dates.length; i++) {
+    nuovoArray.push({
+      "date":this.dates[i], "value":this.asseY[i]
+    })
+    
+  }
     return nuovoArray;
     
   }
 
   downloadCSV(){
     //funzione che trasforma i dati dal database in formato Csv
-    new AngularCsv(this.covidData, "Covid", this.csvOptions);}
+    new AngularCsv(this.pushArray(), "Covid", this.csvOptions);}
 
 }

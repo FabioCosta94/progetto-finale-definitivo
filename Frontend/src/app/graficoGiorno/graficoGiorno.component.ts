@@ -125,8 +125,8 @@ export class GraficoGiornoComponent implements OnInit {
    };
 
   //variabile in cui si memorizzano i dati nell'asse Y
-  asseX = ['Cases/P', 'Deaths/P', 'Recoveries/P'];
-  asseX2 = ['Rec. Rate', 'Fat. Rate'];
+  asseX = ['Cases %', 'Deaths %', 'Recoveries %'];
+  asseX2 = ['Recovery Rate %', 'Fatality Rate %'];
   asseY : number[] = [6,4,2,3,5];
   arrayPerCSVY = [];
 
@@ -274,9 +274,9 @@ let filtroPerData = new Array();
   let vettoreFinaleY = new Array();
 
       //vettoreFinaleY.push(valorefinaleY.population/1000);
-      vettoreFinaleY.push(valorefinaleY.cases/valorefinaleY.population);
-      vettoreFinaleY.push(valorefinaleY.deaths/valorefinaleY.population);
-      vettoreFinaleY.push(valorefinaleY.recoveries/valorefinaleY.population);
+      vettoreFinaleY.push((valorefinaleY.cases/valorefinaleY.population)*100);
+      vettoreFinaleY.push((valorefinaleY.deaths/valorefinaleY.population)*100);
+      vettoreFinaleY.push((valorefinaleY.recoveries/valorefinaleY.population)*100);
 
       let vettoreFinaleY2 = new Array();
       vettoreFinaleY2.push(valorefinaleY.recoveryRate);
@@ -285,7 +285,7 @@ let filtroPerData = new Array();
       this.arrayPerCSVY.push(valorefinaleY.population);
       this.arrayPerCSVY.push(valorefinaleY.cases);
       this.arrayPerCSVY.push(valorefinaleY.deaths);
-      this.arrayPerCSVY.push(valorefinaleY.recovieries);
+      this.arrayPerCSVY.push(valorefinaleY.recoveries);
       this.arrayPerCSVY.push(valorefinaleY.recoveryRate);
       this.arrayPerCSVY.push(valorefinaleY.fatalityRate);
 
@@ -429,22 +429,22 @@ csvOptions = {
   title: 'Covid List :',
   useBom: true,
   noDownload: false,
-  headers: ["id", "country", "population", "cases", "deaths", "recoveries", "recoveryRate", "fatalityRate", "date"]
+  headers: ["country", "population", "cases", "deaths", "recoveries", "recoveryRate", "fatalityRate", "date"]
 };
 
 
 pushArray(){
-  let nuovoArray = [];
-  console.log("QuiLeDate", this.dates)
-  console.log("QuiL'asseY", this.asseY)
-    for(let i=0; i< this.asseX.length;i++){
-      nuovoArray.push(this.asseX[i]);
-      nuovoArray.push(this.arrayPerCSVY[i]);
-    }
-    nuovoArray.push(this.asseX2[0])
-    nuovoArray.push(this.arrayPerCSVY[3])
-    nuovoArray.push(this.asseX2[1])
-    nuovoArray.push(this.arrayPerCSVY[4])
+  let nuovoArray = new Array();
+  nuovoArray.push({
+    "country":this.country, 
+    "population":this.arrayPerCSVY[0], 
+    "cases": this.arrayPerCSVY[1],
+    "deaths": this.arrayPerCSVY[2],
+    "recoveries": this.arrayPerCSVY[3],
+    "recovery_Rate": this.arrayPerCSVY[4],
+    "fatality_Rate": this.arrayPerCSVY[5],
+    "date": this.giornoCorrente
+  })
     return nuovoArray;
   }
 
