@@ -22,9 +22,11 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="#">Welcome</a>
                 </li>
+                 <div *ngIf="showDashboard">
                 <li class="nav-item">
-                    <a class="nav-link fas fa-database" [routerLink]="['/dashboard']"> Covid Data</a>
+                    <a class="nav-link fas fa-database"  [routerLink]="['/dashboard']"> Covid Data</a>
                 </li>
+            </div> 
                 <li class="nav-item">
                     <a class="nav-link fas fa-chart-line" [routerLink]='["/filterBy"]'> Charts</a>
                 </li>
@@ -55,7 +57,7 @@
                 </ul>
             </div> -->
         <div class="mx-auto order-0">
-            <a class="navbar-brand mx-auto" href="#">Covid-19 Data Tracker</a>
+            <a class="navbar-brand mx-auto" href="#"(click)="AdminLogged()">Covid-19 Data Tracker</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
                     <span class="navbar-toggler-icon">M</span>
                 </button>

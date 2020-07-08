@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
 
   public usersData: UsersData[];
   public usersEntry: UsersData;
-
+  public currentUser: any;
 
   ngOnInit(): void {
 
@@ -43,7 +43,8 @@ export class LoginComponent implements OnInit {
         this.loginservice.logged = true
         console.log(this.usersEntry);
         if (this.usersData[i].permissions == 1) {
-          console.log("is Admin");
+          this.currentUser = this.usersData[i]// variabile dove salva l'utente corrente
+          console.log("is Admin",this.currentUser);
           this.router.navigate(['/dashboard'])}
           if (this.usersData[i].permissions != 1) {
           console.log("is User");

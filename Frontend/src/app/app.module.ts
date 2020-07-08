@@ -80,7 +80,7 @@ import { CommonModule } from '@angular/common';
     ChartsModule,
     
   ],
-  providers: [DataService,UsersService],
+  providers: [DataService,UsersService,LoginComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
