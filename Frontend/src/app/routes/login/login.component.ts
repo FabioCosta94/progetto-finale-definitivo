@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { UsersService } from '../../services/users.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { UsersData } from '../../models/data.model';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-login',
@@ -11,15 +12,17 @@ import { UsersData } from '../../models/data.model';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private usersService: UsersService, private router: Router) { }
+  constructor(private usersService: UsersService, private router: Router, private loginservice: LoginService) { }
 
   public usersData: UsersData[];
   public usersEntry: UsersData;
+
 
   ngOnInit(): void {
 
     this.fetchEntry();
   }
+
   fetchEntry() {
     this.usersService.getData().subscribe((res: any) => {
       this.usersData = res;
@@ -27,19 +30,33 @@ export class LoginComponent implements OnInit {
     })
   }
 
+
+
   onSubmit(f: NgForm) {
     this.usersEntry = f.form.value;
 
-    console.log(this.usersEntry);
 
     for (let i = 0; i < this.usersData.length; i++) {
+
       if (this.usersEntry.username == this.usersData[i].username &&
         this.usersEntry.password == this.usersData[i].password) {
-        console.log(this.usersEntry.username, " is logged in");
-      } else
-        console.log("users doesn't exist");
-    }
+        this.loginservice.logged = true
+        console.log(this.usersEntry);
+        if (this.usersData[i].permissions == 1) {
+          console.log("is Admin");
+          this.router.navigate(['/dashboard'])}
+          if (this.usersData[i].permissions != 1) {
+          console.log("is User");
+        this.router.navigate(['/welcome'])}
+
+          }
+        }
+
   }
+
+
+
+
+
+
 }
-
-
