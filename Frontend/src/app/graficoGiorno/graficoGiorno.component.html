@@ -12,6 +12,19 @@
             </canvas> -->
             </canvas>
         </div>
+        <a id="downloadLink" download="filename.png" (click)="saveAsImage()" title="Salvataggio Grafico">salva </a>
+
+
+        <br>
+
+        <div id="divChart2">
+            <canvas class="chart-wrapper2" #chartwrapper2 id="chartwrapper2">
+            <!-- <canvas baseChart [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType" [plugins]="lineChartPlugins">
+            </canvas> -->
+            </canvas>
+        </div>
+        <a id="downloadLink2" download="filename.png" (click)="saveAsImage2()" title="Salvataggio Grafico">salva2 </a>
+        <button (click)="downloadCSV()" class="btn-default">Download CSV</button>
 
         <!--Questo e' stato fatto in smart working. In altre parole: Smorking-->
         <button class="btn btn-primary mb-3" *ngIf="flagGrafico==false" disabled>Update chart</button>
@@ -71,10 +84,10 @@
 
         <!--Ciclo che mostra i dati del database corrispondenti ad una coutnry.
   Probabilmente sarà da eliminare ma per il momento rimane come riferimento per il codice-->
-        <div class="pointer" *ngFor="let entry of covidData | country : country">
+        <!-- <div class="pointer" *ngFor="let entry of covidData | country : country">
             <td>{{entry.cases}}</td>
             <td>{{entry.date | date}}</td>
-        </div>
+        </div> -->
 
         <!-- </table> -->
     </div>
