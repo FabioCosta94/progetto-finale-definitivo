@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { UsersService } from '../../services/users.service';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router} from '@angular/router';
 import { UsersData } from '../../models/data.model';
 import { LoginService } from 'src/app/services/login.service';
 
@@ -12,11 +12,16 @@ import { LoginService } from 'src/app/services/login.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private usersService: UsersService, private router: Router, private loginservice: LoginService) { }
-
   public usersData: UsersData[];
   public usersEntry: UsersData;
   public currentUser: any;
+  
+
+
+
+  constructor(private usersService: UsersService, private router: Router, private loginservice: LoginService) { }
+
+ 
 
   ngOnInit(): void {
 

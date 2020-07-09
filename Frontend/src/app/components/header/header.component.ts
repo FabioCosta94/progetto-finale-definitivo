@@ -12,38 +12,39 @@ import { UsersData } from 'src/app/models/data.model';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private usersService:UsersService,public login:LoginService,private loginComponent:LoginComponent) { }
+  constructor(private usersService: UsersService, public login: LoginService, private loginComponent: LoginComponent) { }
 
-  showDashboard=false;
+  showDashboard = false;
   public usersData: UsersData[];
-   public variabile =[];
+
 
 
   ngOnInit(): void {
-
+    // this.AdminLogged();
   }
 
-  // fetchEntry() {
-  //   this.usersService.getData().subscribe((res: any) => {
+  //  fetchEntry() {
+  //    this.usersService.getData().subscribe((res: any) => {
   //     this.usersData = res;
-  //     console.log("utenti", this.usersData);
-  //   })
-  // }
+  //      console.log("utenti", this.usersData);
+  //    })
+  //  }
 
-  
-  logout(){
+
+  logout() {
     this.login.logged = false;
-    this.login.username ='';
+    this.login.username = '';
 
   }
 
-  AdminLogged(){
 
-   if(this.variabile=this.loginComponent.currentUser){
-     console.log("Variabile",this.variabile);
-     this.showDashboard=true;
-   }
-   return this.showDashboard;
- }
+
+  AdminLogged() {
+
+    if (this.loginComponent.currentUser == 1) {
+      console.log("Variabile", this.loginComponent.currentUser);
+      this.showDashboard = true;
+    }
+  }
 
 }
