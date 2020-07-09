@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../../services/users.service';
 import { LoginService } from '../../services/login.service';
-import { LoginComponent } from '../../routes/login/login.component';
-import { UsersData } from 'src/app/models/data.model';
+
 
 
 @Component({
@@ -12,39 +11,23 @@ import { UsersData } from 'src/app/models/data.model';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private usersService: UsersService, public login: LoginService, private loginComponent: LoginComponent) { }
-
-  showDashboard = false;
-  public usersData: UsersData[];
+  constructor(private usersService: UsersService, public login: LoginService) { }
 
 
 
   ngOnInit(): void {
-    // this.AdminLogged();
   }
-
-  //  fetchEntry() {
-  //    this.usersService.getData().subscribe((res: any) => {
-  //     this.usersData = res;
-  //      console.log("utenti", this.usersData);
-  //    })
-  //  }
 
 
   logout() {
     this.login.logged = false;
-    this.login.username = '';
+    this.login.isAdmin=false;
+    this.login.isPress=false;
 
   }
 
 
+oppp
 
-  AdminLogged() {
-
-    if (this.loginComponent.currentUser == 1) {
-      console.log("Variabile", this.loginComponent.currentUser);
-      this.showDashboard = true;
-    }
-  }
 
 }

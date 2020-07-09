@@ -14,7 +14,9 @@ import { title, config } from 'process';
 import { saveAs } from 'file-saver';
 import { DataService } from '../services/data.service';
 import { CovidData } from '../models/data.model';
-import { AngularCsv } from 'angular7-csv/dist/Angular-csv'
+import { AngularCsv } from 'angular7-csv/dist/Angular-csv';
+import { LoginService } from '../services/login.service';
+
 
 @Component({
   selector: 'app-graficoGiorno',
@@ -23,7 +25,7 @@ import { AngularCsv } from 'angular7-csv/dist/Angular-csv'
 })
 export class GraficoGiornoComponent implements OnInit {
 
-  constructor(private dataService:DataService) { }
+  constructor(private dataService:DataService,public login: LoginService) { }
 
   createGraph() {
     let prova: any = document.getElementById('chartwrapper');

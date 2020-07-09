@@ -14,10 +14,8 @@ export class LoginComponent implements OnInit {
 
   public usersData: UsersData[];
   public usersEntry: UsersData;
-  public currentUser: any;
   
-
-
+  
 
   constructor(private usersService: UsersService, private router: Router, private loginservice: LoginService) { }
 
@@ -49,15 +47,14 @@ export class LoginComponent implements OnInit {
         console.log(this.usersEntry);
       
         if (this.usersData[i].permissions == 1) {
-          this.currentUser = this.usersData[i]// variabile dove salva l'utente corrente(Admin)
-          console.log("is Admin", this.currentUser);
+          this.loginservice.isAdmin=true
+          console.log("is Admin");
           this.router.navigate(['/dashboard']);
         } else if (this.usersData[i].permissions == 2) {
-          this.currentUser = this.usersData[i]// variabile dove salva l'utente corrente(Press)
+          this.loginservice.isPress=true
           console.log("is Press");
           this.router.navigate(['/welcome']);
         } else{ (this.usersData[i].permissions != 1)
-          this.currentUser = this.usersData[i]// variabile dove salva l'utente corrente(User)
           console.log("is User")
           this.router.navigate(['/welcome'])
 

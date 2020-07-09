@@ -23,8 +23,10 @@
             </canvas> -->
             </canvas>
         </div>
+        <div *ngIf="login.isPress">
         <a id="downloadLink2" download="filename.png" (click)="saveAsImage2()" title="Salvataggio Grafico">salva2 </a>
         <button (click)="downloadCSV()" class="btn-default">Download CSV</button>
+        <div>
 
         <!--Questo e' stato fatto in smart working. In altre parole: Smorking-->
         <button class="btn btn-primary mb-3" *ngIf="flagGrafico==false" disabled>Update chart</button>
@@ -100,7 +102,10 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
     <script type="text/javascript" src="https://cdn.rawgit.com/eligrey/FileSaver.js/master/FileSaver.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <div *ngIf="login.isPress">
     <button id="downloadLink" download="filename.png" (click)="saveAsImage()" title="Salvataggio Grafico">salva </button>
+<div>
 
 </div>
 <!--<button id="download" class="btn btn-primary float-right bg-flat-color-1" (click)="save()" title="Salvataggio Grafico"> </button><-->
