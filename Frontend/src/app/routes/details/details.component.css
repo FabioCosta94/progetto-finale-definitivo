@@ -30,20 +30,35 @@ span {
     color: rgb(29, 29, 29);
 }
 
-
-/* .table .thead-dark th {
+.table .thead-dark th {
     background-color: #606b75a6;
     border-color: #f1f1f1;
-} */
+}
 
 h1 {
     color: rgb(29, 29, 29);
 }
 
-.tableWrapper {
-    padding-top: 50px;
+.tabellaUtenti {
+    margin-bottom: 100px;
 }
 
-.detailsWrapper {
-    padding-top: 50px;
+
+
+.flex-contianer {
+    display: flex;
+    justify-content: space-between;
+
 }
+
+.left-btn {
+    width: 100px;
+    
+}
+
+.right-btn {
+    
+    width: 100px;
+
+}
+

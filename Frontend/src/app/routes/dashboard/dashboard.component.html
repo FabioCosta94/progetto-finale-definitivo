@@ -1,22 +1,14 @@
 <div class="wrapper">
     <div class="container p-5">
         <h1 class="text-center mb-5">
-            Covid-19 DATA
+            Admin Center Panel
         </h1>
 
-        <div class="text-right">
-            <button type="button" style="font-size: 30px" class="btn btn-default" aria-label="Left Align"
-                [routerLink]='["/add"]'>
-                <span class="fas fa-plus" aria-hidden="true"></span>
-            </button>
+     
 
-            <button type="button" style="font-size: 30px" class="btn btn-default" aria-label="Left Align"
-                [routerLink]='["/filter"]'>
-                <span class="fas fa-filter" aria-hidden="true"></span>
-            </button>
-
-        </div>
-
+            <h2 class="text-center mb-5">
+                Users Data
+            </h2>
 
         <table class="table tabellaUtenti">
             <thead class="thead-dark">
@@ -27,20 +19,19 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let submit of usersData ; let i = index">
+                <tr *ngFor="let submit of usersData ; let i = index"(click)="goToDetails(submit.id)">
                     <th scope="row"> {{i + 1}}</th>
                     <td>{{submit.username}}</td>
                     <td *ngIf="submit.permissions == 1">Admin</td>
                     <td *ngIf="submit.permissions == 2">Press</td>
                     <td *ngIf="submit.permissions == 3">Basic</td>
-                    <!--Le righe seguenti sostituiranno submit.permissions-->
-                    <!-- <td *ngIf="submit.permissions == 0">Admin</td>
-                    <td *ngIf="submit.permissions == 1">Press</td>
-                    <td *ngIf="submit.permissions == 2">User</td> -->
+                   
                 </tr>
             </tbody>
         </table>
-
+        <h2 class="text-center mb-5">
+            Covid Data
+        </h2>
         <table class="table">
             <thead class="thead-dark">
                 <tr>
@@ -76,4 +67,3 @@
         </div>
 
     </div>
-</div>

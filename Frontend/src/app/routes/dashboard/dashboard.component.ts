@@ -34,6 +34,12 @@ export class DashboardComponent implements OnInit {
         this.usersData = answer;
     })
   }
+  
+  goToDetails(id){
+    this.router.navigateByUrl('/details/' + id);
+  }
+
+
 
 getEntries(){
   this.dataService.getData().subscribe( (response : any) => {

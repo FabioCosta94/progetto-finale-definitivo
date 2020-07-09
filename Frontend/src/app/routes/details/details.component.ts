@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { DataService } from 'src/app/services/data.service';
-import { CovidData } from 'src/app/models/data.model';
+import { UsersService } from 'src/app/services/users.service';
+import { UsersData } from 'src/app/models/data.model';
 
 @Component({
   selector: 'app-details',
@@ -10,9 +10,9 @@ import { CovidData } from 'src/app/models/data.model';
 })
 export class DetailsComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, private dataService: DataService, private router : Router) { }
+  constructor(private route: ActivatedRoute, private usersService: UsersService, private router : Router) { }
 
-  dataEntry: CovidData;
+  usersEntry: UsersData;
   id: number;
 
   ngOnInit(): void {
@@ -21,13 +21,13 @@ export class DetailsComponent implements OnInit {
   }
 
   fetchEntry(){
-    this.dataService.getEntry(this.id).subscribe( (res: any ) => {
-      this.dataEntry = res;
+    this.usersService.getUser(this.id).subscribe( (res: any ) => {
+      this.usersEntry = res;
     })
   }
 
   delete(){
-    this.dataService.deleteEntry(this.id)
+    this.usersService.deleteUser(this.id)
     .subscribe(data => {
       this.router.navigate(['/dashboard']);
       console.log("deleted");

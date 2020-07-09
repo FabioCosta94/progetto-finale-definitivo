@@ -1,3 +1,64 @@
+.pointer {
+    cursor: pointer;
+}
+
 .wrapper {
     min-height: 84vh;
+    background-color: rgba(226, 226, 251, 0.822);
 }
+
+
+/* background-color: rgba(199, 199, 255, 0.459) */
+
+th {
+    color: rgb(228, 228, 228);
+    background-color: #606b75a6;
+    border-color: whitesmoke;
+}
+
+
+/* background-color: #606b75a6;
+    border-color: #454d55; */
+
+td {
+    color: rgb(228, 228, 228);
+    background-color: #606b75a6;
+    border-color: whitesmoke;
+}
+
+span {
+    color: rgb(29, 29, 29);
+}
+
+.table .thead-dark th {
+    background-color: #606b75a6;
+    border-color: #f1f1f1;
+}
+
+h1 {
+    color: rgb(29, 29, 29);
+}
+
+.tabellaUtenti {
+    margin-bottom: 100px;
+}
+
+
+
+.flex-contianer {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.left-btn {
+    width: 100px;
+    
+}
+
+.right-btn {
+    
+    width: 100px;
+
+}
+

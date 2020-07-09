@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { DataService } from 'src/app/services/data.service';
-import { CovidData } from 'src/app/models/data.model';
+import {  UsersData } from 'src/app/models/data.model';
 import { NgForm } from '@angular/forms'
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-edit',
@@ -11,12 +11,11 @@ import { NgForm } from '@angular/forms'
 })
 export class EditComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, private dataService: DataService, private router : Router) { }
+  constructor(private route: ActivatedRoute, private usersService: UsersService, private router : Router) { }
 
-  dataEntry: CovidData;
+usersEntry: UsersData;
 
-  continents = ["Europe", "America", "Asia", "Oceania", "Africa", "Antartide"]
-  classifications = ["Very low", "Low" , "Medium" , "High" , "Very high"]
+
 
   ngOnInit(): void {
     const id = this.route.snapshot.params['id'];
@@ -24,22 +23,22 @@ export class EditComponent implements OnInit {
   }
 
   fetchEntry(id){
-    this.dataService.getEntry(id).subscribe( (res: any ) => {
-      this.dataEntry = res;
+    this.usersService.getUser(id).subscribe( (res: any ) => {
+      this.usersEntry = res;
     })
   }
  
   onSubmit(){
-    console.log(this.dataEntry);
+    console.log(this.usersEntry);
 
-    this.dataService.editEntry(this.dataEntry)
+    this.usersService.editUser(this.usersEntry)
     .subscribe(response => {
       console.log(response);
-      this.router.navigate(['/details', this.dataEntry.id])
+      this.router.navigate(['/details', this.usersEntry.id])
     }), err => {
       console.log(err);
     }
-    this.router.navigate(['/details', this.dataEntry.id])
+    this.router.navigate(['/details', this.usersEntry.id])
   }
 
 }
