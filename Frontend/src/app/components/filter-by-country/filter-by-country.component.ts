@@ -81,18 +81,22 @@ export class FilterByCountryComponent implements OnInit {
         datasets: [{
           lineTension: 0,
             label: '',
-            borderColor: 'rgba(235, 136, 54, 0.952)',
+            borderColor: 'rgba(20, 20, 204, 0.90)',
             pointBorderColor: 'rgba(27, 81, 120, 1)',
             data: [],
             backgroundColor: [
-              'rgba(255, 99, 132, 0)',
-              'rgba(54, 162, 235, 1)',
-              'rgba(255, 206, 86, 1)'
+              'rgba(20, 20, 204, 0)',
+              // 'rgba(255, 99, 132, 0)',
+              // 'rgba(54, 162, 235, 1)',
+              // 'rgba(255, 206, 86, 1)'
             ],
             borderWidth: 3
           }]
         },
         options: {
+          legend: {
+            display: false
+          },
         responsive: true,
         showLines: true,
         spanGaps: true,
@@ -110,7 +114,7 @@ export class FilterByCountryComponent implements OnInit {
         },
         title: {
           display: true,
-          text: 'Country Chart'
+          text: 'Country timeline Chart'
         }
       }
        

@@ -28,9 +28,6 @@ form {
     color: rgb(28, 28, 28);
 }
 
-
-/* #divChart, */
-
 #chartwrapper {
     display: block;
     height: 675px;
@@ -41,4 +38,51 @@ form {
     display: block;
     height: 675px;
     width: 90%;
+}
+
+a {
+    color: whitesmoke;
+    background-color: rgb(20, 136, 15);
+    padding: 10px;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+a:hover {
+    color: whitesmoke;
+    background-color: rgb(15, 110, 12);
+    cursor: pointer;
+}
+
+#dlCSV {
+    color: whitesmoke;
+    background-color: rgb(114, 136, 15);
+    padding: 10px;
+    border-radius: 5px;
+    margin-right: 10px;
+    border-color: rgb(95, 114, 13);
+}
+
+#dlCSV:hover {
+    background-color: rgb(95, 114, 13);
+}
+
+.autoCampo {
+    margin-right: 7%;
+}
+
+#fila {
+    padding-top: 20px;
+}
+
+#updOn {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    height: 50px;
+}
+
+#updOff {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    height: 50px;
 }

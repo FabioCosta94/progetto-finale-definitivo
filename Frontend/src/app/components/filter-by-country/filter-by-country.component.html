@@ -13,20 +13,34 @@
             </canvas>
         </div>
 
-        <button class="btn btn-primary mb-3" *ngIf="flaggrafico==false" disabled>Update chart</button>
-
-        <button class="btn btn-primary mb-3" (click)="updGraph(form)" *ngIf="flaggrafico ">Update chart</button>
-
-
+        <a id="downloadLink" download="filename.png" (click)="saveAsImage()" title="Salvataggio Grafico">Save as PNG</a>
+        <button id="dlCSV" (click)="downloadCSV()" class="btn-default">Save as CSV</button>
+        <div class="row">
 
 
-        <!-- <div class="form-group row">
+            <form class="autoCampo">
+                <mat-form-field>
+                    <input type="text" placeholder="Choose a country" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto" id="country" required [(ngModel)]="country">
+                    <mat-autocomplete #auto="matAutocomplete">
+                        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                            {{option}}
+                        </mat-option>
+                    </mat-autocomplete>
+                </mat-form-field>
+            </form>
+
+            <button id="updOff" class="btn btn-primary mb-3" *ngIf="flaggrafico==false" disabled>Update chart</button>
+
+            <button id="updOn" class="btn btn-primary mb-3" (click)="updGraph(form)" *ngIf="flaggrafico ">Update chart</button>
+
+
+            <!-- <div class="form-group row">
     <label for="country" class="col-sm-2 col-form-label">Country</label>
     <div class="col-sm-10">
         <input type="text" class="form-control" id="country" required [(ngModel)]="country">
     </div>
     </div> -->
-        <!-- <table class="table" ng-controller="myCtrl2" *ngIf="country" >
+            <!-- <table class="table" ng-controller="myCtrl2" *ngIf="country" >
 <thead class="thead-dark">
     <tr>
     <th scope="col">Country</th>
@@ -35,17 +49,8 @@
     </tr>
 </thead> -->
 
-        <form>
-            <mat-form-field>
-                <input type="text" placeholder="Choose a country" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto" id="country" required [(ngModel)]="country">
-                <mat-autocomplete #auto="matAutocomplete">
-                    <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-                        {{option}}
-                    </mat-option>
-                </mat-autocomplete>
-            </mat-form-field>
-        </form>
 
+        </div>
 
         <!--FILTRO PER CATEGORIA-->
         <form class="pt-5" #form="ngForm">
@@ -60,10 +65,10 @@
         </form>
 
         <!--Prova pulsante che fa cose -->
-        <div>
+        <!-- <div>
             <button (click)="add()">Add Data</button>
             <div class="showInputField"></div>
-        </div>
+        </div> -->
 
         <!--Recupera l'id dal pipe. Se c'è una corrispondenza, stampa il nome della nazione del database-->
         <!-- <h3>Mettere nella searchbar un sistema per suggerire i campi esistenti</h3> -->
@@ -87,8 +92,7 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
     <script type="text/javascript" src="https://cdn.rawgit.com/eligrey/FileSaver.js/master/FileSaver.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <a id="downloadLink" download="filename.png" (click)="saveAsImage()" title="Salvataggio Grafico">salva </a>
-    <button (click)="downloadCSV()" class="btn-default">Download CSV</button>
+
 
 </div>
 <!--<button id="download" class="btn btn-primary float-right bg-flat-color-1" (click)="save()" title="Salvataggio Grafico"> </button><-->

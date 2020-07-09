@@ -32,23 +32,27 @@ export class GraficoGiornoComponent implements OnInit {
     this.chart = new Chart(ctx, {
       type: 'bar',
       data: {
-        labels: ['Cases/P', 'Deaths/P', 'Recoveries/P'],
+        labels: ['Cases %', 'Deaths %', 'Recoveries %'],
         datasets: [{
           lineTension: 0,
             label: '',
-            borderColor: 'rgba(235, 136, 54, 0.952)',
+            borderColor: 'rgba(20, 20, 20, 1)',
             pointBorderColor: 'rgba(27, 81, 120, 1)',
             //data: [5, 10, 15, 20, 25, 30],
-            data: [3,8,1],
+            data: [8,3,5],
             backgroundColor: [
-              'rgba(255, 99, 132, 0)',
-              'rgba(54, 162, 235, 1)',
-              'rgba(255, 206, 86, 1)'
+              'rgba(255, 206, 86, 1)',
+              'rgba(205, 89, 112, 1)',
+              'rgba(2, 172, 0, 1)'
+              
             ],
             borderWidth: 3
           }]
         },
         options: {
+          legend: {
+            display: false
+          },
         responsive: true,
         showLines: true,
         spanGaps: true,
@@ -66,7 +70,7 @@ export class GraficoGiornoComponent implements OnInit {
         },
         title: {
           display: true,
-          text: 'Country Chart'
+          text: 'Country Daily Chart'
         }
       }
        
@@ -82,23 +86,25 @@ export class GraficoGiornoComponent implements OnInit {
     this.chart2 = new Chart(ctx2, {
       type: 'bar',
       data: {
-        labels: ['Rec. Rate', 'Fat. Rate'],
+        labels: ['Recovery Rate %', 'Fatality Rate %'],
         datasets: [{
           lineTension: 0,
             label: '',
-            borderColor: 'rgba(235, 136, 54, 0.952)',
-            pointBorderColor: 'rgba(27, 81, 120, 1)',
+            borderColor: 'rgba(20, 20, 20, 0.952)',
+            pointBorderColor: 'rgba(27, 81, 120, 0)',
             //data: [5, 10, 15, 20, 25, 30],
-            data: [5,5],
+            data: [7,3],
             backgroundColor: [
-              'rgba(255, 99, 132, 0)',
               'rgba(54, 162, 235, 1)',
-              'rgba(255, 206, 86, 1)'
+              'rgba(156, 0, 0, 1)'
             ],
             borderWidth: 3
           }]
         },
         options: {
+          legend: {
+            display: false
+          },
         responsive: true,
         showLines: true,
         spanGaps: true,
@@ -116,7 +122,7 @@ export class GraficoGiornoComponent implements OnInit {
         },
         title: {
           display: true,
-          text: 'Country Chart'
+          text: 'Country Daily Chart'
         }
       }
        
