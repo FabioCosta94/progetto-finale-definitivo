@@ -12,8 +12,9 @@
             </canvas> -->
             </canvas>
         </div>
-        <a id="downloadLink" class="btn-default" download="filename.png" (click)="saveAsImage()">Save as PNG </a>
-
+        <div *ngIf="login.isPress">
+            <a id="downloadLink" class="btn-default" download="filename.png" (click)="saveAsImage()">Save as PNG </a>
+        </div>
 
         <br>
 
@@ -23,9 +24,13 @@
             </canvas> -->
             </canvas>
         </div>
-        <a id="downloadLink2" download="filename.png" (click)="saveAsImage2()" title="Salvataggio Grafico">Save as PNG </a>
-        <button id="dlCSV" (click)="downloadCSV()" class="btn btn-primary">Save as CSV</button>
-        <br>
+        <div *ngIf="login.isPress">
+            <a id="downloadLink2" download="filename.png" (click)="saveAsImage2()" title="Salvataggio Grafico">Save as PNG </a>
+            <button id="dlCSV" (click)="downloadCSV()" class="btn btn-primary">Save as CSV</button>
+            <br>
+        </div>
+
+
         <!--Questo e' stato fatto in smart working. In altre parole: Smorking-->
 
         <div class="row" id="fila">
@@ -40,28 +45,12 @@
                     </mat-autocomplete>
                 </mat-form-field>
             </form>
-
             <button id="updOff" class="btn btn-primary" *ngIf="flagGrafico==false" disabled>Update chart</button>
 
             <button id="updOn" class="btn btn-primary" (click)="updGraph(form)" *ngIf="flagGrafico">Update chart</button>
 
 
 
-
-            <!-- <div class="form-group row">
-    <label for="country" class="col-sm-2 col-form-label">Country</label>
-    <div class="col-sm-10">
-        <input type="text" class="form-control" id="country" required [(ngModel)]="country">
-    </div>
-    </div> -->
-            <!-- <table class="table" ng-controller="myCtrl2" *ngIf="country" >
-<thead class="thead-dark">
-    <tr>
-    <th scope="col">Country</th>
-    <th scope="col">Cases</th>
-    <th scope="col">Date</th>
-    </tr>
-</thead> -->
 
 
 
@@ -79,24 +68,11 @@
             </div>
         </form>
 
-        <!--Prova pulsante che fa cose -->
-        <!-- <div>
-            <button (click)="add()">Add Data</button>
-            <div class="showInputField"></div>
-        </div> -->
 
-        <!--Recupera l'id dal pipe. Se c'è una corrispondenza, stampa il nome della nazione del database-->
-        <!-- <h3>Mettere nella searchbar un sistema per suggerire i campi esistenti</h3> -->
         <h1 id="nazione"></h1>
 
-        <!--Ciclo che mostra i dati del database corrispondenti ad una coutnry.
-  Probabilmente sarà da eliminare ma per il momento rimane come riferimento per il codice-->
-        <!-- <div class="pointer" *ngFor="let entry of covidData | country : country">
-            <td>{{entry.cases}}</td>
-            <td>{{entry.date | date}}</td>
-        </div> -->
 
-        <!-- </table> -->
+
     </div>
 
     <!-- <a id='a' (click)="save()">click me to save</a> -->

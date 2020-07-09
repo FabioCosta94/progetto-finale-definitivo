@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { UsersService } from '../../services/users.service';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router} from '@angular/router';
 import { UsersData } from '../../models/data.model';
 import { LoginService } from 'src/app/services/login.service';
 
@@ -12,11 +12,14 @@ import { LoginService } from 'src/app/services/login.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private usersService: UsersService, private router: Router, private loginservice: LoginService) { }
-
   public usersData: UsersData[];
   public usersEntry: UsersData;
-  public currentUser: any;
+  
+  
+
+  constructor(private usersService: UsersService, private router: Router, private loginservice: LoginService) { }
+
+ 
 
   ngOnInit(): void {
 
@@ -42,22 +45,23 @@ export class LoginComponent implements OnInit {
         this.usersEntry.password == this.usersData[i].password) {
         this.loginservice.logged = true
         console.log(this.usersEntry);
+      
         if (this.usersData[i].permissions == 1) {
-          this.currentUser = this.usersData[i]// variabile dove salva l'utente corrente
-          console.log("is Admin",this.currentUser);
-          this.router.navigate(['/dashboard'])}
-          if (this.usersData[i].permissions != 1) {
-          console.log("is User");
-        this.router.navigate(['/welcome'])}
+          this.loginservice.isAdmin=true
+          console.log("is Admin");
+          this.router.navigate(['/dashboard']);
+        } else if (this.usersData[i].permissions == 2) {
+          this.loginservice.isPress=true
+          console.log("is Press");
+          this.router.navigate(['/welcome']);
+        } else{ (this.usersData[i].permissions != 1)
+          console.log("is User")
+          this.router.navigate(['/welcome'])
 
-          }
         }
+      }
+
+    }
 
   }
-
-
-
-
-
-
 }

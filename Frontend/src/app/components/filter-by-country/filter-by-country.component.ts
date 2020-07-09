@@ -15,6 +15,7 @@ import { ɵELEMENT_PROBE_PROVIDERS } from '@angular/platform-browser';
 import { title, config } from 'process';
 import { saveAs } from 'file-saver';
 import { AngularCsv } from 'angular7-csv/dist/Angular-csv';
+import { LoginService } from '../../services/login.service';
  
 @Component({
   selector: 'app-filter-by-country',
@@ -24,7 +25,7 @@ import { AngularCsv } from 'angular7-csv/dist/Angular-csv';
 
 export class FilterByCountryComponent implements OnInit {
 
-  constructor(private dataService:DataService) { }
+  constructor(private dataService:DataService,public login: LoginService) { }
 
   //variabile in cui si memorizzano i dati nell'asse Y
   asseY : number[];

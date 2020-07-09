@@ -12,9 +12,10 @@
             </canvas> -->
             </canvas>
         </div>
-
-        <a id="downloadLink" download="filename.png" (click)="saveAsImage()" title="Salvataggio Grafico">Save as PNG</a>
-        <button id="dlCSV" (click)="downloadCSV()" class="btn-default">Save as CSV</button>
+        <div *ngIf="login.isPress">
+            <a id="downloadLink" download="filename.png" (click)="saveAsImage()" title="Salvataggio Grafico">Save as PNG</a>
+            <button id="dlCSV" (click)="downloadCSV()" class="btn-default">Save as CSV</button>
+        </div>
         <div class="row">
 
 
