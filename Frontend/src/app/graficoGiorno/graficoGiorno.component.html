@@ -12,7 +12,7 @@
             </canvas> -->
             </canvas>
         </div>
-        <div *ngIf="login.isPress">
+        <div *ngIf="login.isPress || login.isAdmin">
             <a id="downloadLink" class="btn-default" download="filename.png" (click)="saveAsImage()">Save as PNG </a>
         </div>
 
@@ -24,7 +24,7 @@
             </canvas> -->
             </canvas>
         </div>
-        <div *ngIf="login.isPress">
+        <div *ngIf="login.isPress || login.isAdmin">
             <a id="downloadLink2" download="filename.png" (click)="saveAsImage2()" title="Salvataggio Grafico">Save as PNG </a>
             <button id="dlCSV" (click)="downloadCSV()" class="btn btn-primary">Save as CSV</button>
             <br>
