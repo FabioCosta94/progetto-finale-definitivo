@@ -91,3 +91,7 @@ a:hover {
 .pointer {
     display: none;
 }
+
+#field {
+    padding-top: 12px;
+}

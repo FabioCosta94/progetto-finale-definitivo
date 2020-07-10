@@ -5,6 +5,31 @@
 <div class="wrapper">
     <div class="container p-5">
         <!-- <h1>Filter by country</h1> -->
+        <div class="row">
+            <form class="autoCampo col-7">
+                <mat-form-field>
+                    <input type="text" placeholder="Choose a country" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto" id="country" required [(ngModel)]="country">
+                    <mat-autocomplete #auto="matAutocomplete">
+                        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                            {{option}}
+                        </mat-option>
+                    </mat-autocomplete>
+                </mat-form-field>
+            </form>
+
+            <!--FILTRO PER CATEGORIA-->
+            <form class="col-4" #form="ngForm">
+                <div class="form-group row">
+                    <label for="continent" class="col-sm-4 col-form-label">Choose date</label>
+                    <div class="col-sm-6">
+                        <select class="form-control" id="sort" [(ngModel)]="giornoCorrente" required name="sort">
+                        <option *ngFor="let option of dataFilter()"> {{option.date | date}}</option>
+                    </select>
+                    </div>
+                </div>
+            </form>
+        </div>
+
 
         <div id="divChart">
             <canvas class="chart-wrapper" #chartwrapper id="chartwrapper">
@@ -35,40 +60,19 @@
 
         <!--Questo e' stato fatto in smart working. In altre parole: Smorking-->
 
-        <div class="row" id="fila">
 
-            <form class="autoCampo">
-                <mat-form-field>
-                    <input type="text" placeholder="Choose a country" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto" id="country" required [(ngModel)]="country">
-                    <mat-autocomplete #auto="matAutocomplete">
-                        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-                            {{option}}
-                        </mat-option>
-                    </mat-autocomplete>
-                </mat-form-field>
-            </form>
-            <button id="updOff" class="btn btn-primary" *ngIf="flagGrafico==false" disabled>Update chart</button>
 
-            <button id="updOn" class="btn btn-primary" (click)="updGraph(form)" *ngIf="flagGrafico">Update chart</button>
+        <button id="updOff" class="btn btn-primary" *ngIf="flagGrafico==false" disabled>Update chart</button>
+
+        <button id="updOn" class="btn btn-primary" (click)="updGraph(form)" *ngIf="flagGrafico">Update chart</button>
 
 
 
 
 
 
-        </div>
 
-        <!--FILTRO PER CATEGORIA-->
-        <form class="pt-5" #form="ngForm">
-            <div class="form-group row">
-                <label for="continent" class="col-sm-2 col-form-label">Choose date</label>
-                <div class="col-sm-10">
-                    <select class="form-control" id="sort" [(ngModel)]="giornoCorrente" required name="sort">
-                        <option *ngFor="let option of dataFilter()"> {{option.date}} </option>
-                    </select>
-                </div>
-            </div>
-        </form>
+
 
 
         <h1 id="nazione"></h1>

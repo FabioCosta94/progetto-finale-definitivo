@@ -251,23 +251,18 @@ export class FilterByCountryComponent implements OnInit {
       
       this.dates = dates.map((date) => date.toString());
 
-      //Usare un asincrono
-      // for (let i = 0; i < this.datesNumbers.length; i++) {
-      //   this.datesNumbers.pop();
-      // }
-
-      // this.dates.forEach(date => {
-      //   let filtroNoTrattino : String[] = date.split("-");
-      //   let filtroUnito : string = filtroNoTrattino.join("");
-      //   let dataInNumero = parseInt(filtroUnito);
-      //   this.datesNumbers.push(dataInNumero);
-        
-      // });
-      // console.log('dataN1', this.datesNumbers);
-      // this.updGraph();
     });
 
-      
+    let ciaone = 'porcatroia'
+    ciaone.substring(0,5);
+    console.log(ciaone);
+
+
+    for (let i = 0; i < this.dates.length; i++) {
+      this.dates[i].split(1, 10);
+      console.log(this.dates[i]);
+    }
+    console.log(this.dates);
 
     //svuoto il vettore dei dati che aveva già
     for (let i = 0; i < this.asseY.length; i++) {
