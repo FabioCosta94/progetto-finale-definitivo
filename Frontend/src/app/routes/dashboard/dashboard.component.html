@@ -53,11 +53,10 @@
                     <th scope="col">Recoveries</th>
                     <th scope="col">Recovery Rate</th>
                     <th scope="col">Death Rate</th>
-                    <th scope="col">Date</th>
+                    <th scope="col">Date mm/dd/yy</th>
                 </tr>
             </thead>
             <tbody>
-
                 <tr *ngFor="let entry of covidData| sortField:'country'| sortField:'date' ; let i = index">
                     <th scope="row"> {{i + 1}}</th>
                     <td>{{entry.country}}</td>
