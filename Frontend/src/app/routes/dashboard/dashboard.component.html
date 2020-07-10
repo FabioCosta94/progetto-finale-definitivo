@@ -35,12 +35,11 @@
                 </tr>
             </tbody>
         </table>
-        <h2 class="text-center mb-5">
-            Covid Data
-        </h2>
 
-        <div class="flex-contianer">
-            <div class="left-btn"><button (click)="getCountries();saveCountries()">Download Data</button></div>
+        <h2 class="text-center mb-5">Covid Data </h2>
+        <div class="flex-container">
+            <button class="btn" (click)="getCountries();saveCountries()"><i class="fa fa-download"
+                    style="font-size:36px"></i></button>
         </div>
 
         <table class="table">
