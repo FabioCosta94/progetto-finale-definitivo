@@ -58,6 +58,7 @@ export class GraficoGiornoComponent implements OnInit {
         responsive: true,
         showLines: true,
         spanGaps: true,
+        //maintainAspectRatio: false,
         scales: {
           yAxes: [
             {
@@ -113,6 +114,7 @@ export class GraficoGiornoComponent implements OnInit {
         responsive: true,
         showLines: true,
         spanGaps: true,
+        //maintainAspectRatio: false,
         scales: {
           yAxes: [
             {

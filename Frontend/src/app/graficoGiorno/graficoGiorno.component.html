@@ -3,7 +3,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7" crossorigin="anonymous"></script>
 
 <div class="wrapper">
-    <div class="container p-5">
+    <div class="container">
         <!-- <h1>Filter by country</h1> -->
         <div class="row">
             <form class="autoCampo col-7">
@@ -18,7 +18,7 @@
             </form>
 
             <!--FILTRO PER CATEGORIA-->
-            <form class="col-4" #form="ngForm">
+            <form class="col-4 scegliData" #form="ngForm">
                 <div class="form-group row">
                     <label for="continent" class="col-sm-4 col-form-label">Choose date</label>
                     <div class="col-sm-6">
@@ -31,41 +31,59 @@
         </div>
 
 
-        <div id="divChart">
-            <canvas class="chart-wrapper" #chartwrapper id="chartwrapper">
-            <!-- <canvas baseChart [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType" [plugins]="lineChartPlugins">
-            </canvas> -->
-            </canvas>
-        </div>
-        <div *ngIf="login.isPress || login.isAdmin">
-            <a id="downloadLink" class="btn-default" download="filename.png" (click)="saveAsImage()" data-toggle="tooltip" data-placement="bottom" title="Save this chart as PNG">Save as PNG </a>
+        <div class="row">
+
+            <div class="col-6">
+                <div *ngIf="login.isPress || login.isAdmin">
+                    <a id="downloadLink" class="btn-default" download="filename.png" (click)="saveAsImage()" data-toggle="tooltip" data-placement="bottom" title="Save this chart1 as PNG">Save as PNG </a>
+                </div>
+            </div>
+            <div class="col-6">
+                <div *ngIf="login.isPress || login.isAdmin">
+                    <a id="downloadLink2" download="filename.png" (click)="saveAsImage2()" title="Salvataggio Grafico" data-toggle="tooltip" data-placement="bottom" title="Save this chart as PNG">Save as PNG </a>
+                </div>
+            </div>
+
         </div>
 
-        <br>
+        <div class="row">
 
-        <div id="divChart2">
-            <canvas class="chart-wrapper2" #chartwrapper2 id="chartwrapper2">
-            <!-- <canvas baseChart [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType" [plugins]="lineChartPlugins">
-            </canvas> -->
-            </canvas>
+            <div id="divChart" class="col-5">
+                <canvas class="chart-wrapper" #chartwrapper id="chartwrapper">
+                <!-- <canvas baseChart [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType" [plugins]="lineChartPlugins">
+                </canvas> -->
+                </canvas>
+            </div>
+            <div class="col-1"></div>
+            <div id="divChart2" class="col-5">
+                <canvas class="chart-wrapper2" #chartwrapper2 id="chartwrapper2">
+                <!-- <canvas baseChart [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType" [plugins]="lineChartPlugins">
+                </canvas> -->
+                </canvas>
+            </div>
         </div>
-        <div *ngIf="login.isPress || login.isAdmin">
-            <a id="downloadLink2" download="filename.png" (click)="saveAsImage2()" title="Salvataggio Grafico" data-toggle="tooltip" data-placement="bottom" title="Save this chart as PNG">Save as PNG </a>
-            <button id="dlCSV" (click)="downloadCSV()" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" title="Save all charts data as CSV">
+
+
+
+
+        <div class="row">
+            <div class="col-10">
+                <button id="updOff" class="btn btn-primary" *ngIf="flagGrafico==false" disabled>Update chart</button>
+                <button id="updOn" class="btn btn-primary" (click)="updGraph(form)" *ngIf="flagGrafico">Update chart</button>
+            </div>
+
+
+
+
+            <!--Questo e' stato fatto in smart working. In altre parole: Smorking-->
+
+            <div *ngIf="login.isPress || login.isAdmin" class="col-2">
+                <button id="dlCSV" (click)="downloadCSV()" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" title="Save all charts data as CSV">
                 Save as CSV
             </button>
-            <br>
+            </div>
+
         </div>
-
-
-        <!--Questo e' stato fatto in smart working. In altre parole: Smorking-->
-
-
-
-        <button id="updOff" class="btn btn-primary" *ngIf="flagGrafico==false" disabled>Update chart</button>
-
-        <button id="updOn" class="btn btn-primary" (click)="updGraph(form)" *ngIf="flagGrafico">Update chart</button>
-
 
 
 

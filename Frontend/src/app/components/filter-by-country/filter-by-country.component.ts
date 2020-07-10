@@ -252,17 +252,15 @@ export class FilterByCountryComponent implements OnInit {
       this.dates = dates.map((date) => date.toString());
 
     });
-
-    let ciaone = 'porcatroia'
-    ciaone.substring(0,5);
-    console.log(ciaone);
-
+    let filtroProva = new Array()
+    console.log('????????', this.dates)
+    console.log('!!!!!!!!!!', filtroProva)
 
     for (let i = 0; i < this.dates.length; i++) {
-      this.dates[i].split(1, 10);
-      console.log(this.dates[i]);
+      filtroProva.push(this.dates[i].substr(0, 10));
+      console.log(filtroProva[i]);
     }
-    console.log(this.dates);
+    console.log(filtroProva);
 
     //svuoto il vettore dei dati che aveva già
     for (let i = 0; i < this.asseY.length; i++) {
@@ -274,7 +272,7 @@ await this.resolveAfter2Seconds();
 
      //riempo il vettore con i nuovi dati
     for (let i = 0; i < this.asseY.length; i++) {
-      this.addData(this.chart, this.dates[i], this.asseY[i])
+      this.addData(this.chart, filtroProva[i], this.asseY[i])
       //console.log('provaprova', this.dates);
     }
    

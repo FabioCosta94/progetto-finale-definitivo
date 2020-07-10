@@ -2,11 +2,19 @@
     text-align: center;
 }
 
+.container {
+    margin: 0;
+    padding: 0;
+    max-width: 99999px;
+}
+
 .wrapper {
     /* min-height: 84vh; */
     min-height: 69vh;
     color: rgb(28, 28, 28);
     background-color: rgba(226, 226, 251, 0.822);
+    margin: 0;
+    padding: 0;
 }
 
 h1 {
@@ -27,18 +35,6 @@ input {
 
 form {
     color: rgb(28, 28, 28);
-}
-
-#chartwrapper {
-    display: block;
-    height: 675px;
-    width: 90%;
-}
-
-#chartwrapper2 {
-    display: block;
-    height: 675px;
-    width: 90%;
 }
 
 a {
@@ -70,6 +66,12 @@ a:hover {
 
 .autoCampo {
     margin-right: 7%;
+    padding-left: 3%;
+    padding-top: 10px;
+}
+
+.scegliData {
+    padding-top: 10px
 }
 
 #fila {
@@ -88,6 +90,12 @@ a:hover {
     height: 50px;
 }
 
-#downloadlink {
+#downloadLink,
+#downloadLink2 {
     color: white;
+    margin-top: 30px;
+}
+
+.row {
+    padding-left: 5%;
 }
