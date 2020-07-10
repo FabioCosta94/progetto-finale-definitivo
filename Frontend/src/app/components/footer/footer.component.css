@@ -1,13 +1,143 @@
-.footerWrapper {}
-
-footer {
-    height: 8vh;
-    background-color: #606b75a6;
-    border-color: #454d55;
+ footer {
+     height: 23vh;
+     background-color: #606b75a6;
+     /* border-color: #454d55;
     text-align: center;
-    color: rgb(228, 228, 228);
-}
-
-h4 {
+    color: rgb(228, 228, 228); */
+     padding-top: 2vh;
+ }
+ /* h4 {
     padding-top: 2vh;
-}
+} */
+ 
+ .context-dark,
+ .bg-gray-dark,
+ .bg-primary {
+     color: rgba(255, 255, 255, 0.8);
+ }
+ 
+ .footer-classic a,
+ .footer-classic a:focus,
+ .footer-classic a:active {
+     color: #ffffff;
+ }
+ 
+ .nav-list li {
+     padding-top: 5px;
+     padding-bottom: 5px;
+ }
+ 
+ .nav-list li a:hover:before {
+     margin-left: 0;
+     opacity: 1;
+     visibility: visible;
+ }
+ 
+ ul,
+ ol {
+     list-style: none;
+     padding: 0;
+     margin: 0;
+ }
+ 
+ .instagram {
+     width: 100px;
+     height: 100px;
+     background: #f09433;
+     background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+     background: -webkit-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+     background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+     filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#f09433', endColorstr='#bc1888', GradientType=1);
+ }
+ 
+ .social-inner {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     width: 100%;
+     padding: 23px;
+     font: 900 13px/1 "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+     text-transform: uppercase;
+     color: rgba(255, 255, 255, 0.5);
+ }
+ 
+ .social-container .col {
+     border: 1px solid rgba(255, 255, 255, 0.1);
+ }
+ 
+ .nav-list li a:before {
+     content: "\f14f";
+     font: 400 21px/1 "Material Design Icons";
+     color: #4d6de6;
+     display: inline-block;
+     vertical-align: baseline;
+     margin-left: -28px;
+     margin-right: 7px;
+     opacity: 0;
+     visibility: hidden;
+     transition: .22s ease;
+ }
+ 
+ ul.social-network {
+     list-style: none;
+     display: inline;
+     margin-left: 0 !important;
+     padding: 0;
+ }
+ 
+ ul.social-network li {
+     display: inline;
+     margin: 0 5px;
+ }
+ 
+ .social-network a.icoRss {
+     background-color: #F56505;
+     color: #fff;
+ }
+ 
+ .social-network a.icoFacebook {
+     background-color: #3B5998;
+     color: #fff;
+ }
+ 
+ .social-network a.icoInstagram {
+     background-color: #33ccff;
+     color: #fff;
+ }
+ 
+ .social-network a.icoLinkedin {
+     background-color: #3B5998;
+     color: #fff;
+ }
+ 
+ a.socialIcon:hover,
+ .socialHoverClass {
+     color: #44BCDD;
+ }
+ 
+ .social-circle li a {
+     display: inline-block;
+     position: relative;
+     margin: 0 auto 0 auto;
+     -moz-border-radius: 50%;
+     -webkit-border-radius: 50%;
+     border-radius: 50%;
+     text-align: center;
+     width: 50px;
+     height: 50px;
+     font-size: 20px;
+ }
+ 
+ .social-circle li i {
+     margin: 0;
+     line-height: 50px;
+     text-align: center;
+ }
+ 
+ @media screen and (max-width: 600px) {
+     .context-dark,
+     .bg-gray-dark,
+     .bg-primary {
+         /* padding-bottom: 500px; */
+     }
+ }

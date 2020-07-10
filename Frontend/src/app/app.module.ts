@@ -34,6 +34,7 @@ import { LineChartComponent } from './line-chart/line-chart.component';
 import { RegisterComponent } from './routes/register/register.component';
 import { LoginComponent } from './routes/login/login.component';
 import { CommonModule } from '@angular/common';
+import { NgxScrollTopModule } from 'ngx-scrolltop';
 
 
 
@@ -78,6 +79,7 @@ import { CommonModule } from '@angular/common';
     MatFormFieldModule,
     ReactiveFormsModule,
     ChartsModule,
+    NgxScrollTopModule
     
   ],
   providers: [DataService,UsersService,LoginComponent],

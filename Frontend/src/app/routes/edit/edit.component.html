@@ -1,5 +1,5 @@
 <div class="wrapper">
-   
+
     <div *ngIf="usersEntry != null" class="container - p-5">
 
         <div class="row p-3 shadow">
@@ -12,7 +12,7 @@
             <div class="form-group row">
                 <label for="username" class="col-sm-2 col-form-label">Username</label>
                 <div class="col-sm-10">
-                    <input type="text"  class="form-control" id="username" required [(ngModel)]="usersEntry.username" name="username">
+                    <input type="text" class="form-control" id="username" required [(ngModel)]="usersEntry.username" name="username">
                 </div>
             </div>
 
@@ -24,10 +24,21 @@
                 </div>
             </div>
 
-            
 
-            <button type="submit" [disabled]="!form.valid" class="btn btn-success">Submit</button>
-            <br><br>
+            <div class="row">
+                <div class="col-3">
+                    <button id="submit" type="submit" [disabled]="!form.valid" class="btn btn-success">Submit</button>
+                </div>
+                <div class="col-3">
+                    <h3>1 = Admin</h3>
+                </div>
+                <div class="col-3">
+                    <h3>2 = Press</h3>
+                </div>
+                <div class="col-3">
+                    <h3>3 = Basic</h3>
+                </div>
+            </div>
         </form>
     </div>
 </div>

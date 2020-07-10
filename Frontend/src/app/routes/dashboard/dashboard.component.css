@@ -3,7 +3,8 @@
 }
 
 .wrapper {
-    min-height: 84vh;
+    /* min-height: 84vh; */
+    min-height: 69vh;
     background-color: rgba(226, 226, 251, 0.822);
 }
 
@@ -43,22 +44,15 @@ h1 {
     margin-bottom: 100px;
 }
 
-
-
 .flex-contianer {
     display: flex;
     justify-content: space-between;
-
 }
 
 .left-btn {
     width: 100px;
-    
 }
 
 .right-btn {
-    
     width: 100px;
-
 }
-

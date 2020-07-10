@@ -15,7 +15,9 @@
                     <tr class="pointer">
                         <!-- <td class="list-group-item">Id : {{ dataEntry.id }}</td> -->
                         <td class="list-group-item">Username : {{usersEntry.username}}</td>
-                        <td class="list-group-item">Permissions : {{usersEntry.permissions}}</td>
+                        <td *ngIf="usersEntry.permissions == 1" class="list-group-item">Permissions : Admin</td>
+                        <td *ngIf="usersEntry.permissions == 2" class="list-group-item">Permissions : Press</td>
+                        <td *ngIf="usersEntry.permissions == 3" class="list-group-item">Permissions : Basic</td>
                     </tr>
                 </tbody>
             </table>
