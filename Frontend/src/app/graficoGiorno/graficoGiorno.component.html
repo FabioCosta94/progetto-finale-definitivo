@@ -13,7 +13,7 @@
             </canvas>
         </div>
         <div *ngIf="login.isPress || login.isAdmin">
-            <a id="downloadLink" class="btn-default" download="filename.png" (click)="saveAsImage()">Save as PNG </a>
+            <a id="downloadLink" class="btn-default" download="filename.png" (click)="saveAsImage()" data-toggle="tooltip" data-placement="bottom" title="Save this chart as PNG">Save as PNG </a>
         </div>
 
         <br>
@@ -25,8 +25,10 @@
             </canvas>
         </div>
         <div *ngIf="login.isPress || login.isAdmin">
-            <a id="downloadLink2" download="filename.png" (click)="saveAsImage2()" title="Salvataggio Grafico">Save as PNG </a>
-            <button id="dlCSV" (click)="downloadCSV()" class="btn btn-primary">Save as CSV</button>
+            <a id="downloadLink2" download="filename.png" (click)="saveAsImage2()" title="Salvataggio Grafico" data-toggle="tooltip" data-placement="bottom" title="Save this chart as PNG">Save as PNG </a>
+            <button id="dlCSV" (click)="downloadCSV()" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" title="Save all charts data as CSV">
+                Save as CSV
+            </button>
             <br>
         </div>
 
@@ -70,6 +72,10 @@
 
 
         <h1 id="nazione"></h1>
+        <div class="pointer" *ngFor="let entry of covidData | country : country">
+            <!-- <td>{{entry.cases}}</td>
+            <td>{{entry.date | date}}</td> -->
+        </div>
 
 
 

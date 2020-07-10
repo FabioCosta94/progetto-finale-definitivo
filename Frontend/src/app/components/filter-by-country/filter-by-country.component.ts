@@ -78,15 +78,15 @@ export class FilterByCountryComponent implements OnInit {
     this.chart = new Chart(ctx, {
       type: 'line',
       data: {
-        labels: [],
+        labels: ['2020/07/06','2020/07/07'],
         datasets: [{
           lineTension: 0,
             label: '',
             borderColor: 'rgba(20, 20, 204, 0.90)',
             pointBorderColor: 'rgba(27, 81, 120, 1)',
-            data: [],
+            data: [10, 40],
             backgroundColor: [
-              'rgba(20, 20, 204, 0)',
+              'rgba(20, 20, 204, 0)'
               // 'rgba(255, 99, 132, 0)',
               // 'rgba(54, 162, 235, 1)',
               // 'rgba(255, 206, 86, 1)'
@@ -107,8 +107,13 @@ export class FilterByCountryComponent implements OnInit {
               display: true,
               ticks: {
                 suggestedMin: 0,
-
                 beginAtZero: true,
+                
+               callback: function(value, index, values) {
+                return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+              }
+
+                
               },
             },
           ],

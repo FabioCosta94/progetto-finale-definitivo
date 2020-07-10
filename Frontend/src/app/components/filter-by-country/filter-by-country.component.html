@@ -6,19 +6,7 @@
     <div class="container p-5">
         <!-- <h1>Filter by country</h1> -->
 
-        <div id="divChart">
-            <canvas class="chart-wrapper" #chartwrapper id="chartwrapper">
-            <!-- <canvas baseChart [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType" [plugins]="lineChartPlugins">
-            </canvas> -->
-            </canvas>
-        </div>
-        <div *ngIf="login.isPress || login.isAdmin">
-            <a id="downloadLink" download="filename.png" (click)="saveAsImage()" title="Salvataggio Grafico">Save as PNG</a>
-            <button id="dlCSV" (click)="downloadCSV()" class="btn-default">Save as CSV</button>
-        </div>
         <div class="row">
-
-
             <form class="autoCampo">
                 <mat-form-field>
                     <input type="text" placeholder="Choose a country" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto" id="country" required [(ngModel)]="country">
@@ -29,6 +17,34 @@
                     </mat-autocomplete>
                 </mat-form-field>
             </form>
+
+            <!--FILTRO PER CATEGORIA-->
+            <form class="" #form="ngForm">
+                <div class="form-group row">
+                    <label for="continent" class="col-sm-2 col-form-label">Choose field</label>
+                    <div class="col-sm-10">
+                        <select class="form" id="sort" ngModel required name="sort">
+                        <option *ngFor="let option of sortingOptions"> {{option}} </option>
+                    </select>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div id="divChart">
+            <canvas class="chart-wrapper" #chartwrapper id="chartwrapper">
+            <!-- <canvas baseChart [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType" [plugins]="lineChartPlugins">
+            </canvas> -->
+            </canvas>
+        </div>
+        <div *ngIf="login.isPress || login.isAdmin">
+            <a id="downloadLink" download="filename.png" (click)="saveAsImage()" title="Salvataggio Grafico" data-toggle="tooltip" data-placement="bottom" title="Save this chart as PNG">Save as PNG</a>
+            <button id="dlCSV" (click)="downloadCSV()" class="btn-default" data-toggle="tooltip" data-placement="bottom" title="Save all data as CSV">Save as CSV</button>
+        </div>
+        <div class="row">
+
+
+
 
             <button id="updOff" class="btn btn-primary mb-3" *ngIf="flaggrafico==false" disabled>Update chart</button>
 
@@ -53,17 +69,7 @@
 
         </div>
 
-        <!--FILTRO PER CATEGORIA-->
-        <form class="pt-5" #form="ngForm">
-            <div class="form-group row">
-                <label for="continent" class="col-sm-2 col-form-label">Choose category</label>
-                <div class="col-sm-10">
-                    <select class="form-control" id="sort" ngModel required name="sort">
-                        <option *ngFor="let option of sortingOptions"> {{option}} </option>
-                    </select>
-                </div>
-            </div>
-        </form>
+
 
         <!--Prova pulsante che fa cose -->
         <!-- <div>
@@ -73,14 +79,16 @@
 
         <!--Recupera l'id dal pipe. Se c'è una corrispondenza, stampa il nome della nazione del database-->
         <!-- <h3>Mettere nella searchbar un sistema per suggerire i campi esistenti</h3> -->
-        <h1 id="nazione"></h1>
+        <div>
+            <h1 id="nazione"></h1>
+        </div>
 
         <!--Ciclo che mostra i dati del database corrispondenti ad una coutnry.
-  Probabilmente sarà da eliminare ma per il momento rimane come riferimento per il codice-->
-        <!-- <div class="pointer" *ngFor="let entry of covidData | country : country">
-            <td>{{entry.cases}}</td>
-            <td>{{entry.date | date}}</td>
-        </div> -->
+        Probabilmente sarà da eliminare ma per il momento rimane come riferimento per il codice-->
+        <div class="pointer" *ngFor="let entry of covidData | country : country">
+            <!-- <td>{{entry.cases}}</td>
+            <td>{{entry.date | date}}</td> -->
+        </div>
 
         <!-- </table> -->
     </div>

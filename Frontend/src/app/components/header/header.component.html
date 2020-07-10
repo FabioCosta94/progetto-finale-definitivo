@@ -22,11 +22,11 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="#">Welcome</a>
                 </li>
-                 <div *ngIf="login.isAdmin">
-                <li class="nav-item">
-                    <a class="nav-link fas fa-database"  [routerLink]="['/dashboard']"> Covid Data</a>
-                </li>
-            </div> 
+                <div *ngIf="login.isAdmin">
+                    <li class="nav-item">
+                        <a class="nav-link fas fa-database" [routerLink]="['/dashboard']"> Covid Data</a>
+                    </li>
+                </div>
                 <li class="nav-item">
                     <a class="nav-link fas fa-chart-line" [routerLink]='["/filterBy"]'> Charts</a>
                 </li>
@@ -65,8 +65,8 @@
         <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link fas fa-fw fa-user"*ngIf="!login.logged" [routerLink]='["/login"]'>Login</a>
-                    <a class="nav-link fas fa-fw fa-user"*ngIf="login.logged" [routerLink]='["/welcome"]'(click) = "logout()"> Logout</a>
+                    <a class="nav-link fas fa-fw fa-user" *ngIf="!login.logged" [routerLink]='["/login"]'>Login</a>
+                    <a class="nav-link fas fa-fw fa-user" *ngIf="login.logged" [routerLink]='["/welcome"]' (click)="logout()"> Logout</a>
                 </li>
             </ul>
         </div>

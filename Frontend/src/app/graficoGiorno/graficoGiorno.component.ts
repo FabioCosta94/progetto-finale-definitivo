@@ -43,9 +43,9 @@ export class GraficoGiornoComponent implements OnInit {
             //data: [5, 10, 15, 20, 25, 30],
             data: [8,3,5],
             backgroundColor: [
-              'rgba(255, 206, 86, 1)',
-              'rgba(205, 89, 112, 1)',
-              'rgba(2, 172, 0, 1)'
+              'rgba(255, 206, 86, 0.5)',
+              'rgba(205, 89, 112, 0.5)',
+              'rgba(2, 172, 0, 0.5)'
               
             ],
             borderWidth: 3
@@ -63,6 +63,9 @@ export class GraficoGiornoComponent implements OnInit {
             {
               display: true,
               ticks: {
+                callback: function(value, index, values) {
+                  return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + ' %';
+                },
                 suggestedMin: 0,
 
                 beginAtZero: true,
@@ -97,8 +100,8 @@ export class GraficoGiornoComponent implements OnInit {
             //data: [5, 10, 15, 20, 25, 30],
             data: [7,3],
             backgroundColor: [
-              'rgba(54, 162, 235, 1)',
-              'rgba(156, 0, 0, 1)'
+              'rgba(54, 162, 235, 0.5)',
+              'rgba(156, 0, 0, 0.5)'
             ],
             borderWidth: 3
           }]
@@ -115,8 +118,10 @@ export class GraficoGiornoComponent implements OnInit {
             {
               display: true,
               ticks: {
+                callback: function(value, index, values) {
+                  return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + ' %';
+                },
                 suggestedMin: 0,
-
                 beginAtZero: true,
               },
             },

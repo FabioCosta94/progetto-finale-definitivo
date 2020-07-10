@@ -87,3 +87,7 @@ a:hover {
     padding-bottom: 0px;
     height: 50px;
 }
+
+#downloadlink {
+    color: white;
+}
