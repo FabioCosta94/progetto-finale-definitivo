@@ -11,31 +11,35 @@
         </h2>
 
         <table class="table tabellaUtenti">
+
             <thead class="thead-dark">
                 <tr>
+
+
                     <th scope="col">#</th>
                     <th scope="col">Username</th>
                     <th scope="col">Permission level</th>
+                    <th scope="col">Edit</th>
+
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let submit of usersData ; let i = index" (click)="goToDetails(submit.id)">
+                <tr class="pointer" *ngFor="let submit of usersData ; let i = index" (click)="goToDetails(submit.id)">
                     <th scope="row"> {{i + 1}}</th>
-                    <td>{{submit.username}}</td>
+                    <td>{{submit.username}} </td>
                     <td *ngIf="submit.permissions == 1">Admin</td>
                     <td *ngIf="submit.permissions == 2">Press</td>
                     <td *ngIf="submit.permissions == 3">Basic</td>
+                    <td><i class="fa fa-edit" style="font-size:36px"></i> </td>
 
                 </tr>
             </tbody>
         </table>
-        <h2 class="text-center mb-5">
-            Covid Data
-        </h2>
 
-        <div class="flex-contianer">
-            <div class="left-btn"><button (click)="getCountries()">Get Data</button></div>
-            <div class="right-btn"><button (click)="saveCountries()">Save Data</button></div>
+        <h2 class="text-center mb-5">Covid Data </h2>
+        <div class="flex-container">
+            <button class="btn" (click)="getCountries();saveCountries()"><i class="fa fa-download"
+                    style="font-size:36px"></i></button>
         </div>
 
         <table class="table">
@@ -49,12 +53,11 @@
                     <th scope="col">Recoveries</th>
                     <th scope="col">Recovery Rate</th>
                     <th scope="col">Death Rate</th>
-                    <th scope="col">Date</th>
+                    <th scope="col">Date mm/dd/yy</th>
                 </tr>
             </thead>
             <tbody>
-
-                <tr class="pointer" *ngFor="let entry of covidData| sortField:'country' ; let i = index">
+                <tr *ngFor="let entry of covidData| sortField:'country'| sortField:'date' ; let i = index">
                     <th scope="row"> {{i + 1}}</th>
                     <td>{{entry.country}}</td>
                     <td>{{entry.population}}</td>
