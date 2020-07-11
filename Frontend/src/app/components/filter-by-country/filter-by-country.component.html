@@ -6,37 +6,36 @@
     <div class="container">
         <!-- <h1>Filter by country</h1> -->
 
-        <div class="row">
-            <form class="autoCampo">
-                <mat-form-field>
-                    <input type="text" placeholder="Choose a country" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto" id="country" required [(ngModel)]="country">
-                    <mat-autocomplete #auto="matAutocomplete">
-                        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-                            {{option}}
-                        </mat-option>
-                    </mat-autocomplete>
-                </mat-form-field>
-            </form>
+        <div class="row" id="selezione">
+            <div class="col-8">
+                <form class="autoCampo">
+                    <mat-form-field>
+                        <input type="text" placeholder="Choose a country" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto" id="country" required [(ngModel)]="country">
+                        <mat-autocomplete #auto="matAutocomplete">
+                            <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                                {{option}}
+                            </mat-option>
+                        </mat-autocomplete>
+                    </mat-form-field>
+                </form>
+            </div>
 
             <!--FILTRO PER CATEGORIA-->
-            <form class="" #form="ngForm">
-                <div class="form-group row" id="field">
-                    <label for="continent" class="col-sm-4 col-form-label">Choose field</label>
-                    <div class="col-sm-5">
-                        <select class="form-control" id="sort" ngModel required name="sort">
-                        <option *ngFor="let option of sortingOptions"> {{option}} </option>
-                    </select>
+            <div class="col-4">
+                <form class="" #form="ngForm">
+                    <div class="form-group row" id="field">
+                        <label for="continent" class="col-sm-4 col-form-label">Choose field</label>
+                        <div class="col-sm-5">
+                            <select class="form-control" id="sort" ngModel required name="sort">
+                                <option *ngFor="let option of sortingOptions"> {{option}} </option>
+                            </select>
+                        </div>
                     </div>
-                </div>
-            </form>
-
-            <div class="savepng" *ngIf="login.isPress || login.isAdmin">
-                <a id="downloadLink" download="filename.png" (click)="saveAsImage()" title="Salvataggio Grafico" data-toggle="tooltip" data-placement="bottom" title="Save this chart as PNG">Save as PNG</a>
-            </div>
-            <div class="savecsv" *ngIf="login.isPress || login.isAdmin">
-                <button id="dlCSV" (click)="downloadCSV()" class="btn-default" data-toggle="tooltip" data-placement="bottom" title="Save all data as CSV">Save as CSV</button>
+                </form>
             </div>
         </div>
+
+
 
 
         <div class="container-fluid">
@@ -44,20 +43,24 @@
                 <div class="col-12">
                     <div id="divChart">
                         <canvas class="chart-wrapper" #chartwrapper id="chartwrapper">
-            <!-- <canvas baseChart [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType" [plugins]="lineChartPlugins">
-            </canvas> -->
                         </canvas>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="updateg">
-            <button id="updOff" class="btn btn-primary" *ngIf="flaggrafico==false" disabled>Update chart</button>
-            <button id="updOn" class="btn btn-primary" (click)="updGraph(form)" *ngIf="flaggrafico ">Update chart</button>
+        <div class="row">
+            <div class="updateg">
+                <button id="updOff" class="btn btn-primary" *ngIf="flaggrafico==false" disabled>Update chart</button>
+                <button id="updOn" class="btn btn-primary" (click)="updGraph(form)" *ngIf="flaggrafico ">Update chart</button>
+            </div>
+            <div class="savepng" *ngIf="login.isPress || login.isAdmin">
+                <a id="downloadLink" download="filename.png" (click)="saveAsImage()" title="Salvataggio Grafico" data-toggle="tooltip" data-placement="bottom" title="Save this chart as PNG">Save as PNG</a>
+            </div>
+            <div class="savecsv" *ngIf="login.isPress || login.isAdmin">
+                <button id="dlCSV" (click)="downloadCSV()" class="btn-default" data-toggle="tooltip" data-placement="bottom" title="Save all data as CSV">Save as CSV</button>
+            </div>
         </div>
-
-
 
         <div>
             <h1 id="nazione"></h1>
@@ -72,6 +75,7 @@
 
         <!-- </table> -->
     </div>
+
 
     <!-- <a id='a' (click)="save()">click me to save</a> -->
 
