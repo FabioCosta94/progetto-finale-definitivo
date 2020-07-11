@@ -75,6 +75,11 @@ a:hover {
     margin: 0; */
 }
 
+.container-fluid {
+    width: 100%
+}
+
+
 .updateg {
     margin-right: 60%;
 }
