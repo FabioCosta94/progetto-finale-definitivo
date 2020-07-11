@@ -40,7 +40,7 @@
         <div class="flex-container">
             <button class="btn" (click)="getCountries();saveCountries()"><i class="fa fa-download"
                     style="font-size:36px"></i></button>
-        </div>
+                </div>
 
         <table class="table">
             <thead class="thead-dark">
@@ -53,7 +53,7 @@
                     <th scope="col">Recoveries</th>
                     <th scope="col">Recovery Rate</th>
                     <th scope="col">Death Rate</th>
-                    <th scope="col">Date mm/dd/yy</th>
+                    <th scope="col">Date</th>
                 </tr>
             </thead>
             <tbody>
@@ -66,10 +66,12 @@
                     <td>{{entry.recoveries}}</td>
                     <td>{{entry.recoveryRate}}</td>
                     <td>{{entry.fatalityRate}}</td>
-                    <td>{{entry.date | date}}</td>
+                    <td>{{entry.date | date:'shortDate'}}</td>
                 </tr>
             </tbody>
         </table>
+    
         <ngx-scrolltop></ngx-scrolltop>
 
     </div>
+</div>
