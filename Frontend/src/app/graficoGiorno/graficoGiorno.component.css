@@ -99,3 +99,16 @@ a:hover {
 .row {
     padding-left: 5%;
 }
+
+.compare {
+    display: none;
+}
+
+@media screen and (max-width: 750px) {
+    .sparire {
+        display: none;
+    }
+    .compare {
+        display: block;
+    }
+}
