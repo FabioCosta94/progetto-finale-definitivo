@@ -5,7 +5,8 @@
 .wrapper {
     min-height: 69vh;
     color: rgb(28, 28, 28);
-    background-color: rgba(226, 226, 251, 0.822);
+    /* background-color: rgba(226, 226, 251, 0.822); */
+    background-color: #5e90c5a1;
 }
 
 h1 {
@@ -32,9 +33,9 @@ form {
 /* #divChart, */
 
 #chartwrapper {
-    display: block;
+    /* display: block;
     height: 675px;
-    width: 1200px;
+    width: 1200px; */
 }
 
 a {
@@ -42,7 +43,6 @@ a {
     background-color: rgb(20, 136, 15);
     padding: 10px;
     border-radius: 5px;
-    margin-right: 10px;
 }
 
 a:hover {
@@ -53,39 +53,62 @@ a:hover {
 
 #dlCSV {
     color: whitesmoke;
-    background-color: rgb(114, 136, 15);
-    padding: 10px;
+    background-color: #ED254E;
+    /* padding: 10px; */
     border-radius: 5px;
-    margin-right: 10px;
+    margin-right: 5px;
     border-color: rgb(95, 114, 13, 0);
+    box-shadow: 2px 5px rgb(28, 28, 28);
+    height: 41px;
 }
 
 #dlCSV:hover {
-    background-color: rgb(95, 114, 13);
+    background-color: #ca2042;
 }
 
 .autoCampo {
-    margin-right: 7%;
+    margin-left: 1%;
 }
 
-#fila {
-    padding-top: 20px;
+.container {
+    padding: 0;
+    margin: 0;
+}
+
+#updOff,
+#updOn {
+    box-shadow: 2px 5px rgb(28, 28, 28);
+    background-color: #4F7CAC;
+    margin-left: 13px;
+}
+
+.updateg {
+    margin-right: 60%;
+}
+
+canvas {
+    background-color: white;
+    margin-left: 35%;
 }
 
 #updOn {
     padding-top: 0px;
     padding-bottom: 0px;
-    height: 50px;
+    height: 41px;
+    margin-left: 40%;
 }
 
 #updOff {
     padding-top: 0px;
     padding-bottom: 0px;
-    height: 50px;
+    height: 41px;
+    margin-left: 40%;
 }
 
 #downloadLink {
     color: whitesmoke;
+    box-shadow: 2px 5px rgb(28, 28, 28);
+    background-color: #101935;
 }
 
 .pointer {

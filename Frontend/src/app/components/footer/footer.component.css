@@ -1,6 +1,6 @@
  footer {
      height: 23vh;
-     background-color: #606b75a6;
+     background-color: #606b7567;
      /* border-color: #454d55;
     text-align: center;
     color: rgb(228, 228, 228); */
@@ -9,11 +9,14 @@
  /* h4 {
     padding-top: 2vh;
 } */
- 
- .context-dark,
+ /* .context-dark,
  .bg-gray-dark,
  .bg-primary {
      color: rgba(255, 255, 255, 0.8);
+ }
+ 
+ dl.contact-list {
+     font-family: 'Merriweather Sans', sans-serif;
  }
  
  .footer-classic a,
@@ -138,6 +141,6 @@
      .context-dark,
      .bg-gray-dark,
      .bg-primary {
-         /* padding-bottom: 500px; */
+         
      }
- }
+ } */

@@ -3,13 +3,14 @@
 }
 
 form {
-    background-color: rgba(226, 226, 251, 0.822);
+    background-color: #4f7cacad;
     border-radius: 30px;
     padding-top: 5%;
     padding-right: 5%;
     padding-left: 5%;
     padding-bottom: 2%;
     border-color: black;
+    color: whitesmoke;
 }
 
 body {
@@ -17,6 +18,6 @@ body {
     min-height: 84vh;
     padding-right: 2%;
     width: 100%;
-    background-color: rgba(226, 226, 251, 0.822);
+    background-color: #1f316691;
     color: rgb(28, 28, 28);
 }

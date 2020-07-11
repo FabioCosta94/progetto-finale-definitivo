@@ -3,11 +3,11 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7" crossorigin="anonymous"></script>
 
 <div class="wrapper">
-    <div class="container p-5">
+    <div class="container">
         <!-- <h1>Filter by country</h1> -->
 
         <div class="row">
-            <form class="autoCampo col-7">
+            <form class="autoCampo">
                 <mat-form-field>
                     <input type="text" placeholder="Choose a country" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto" id="country" required [(ngModel)]="country">
                     <mat-autocomplete #auto="matAutocomplete">
@@ -19,7 +19,7 @@
             </form>
 
             <!--FILTRO PER CATEGORIA-->
-            <form class="col-4" #form="ngForm">
+            <form class="" #form="ngForm">
                 <div class="form-group row" id="field">
                     <label for="continent" class="col-sm-4 col-form-label">Choose field</label>
                     <div class="col-sm-5">
@@ -29,56 +29,36 @@
                     </div>
                 </div>
             </form>
+
+            <div class="savepng" *ngIf="login.isPress || login.isAdmin">
+                <a id="downloadLink" download="filename.png" (click)="saveAsImage()" title="Salvataggio Grafico" data-toggle="tooltip" data-placement="bottom" title="Save this chart as PNG">Save as PNG</a>
+            </div>
+            <div class="savecsv" *ngIf="login.isPress || login.isAdmin">
+                <button id="dlCSV" (click)="downloadCSV()" class="btn-default" data-toggle="tooltip" data-placement="bottom" title="Save all data as CSV">Save as CSV</button>
+            </div>
         </div>
 
-        <div id="divChart">
-            <canvas class="chart-wrapper" #chartwrapper id="chartwrapper">
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div id="divChart">
+                        <canvas class="chart-wrapper" #chartwrapper id="chartwrapper">
             <!-- <canvas baseChart [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType" [plugins]="lineChartPlugins">
             </canvas> -->
-            </canvas>
+                        </canvas>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div *ngIf="login.isPress || login.isAdmin">
-            <a id="downloadLink" download="filename.png" (click)="saveAsImage()" title="Salvataggio Grafico" data-toggle="tooltip" data-placement="bottom" title="Save this chart as PNG">Save as PNG</a>
-            <button id="dlCSV" (click)="downloadCSV()" class="btn-default" data-toggle="tooltip" data-placement="bottom" title="Save all data as CSV">Save as CSV</button>
-        </div>
-        <div class="row">
 
-
-
-
-            <button id="updOff" class="btn btn-primary mb-3" *ngIf="flaggrafico==false" disabled>Update chart</button>
-
-            <button id="updOn" class="btn btn-primary mb-3" (click)="updGraph(form)" *ngIf="flaggrafico ">Update chart</button>
-
-
-            <!-- <div class="form-group row">
-    <label for="country" class="col-sm-2 col-form-label">Country</label>
-    <div class="col-sm-10">
-        <input type="text" class="form-control" id="country" required [(ngModel)]="country">
-    </div>
-    </div> -->
-            <!-- <table class="table" ng-controller="myCtrl2" *ngIf="country" >
-<thead class="thead-dark">
-    <tr>
-    <th scope="col">Country</th>
-    <th scope="col">Cases</th>
-    <th scope="col">Date</th>
-    </tr>
-</thead> -->
-
-
+        <div class="updateg">
+            <button id="updOff" class="btn btn-primary" *ngIf="flaggrafico==false" disabled>Update chart</button>
+            <button id="updOn" class="btn btn-primary" (click)="updGraph(form)" *ngIf="flaggrafico ">Update chart</button>
         </div>
 
 
 
-        <!--Prova pulsante che fa cose -->
-        <!-- <div>
-            <button (click)="add()">Add Data</button>
-            <div class="showInputField"></div>
-        </div> -->
-
-        <!--Recupera l'id dal pipe. Se c'è una corrispondenza, stampa il nome della nazione del database-->
-        <!-- <h3>Mettere nella searchbar un sistema per suggerire i campi esistenti</h3> -->
         <div>
             <h1 id="nazione"></h1>
         </div>

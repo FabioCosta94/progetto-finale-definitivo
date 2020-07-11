@@ -43,9 +43,11 @@ export class GraficoGiornoComponent implements OnInit {
             //data: [5, 10, 15, 20, 25, 30],
             data: [8,3,5],
             backgroundColor: [
-              'rgba(255, 206, 86, 0.5)',
-              'rgba(205, 89, 112, 0.5)',
-              'rgba(2, 172, 0, 0.5)'
+              'rgba(11, 0, 20, 0.9)',
+              'rgba(30, 47, 100, 0.9)',
+              'rgba(79, 124, 172, 0.9)'
+              
+              
               
             ],
             borderWidth: 3
@@ -101,8 +103,8 @@ export class GraficoGiornoComponent implements OnInit {
             //data: [5, 10, 15, 20, 25, 30],
             data: [7,3],
             backgroundColor: [
-              'rgba(54, 162, 235, 0.5)',
-              'rgba(156, 0, 0, 0.5)'
+              'rgba(255, 255, 255, 1)',
+              'rgba(237, 37, 78, 0.9)'
             ],
             borderWidth: 3
           }]

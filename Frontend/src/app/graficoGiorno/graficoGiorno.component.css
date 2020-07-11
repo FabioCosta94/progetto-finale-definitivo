@@ -12,9 +12,14 @@
     /* min-height: 84vh; */
     min-height: 69vh;
     color: rgb(28, 28, 28);
-    background-color: rgba(226, 226, 251, 0.822);
+    /* background-color: rgba(226, 226, 251, 0.822); */
+    background-color: white;
     margin: 0;
     padding: 0;
+}
+
+#compila {
+    padding-bottom: 100px;
 }
 
 h1 {

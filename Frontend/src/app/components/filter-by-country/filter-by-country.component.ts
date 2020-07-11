@@ -86,7 +86,7 @@ export class FilterByCountryComponent implements OnInit {
             pointBorderColor: 'rgba(27, 81, 120, 1)',
             data: [10, 40],
             backgroundColor: [
-              'rgba(20, 20, 204, 0)'
+              'rgba(0, 0, 0, 0)'
               // 'rgba(255, 99, 132, 0)',
               // 'rgba(54, 162, 235, 1)',
               // 'rgba(255, 206, 86, 1)'

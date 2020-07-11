@@ -4,7 +4,8 @@
 
 i {
     font-size: 200px;
-    color: #f15b03ed;
+    /* color: #4F7CAC; */
+    color: #5485E1;
     padding-top: 50px;
 }
 
@@ -24,7 +25,8 @@ i {
 .griglia0 {
     /* padding-top: 32px;
     padding-bottom: 32px; */
-    background-color: #ffffffdf;
+    /* background-color: #ffffffdf; */
+    /* background-color: #0B0014; */
     background-image: url(https://i.imgur.com/Mo4CXDZ.png);
     background-size: 100% 100%;
     /* padding-bottom: 800px; */
@@ -34,7 +36,7 @@ i {
 .griglia02 {
     /* padding-top: 32px;
     padding-bottom: 32px; */
-    background-color: #ffffffdf;
+    /* background-color: #0B0014; */
     background-image: url(https://i.imgur.com/Mo4CXDZ.png);
     background-size: 100% 100%;
     /* padding-bottom: 800px; */
@@ -48,19 +50,42 @@ i {
 
 .griglia1,
 .griglia3 {
-    background-color: rgba(226, 226, 251, 0.822);
+    /* background-color: rgba(226, 226, 251, 0.822); */
+    background-color: #4f7cac62;
+    color: whitesmoke;
     padding-top: 32px;
     padding-bottom: 32px;
+    font-family: 'Merriweather Sans', sans-serif;
+}
+
+.griglia1 h1,
+.griglia3 h1 {
+    font-family: 'Merriweather Sans', sans-serif;
 }
 
 .griglia2 {
-    background-color: #ffffffdf;
+    /* background-color: #3a5a7c5b; */
+    color: #3a5a7c5b;
+    background-color: rgba(255, 255, 255, 0.972);
     padding-top: 32px;
     padding-bottom: 32px;
+    color: whitesmoke;
+    font-family: 'Merriweather Sans', sans-serif;
+}
+
+.griglia2 p {
+    color: #2c445d;
+    font-family: 'Merriweather Sans', sans-serif;
+}
+
+.griglia2 h1 {
+    color: rgb(44, 44, 44);
+    font-family: 'Merriweather Sans', sans-serif;
 }
 
 p {
-    color: rgb(28, 28, 28);
+    color: rgb(219, 216, 216);
+    font-family: 'Merriweather Sans', sans-serif;
 }
 
 .wrapper {
@@ -70,6 +95,11 @@ p {
 
 .compare {
     display: none;
+}
+
+h1 {
+    font-family: 'Roboto', sans-serif;
+    color: rgb(219, 216, 216);
 }
 
 @media screen and (max-width: 1000px) {
