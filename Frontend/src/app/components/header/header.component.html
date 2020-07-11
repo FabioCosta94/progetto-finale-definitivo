@@ -19,9 +19,9 @@
     <nav class="navbar navbar-expand-md">
         <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
+                <!-- <li class="nav-item active">
                     <a class="nav-link" [routerLink]="['/welcome']">Welcome</a>
-                </li>
+                </li> -->
                 <div *ngIf="login.isAdmin">
                     <li class="nav-item">
                         <a class="nav-link fas fa-database" [routerLink]="['/dashboard']"> Covid Data</a>
@@ -31,10 +31,10 @@
                     <a class="nav-link fas fa-chart-line" [routerLink]='["/filterBy"]'> Charts</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link fas fa-chart-line" [routerLink]='["/sort"]'> 3D Charts</a>
+                    <a class="nav-link fas" [routerLink]='["/sort"]'> 3D Charts</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link fas fa-chart-line" [routerLink]='["/graficoGiorno"]'> Daily</a>
+                    <a class="nav-link fas" [routerLink]='["/graficoGiorno"]'> Daily</a>
                 </li>
             </ul>
         </div>
@@ -57,7 +57,7 @@
                 </ul>
             </div> -->
         <div class="mx-auto order-0">
-            <a class="navbar-brand mx-auto" [routerLink]="['/welcome']">Covid-19 Data Tracker</a>
+            <a class="navbar-brand mx-auto fas" [routerLink]="['/welcome']">Welcome</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
                     <span class="navbar-toggler-icon">M</span>
                 </button>
