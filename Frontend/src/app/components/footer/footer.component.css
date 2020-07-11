@@ -1,15 +1,28 @@
  footer {
-     height: 23vh;
+     height: 26vh;
      background-color: #606b7567;
      /* border-color: #454d55;
     text-align: center;
     color: rgb(228, 228, 228); */
-     padding-top: 2vh;
+     padding-top: 3vh;
+     color: white;
+     width: 99%;
+ }
+ 
+ footer h5 {
+     font-family: 'Merriweather Sans', sans-serif;
+ }
+ 
+ footer dt,
+ footer a {
+     font-family: 'Merriweather Sans', sans-serif;
+     color: white;
  }
  /* h4 {
-    padding-top: 2vh;
-} */
- /* .context-dark,
+     padding-top: 2vh;
+ }
+ 
+ .context-dark,
  .bg-gray-dark,
  .bg-primary {
      color: rgba(255, 255, 255, 0.8);
@@ -41,7 +54,7 @@
      list-style: none;
      padding: 0;
      margin: 0;
- }
+ }*/
  
  .instagram {
      width: 100px;
@@ -71,7 +84,7 @@
  .nav-list li a:before {
      content: "\f14f";
      font: 400 21px/1 "Material Design Icons";
-     color: #4d6de6;
+     color: white;
      display: inline-block;
      vertical-align: baseline;
      margin-left: -28px;
@@ -105,7 +118,7 @@
  
  .social-network a.icoInstagram {
      background-color: #33ccff;
-     color: #fff;
+     color: #ffffff;
  }
  
  .social-network a.icoLinkedin {
@@ -140,7 +153,5 @@
  @media screen and (max-width: 600px) {
      .context-dark,
      .bg-gray-dark,
-     .bg-primary {
-         
-     }
- } */
+     .bg-primary {}
+ }
