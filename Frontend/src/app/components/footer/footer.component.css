@@ -1,12 +1,12 @@
  footer {
-     height: 26vh;
+     height: 250px;
      background-color: #606b7567;
      /* border-color: #454d55;
     text-align: center;
     color: rgb(228, 228, 228); */
      padding-top: 3vh;
      color: white;
-     width: 99%;
+     width: 100%;
  }
  
  footer h5 {
