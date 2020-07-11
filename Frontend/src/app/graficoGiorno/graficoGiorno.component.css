@@ -58,15 +58,17 @@ a:hover {
 
 #dlCSV {
     color: whitesmoke;
-    background-color: rgb(114, 136, 15);
-    padding: 10px;
+    background-color: #ED254E;
+    /* padding: 10px; */
     border-radius: 5px;
-    margin-right: 10px;
-    border-color: rgb(95, 114, 13);
+    margin-right: 5px;
+    border-color: rgb(95, 114, 13, 0);
+    box-shadow: 2px 5px rgb(28, 28, 28);
+    height: 41px;
 }
 
 #dlCSV:hover {
-    background-color: rgb(95, 114, 13);
+    background-color: #ca2042;
 }
 
 .autoCampo {
@@ -86,18 +88,24 @@ a:hover {
 #updOn {
     padding-top: 0px;
     padding-bottom: 0px;
-    height: 50px;
+    height: 41px;
+    box-shadow: 2px 5px rgb(28, 28, 28);
+    background-color: #4F7CAC;
 }
 
 #updOff {
     padding-top: 0px;
     padding-bottom: 0px;
-    height: 50px;
+    height: 41px;
+    box-shadow: 2px 5px rgb(28, 28, 28);
+    background-color: #4F7CAC;
 }
 
 #downloadLink,
 #downloadLink2 {
-    color: white;
+    color: whitesmoke;
+    box-shadow: 2px 5px rgb(28, 28, 28);
+    background-color: #101935;
     margin-top: 30px;
 }
 

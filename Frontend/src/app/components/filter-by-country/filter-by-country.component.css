@@ -79,7 +79,6 @@ a:hover {
     width: 100%
 }
 
-
 .updateg {
     margin-right: 60%;
 }
@@ -89,6 +88,15 @@ canvas {
 }
 
 #updOn {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin-left: 3%;
+    height: 41px;
+    box-shadow: 2px 5px rgb(28, 28, 28);
+    background-color: #4F7CAC;
+}
+
+#updOff {
     padding-top: 0px;
     padding-bottom: 0px;
     height: 41px;
@@ -102,19 +110,12 @@ canvas {
     padding-bottom: 100px;
 }
 
-#updOff {
-    padding-top: 0px;
-    padding-bottom: 0px;
-    height: 41px;
-    margin-left: 10%;
-    box-shadow: 2px 5px rgb(28, 28, 28);
-    background-color: #4F7CAC;
-}
-
 #downloadLink {
     color: whitesmoke;
     box-shadow: 2px 5px rgb(28, 28, 28);
     background-color: #101935;
+    margin-top: 1px;
+    position: absolute;
 }
 
 .pointer {
@@ -123,4 +124,9 @@ canvas {
 
 #field {
     padding-top: 12px;
+    color: white;
+}
+
+#autoroba {
+    color: white;
 }

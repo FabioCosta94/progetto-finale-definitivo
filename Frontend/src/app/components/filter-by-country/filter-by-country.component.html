@@ -50,18 +50,18 @@
         </div>
         <div class="container">
             <div class="row justify-content-start">
-            <div class="col-4">
-                <button id="updOff" class="btn btn-primary" *ngIf="flaggrafico==false" disabled>Update chart</button>
-                <button id="updOn" class="btn btn-primary" (click)="updGraph(form)" *ngIf="flaggrafico ">Update chart</button>
-            </div>
-            <div class="col-4" *ngIf="login.isPress || login.isAdmin">
-                <a id="downloadLink" download="filename.png" (click)="saveAsImage()" title="Salvataggio Grafico" data-toggle="tooltip" data-placement="bottom" title="Save this chart as PNG">Save as PNG</a>
-            </div>
+                <div class="col-4">
+                    <button id="updOff" class="btn btn-primary" *ngIf="flaggrafico==false" disabled>Update chart</button>
+                    <button id="updOn" class="btn btn-primary" (click)="updGraph(form)" *ngIf="flaggrafico ">Update chart</button>
+                </div>
+                <div class="col-4" *ngIf="login.isPress || login.isAdmin">
+                    <a id="downloadLink" download="filename.png" (click)="saveAsImage()" title="Salvataggio Grafico" data-toggle="tooltip" data-placement="bottom" title="Save this chart as PNG">Save as PNG</a>
+                </div>
                 <div class="col-4" *ngIf="login.isPress || login.isAdmin">
                     <button id="dlCSV" (click)="downloadCSV()" class="btn-default" data-toggle="tooltip" data-placement="bottom" title="Save all data as CSV">Save as CSV</button>
                 </div>
-    </div>
-</div>
+            </div>
+        </div>
 
 
         <div>
