@@ -35,6 +35,7 @@ import { RegisterComponent } from './routes/register/register.component';
 import { LoginComponent } from './routes/login/login.component';
 import { CommonModule } from '@angular/common';
 import { NgxScrollTopModule } from 'ngx-scrolltop';
+import{NgxPaginationModule} from 'ngx-pagination';
 
 
 
@@ -79,7 +80,8 @@ import { NgxScrollTopModule } from 'ngx-scrolltop';
     MatFormFieldModule,
     ReactiveFormsModule,
     ChartsModule,
-    NgxScrollTopModule
+    NgxScrollTopModule,
+    NgxPaginationModule
     
   ],
   providers: [DataService,UsersService,LoginComponent],

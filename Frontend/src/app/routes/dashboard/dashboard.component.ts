@@ -15,7 +15,7 @@ import { ApiService } from 'src/app/services/api.service';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-
+  page: number = 1;
   constructor( private apiService: ApiService,private usersService: UsersService, private dataService: DataService, private router : Router) { }
 
   ngOnInit(): void {

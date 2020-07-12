@@ -57,7 +57,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let entry of covidData| sortField:'country'| sortField:'date' ; let i = index">
+                <tr *ngFor="let entry of covidData|sortField:'country'| sortField:'date' |paginate: { itemsPerPage: 249, currentPage: page }  ; let i = index">
                     <th scope="row"> {{i + 1}}</th>
                     <td>{{entry.country}}</td>
                     <td>{{entry.population}}</td>
@@ -70,6 +70,9 @@
                 </tr>
             </tbody>
         </table>
+        <div class="mx-auto" style="width: 500px;">
+            <pagination-controls (pageChange)="page = $event"></pagination-controls>
+        </div>
     
         <ngx-scrolltop></ngx-scrolltop>
 
