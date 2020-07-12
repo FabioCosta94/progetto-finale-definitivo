@@ -23,5 +23,6 @@ body {
 }
 
 body.sfondo {
-    background-image: url(https://www.toptal.com/designers/subtlepatterns/patterns/memphis-mini-dark.png);
+    /* background-image: url(https://www.toptal.com/designers/subtlepatterns/patterns/memphis-mini-dark.png); */
+    background-image: url(https://media.istockphoto.com/vectors/coronavirus-epidemic-seamless-pattern-covid19-flat-vector-pattern-vector-id1213019849?k=6&m=1213019849&s=170667a&w=0&h=loxblI4eMQZDRiWFjfkbgkCUe7AXfw7mJTKM-MsGXTU=);
 }
