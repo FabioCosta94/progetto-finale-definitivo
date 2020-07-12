@@ -34,8 +34,9 @@
                     <a class="nav-link fas" [routerLink]='["/sort"]'> 3D Charts</a>
                 </li> -->
                 <li class="nav-item">
-                    <a class="nav-link fas" [routerLink]='["/graficoGiorno"]'> Daily</a>
+                    <a class="nav-link fas fa-bar-chart" [routerLink]='["/graficoGiorno"]'> Daily</a>
                 </li>
+                
             </ul>
         </div>
         <!-- <div class="collapse navbar-collapse navWrapper" id="navbarNavDropdown">
@@ -57,9 +58,10 @@
                 </ul>
             </div> -->
         <div class="mx-auto order-0">
-            <a class="navbar-brand mx-auto fas" *ngIf="!login.isAdmin && !login.isPress"[routerLink]="['/welcome']">Welcome</a>
-            <a class="navbar-brand mx-auto fas"*ngIf="login.isAdmin" [routerLink]="['/welcome']">Welcome Admin</a>
-            <a class="navbar-brand mx-auto fas"*ngIf="login.isPress" [routerLink]="['/welcome']">Welcome Press</a>
+           
+            <a class="navbar-brand mx-auto fas" *ngIf="!login.isAdmin && !login.isPress"[routerLink]="['/welcome']">Welcome <i class='fas fa-virus' style='font-size:24px;color:#ED254E'></i></a>
+            <a class="navbar-brand mx-auto fas  fa-virus"*ngIf="login.isAdmin" [routerLink]="['/welcome']">Welcome Admin <i class='fas fa-virus' style='font-size:24px;color:#ED254E'></i></a>
+            <a class="navbar-brand mx-auto fas  fa-virus"*ngIf="login.isPress" [routerLink]="['/welcome']">Welcome Press <i class='fas fa-virus' style='font-size:24px;color:#ED254E'></i></a>
             
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
                     <span class="navbar-toggler-icon">M</span>
