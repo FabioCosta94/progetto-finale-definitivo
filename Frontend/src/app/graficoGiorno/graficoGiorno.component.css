@@ -13,7 +13,7 @@
     min-height: 79vh;
     color: rgb(28, 28, 28);
     /* background-color: rgba(226, 226, 251, 0.822); */
-    background-color: white;
+    background-color: #5e90c5a1;
     margin: 0;
     padding: 0;
 }
@@ -106,7 +106,20 @@ a:hover {
     color: whitesmoke;
     box-shadow: 2px 5px rgb(28, 28, 28);
     background-color: #101935;
-    margin-top: 30px;
+    /* margin-bottom: 300px; */
+    position: absolute;
+}
+
+.png {
+    margin-bottom: 48px;
+}
+
+#grafici {
+    background-color: white;
+}
+
+label {
+    color: white;
 }
 
 .row {

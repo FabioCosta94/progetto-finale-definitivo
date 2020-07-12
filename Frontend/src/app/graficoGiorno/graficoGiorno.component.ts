@@ -78,7 +78,7 @@ export class GraficoGiornoComponent implements OnInit {
         },
         title: {
           display: true,
-          text: 'Country Daily Chart'
+          text: 'Country Daily Chart (Population %)'
         }
       }
        

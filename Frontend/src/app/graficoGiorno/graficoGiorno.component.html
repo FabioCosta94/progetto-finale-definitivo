@@ -33,14 +33,14 @@
         <!-- <div class="sparire"> -->
         <div class="row">
 
-            <div class="col-6">
+            <div class="col-6 png">
                 <div *ngIf="login.isPress || login.isAdmin">
 
                     <a id="downloadLink" class="btn-default" download="filename.png" (click)="saveAsImage()" data-toggle="tooltip" data-placement="bottom" title="Save this chart1 as PNG">Save as PNG </a>
 
                 </div>
             </div>
-            <div class="col-6">
+            <div class="col-6 png">
                 <div *ngIf="login.isPress || login.isAdmin">
                     <a id="downloadLink2" download="filename.png" (click)="saveAsImage2()" title="Salvataggio Grafico" data-toggle="tooltip" data-placement="bottom" title="Save this chart as PNG">Save as PNG </a>
                 </div>
@@ -48,7 +48,7 @@
 
         </div>
 
-        <div class="row">
+        <div class="row" id="grafici">
 
             <div id="divChart" class="col-5">
                 <canvas class="chart-wrapper" #chartwrapper id="chartwrapper">
