@@ -33,9 +33,9 @@ form {
 /* #divChart, */
 
 #chartwrapper {
-    /* display: block;
+     display: block;
     height: 675px;
-    width: 1200px; */
+    width: 1200px; 
 }
 
 a {
@@ -54,12 +54,10 @@ a:hover {
 #dlCSV {
     color: whitesmoke;
     background-color: #ED254E;
-    /* padding: 10px; */
+    height: 42px;
     border-radius: 5px;
-    margin-right: 5px;
     border-color: rgb(95, 114, 13, 0);
-    box-shadow: 2px 5px rgb(28, 28, 28);
-    height: 41px;
+    
 }
 
 #dlCSV:hover {
@@ -70,10 +68,7 @@ a:hover {
     margin-left: 1%;
 }
 
-.container {
-    /* padding: 0;
-    margin: 0; */
-}
+
 
 .container-fluid {
     width: 100%
@@ -88,22 +83,12 @@ canvas {
 }
 
 #updOn {
-    padding-top: 0px;
-    padding-bottom: 0px;
-    margin-left: 3%;
-    height: 41px;
-    box-shadow: 2px 5px rgb(28, 28, 28);
     background-color: #4F7CAC;
 }
 
 #updOff {
-    padding-top: 0px;
-    padding-bottom: 0px;
-    height: 41px;
-    margin-left: 3%;
-    box-shadow: 2px 5px rgb(28, 28, 28);
-    background-color: #4F7CAC;
-}
+    background-color: #4F7CAC; 
+} 
 
 #selezione {
     padding-top: 10px;
@@ -112,10 +97,10 @@ canvas {
 
 #downloadLink {
     color: whitesmoke;
-    box-shadow: 2px 5px rgb(28, 28, 28);
     background-color: #101935;
-    margin-top: 1px;
-    position: absolute;
+    margin-top: 1px; 
+   
+    
 }
 
 .pointer {
