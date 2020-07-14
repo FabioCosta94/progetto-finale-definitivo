@@ -50,21 +50,21 @@
         </div>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-8" style="text-align:left" >
+                <div class="col-8" style="text-align:left">
                     <button id="updOff" class="btn btn-primary" *ngIf="flaggrafico==false" disabled>Update chart</button>
                     <button id="updOn" class="btn btn-primary" (click)="updGraph(form)" *ngIf="flaggrafico ">Update chart</button>
                 </div>
-                <div class="col-2 mt-2 " style="text-align:right; align-items:initial" *ngIf="login.isPress || login.isAdmin">
+                <div class="col-2" style="align-items:initial" *ngIf="login.isPress || login.isAdmin">
                     <a id="downloadLink" download="filename.png" (click)="saveAsImage()" title="Salvataggio Grafico" data-toggle="tooltip" data-placement="bottom" title="Save this chart as PNG">Save as PNG</a>
                 </div>
-                
+
                 <div class="col-2" style="text-align:right;align-items:initial" *ngIf="login.isPress || login.isAdmin">
                     <button id="dlCSV" (click)="downloadCSV()" class="btn-default" data-toggle="tooltip" data-placement="bottom" title="Save all data as CSV">Save as CSV</button>
                 </div>
             </div>
         </div>
-    
-        
+
+
 
 
         <div>

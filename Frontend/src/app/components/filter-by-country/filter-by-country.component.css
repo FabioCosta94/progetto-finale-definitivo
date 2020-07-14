@@ -3,7 +3,7 @@
 }
 
 .wrapper {
-    min-height: 89vh;
+    min-height: 820px;
     color: rgb(28, 28, 28);
     /* background-color: rgba(226, 226, 251, 0.822); */
     background-color: #00115fbb;
@@ -33,9 +33,9 @@ form {
 /* #divChart, */
 
 #chartwrapper {
-     display: block;
+    display: block;
     height: 675px;
-    width: 1200px; 
+    width: 1200px;
 }
 
 a {
@@ -57,7 +57,6 @@ a:hover {
     height: 42px;
     border-radius: 5px;
     border-color: rgb(95, 114, 13, 0);
-    
 }
 
 #dlCSV:hover {
@@ -68,14 +67,12 @@ a:hover {
     margin-left: 1%;
 }
 
-
-
 .container-fluid {
     width: 100%
 }
 
 .updateg {
-    margin-right: 60%;
+    margin-right: 50%;
 }
 
 canvas {
@@ -87,8 +84,8 @@ canvas {
 }
 
 #updOff {
-    background-color: #4F7CAC; 
-} 
+    background-color: #4F7CAC;
+}
 
 #selezione {
     padding-top: 10px;
@@ -98,9 +95,8 @@ canvas {
 #downloadLink {
     color: whitesmoke;
     background-color: #101935;
-    margin-top: 1px; 
-   
-    
+    margin-top: 0px;
+    position: absolute;
 }
 
 .pointer {
@@ -115,3 +111,25 @@ canvas {
 #autoroba {
     color: white;
 }
+
+@media screen and (max-width: 990px) {
+    .updateg {
+        margin-right: 20%;
+    }
+    #downloadLink {
+        font-size: 10px;
+        margin-top: 0px;
+    }
+    #updOff {
+        font-size: 10px;
+    }
+    #updOn {
+        font-size: 10px;
+    }
+    #dlCSV {
+        font-size: 10px;
+        height: 29px;
+    }
+}
+
+@media screen and (max-width: 768px) {}
