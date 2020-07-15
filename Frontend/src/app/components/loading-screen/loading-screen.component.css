@@ -6,7 +6,7 @@
     height: 100%;
     position: fixed;
     background-color: rgba(226, 226, 251, 0.822);
-    background-image: url(https://media.istockphoto.com/vectors/coronavirus-epidemic-seamless-pattern-covid19-flat-vector-pattern-vector-id1213019849?k=6&m=1213019849&s=170667a&w=0&h=loxblI4eMQZDRiWFjfkbgkCUe7AXfw7mJTKM-MsGXTU=);
+    background-image: url(https://www.toptal.com/designers/subtlepatterns/patterns/memphis-mini-dark.png);
     cursor: pointer;
     visibility: visible;
     transition: visibility 0s, opacity 0.4s linear;
@@ -19,3 +19,4 @@
 .wrapper {
     font-size: 100px;
 }
+
