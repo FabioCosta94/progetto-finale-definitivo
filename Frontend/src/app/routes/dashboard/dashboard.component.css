@@ -15,7 +15,7 @@ th {
     color: rgb(228, 228, 228);
     /* background-color: #606b75a6; */
     background-color: #4c545ca6;
-    border-color: whitesmoke;
+    /* border-color: whitesmoke; */
 }
 
 i {
@@ -30,7 +30,7 @@ td {
     color: rgb(228, 228, 228);
     /* background-color: #606b75a6; */
     background-color: #4c545ca6;
-    border-color: whitesmoke;
+    /* border-color: whitesmoke; */
 }
 
 span {
@@ -39,8 +39,21 @@ span {
 
 .table .thead-dark th {
     /* background-color: #606b75a6; */
-    background-color: #4c545ca6;
-    border-color: #f1f1f1;
+    background-color: whitesmoke;
+    border-color: black;
+    color: black;
+}
+
+.table .tbody th {
+    background-color: whitesmoke;
+    border-color: black;
+    color: black;
+}
+
+.table .tbody . td {
+    background-color: whitesmoke;
+    border-color: black;
+    color: black;
 }
 
 h1,

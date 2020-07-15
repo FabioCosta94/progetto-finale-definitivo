@@ -23,7 +23,7 @@
 
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="tbody">
                 <tr class="pointer" *ngFor="let submit of usersData ; let i = index" (click)="goToDetails(submit.id)">
                     <th scope="row"> {{i + 1}}</th>
                     <td>{{submit.username}} </td>
