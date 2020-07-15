@@ -1,6 +1,6 @@
-.pointer {
+/* .pointer {
     cursor: pointer;
-}
+} */
 
 .wrapper {
     /* min-height: 84vh; */
@@ -9,23 +9,48 @@
 }
 
 h3 {
-    color: whitesmoke;
+    color: black;
+}
+
+.detailsWrapper {
+    background-color: whitesmoke;
+    border-color: black;
+    color: black;
+    font-family: 'Merriweather Sans', sans-serif;
+}
+
+.table .tbody td {
+    background-color: whitesmoke;
+    border-color: black;
+    color: black;
+    font-family: 'Merriweather Sans', sans-serif;
+}
+
+.table {
+    border-color: black;
+}
+
+td {
+    border-color: black;
+}
+
+tr {
+    border-color: black;
 }
 
 
-/* background-color: rgba(199, 199, 255, 0.459) */
-
-th {
+/* th {
     color: rgb(228, 228, 228);
     background-color: #4c545ca6;
     border-color: whitesmoke;
-}
+} */
 
 
 /* background-color: #606b75a6;
     border-color: #454d55; */
 
-td {
+
+/* td {
     color: rgb(228, 228, 228);
     background-color: #4c545ca6;
     border-color: whitesmoke;
@@ -38,7 +63,7 @@ span {
 .table .thead-dark th {
     background-color: #4c545ca6;
     border-color: #f1f1f1;
-}
+} */
 
 h1 {
     color: rgb(29, 29, 29);

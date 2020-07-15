@@ -23,14 +23,14 @@
 
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="tbody">
                 <tr class="pointer" *ngFor="let submit of usersData ; let i = index" (click)="goToDetails(submit.id)">
                     <th scope="row"> {{i + 1}}</th>
                     <td>{{submit.username}} </td>
                     <td *ngIf="submit.permissions == 1">Admin</td>
                     <td *ngIf="submit.permissions == 2">Press</td>
                     <td *ngIf="submit.permissions == 3">Basic</td>
-                    <td><i class="fa fa-edit" style="font-size:36px"></i> </td>
+                    <td><i class="fa fa-edit" style="font-size:36px" id="editing"></i> </td>
 
                 </tr>
             </tbody>
@@ -40,7 +40,7 @@
         <div class="flex-container">
             <button class="btn" (click)="getCountries();saveCountries()"><i class="fa fa-download"
                     style="font-size:36px"></i></button>
-                </div>
+        </div>
 
         <table class="table">
             <thead class="thead-dark">
@@ -73,7 +73,7 @@
         <div class="mx-auto" style="width: 500px;">
             <pagination-controls (pageChange)="page = $event"></pagination-controls>
         </div>
-    
+
         <ngx-scrolltop></ngx-scrolltop>
 
     </div>
