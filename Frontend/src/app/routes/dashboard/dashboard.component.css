@@ -6,6 +6,7 @@
     /* min-height: 84vh; */
     min-height: 69vh;
     background-color: #00115fbb;
+    font-family: 'Merriweather Sans', sans-serif;
 }
 
 
@@ -16,10 +17,15 @@ th {
     /* background-color: #606b75a6; */
     background-color: #4c545ca6;
     /* border-color: whitesmoke; */
+    font-family: 'Merriweather Sans', sans-serif;
 }
 
 i {
     color: whitesmoke;
+}
+
+i#editing {
+    color: black;
 }
 
 
@@ -31,10 +37,12 @@ td {
     /* background-color: #606b75a6; */
     background-color: #4c545ca6;
     /* border-color: whitesmoke; */
+    font-family: 'Merriweather Sans', sans-serif;
 }
 
 span {
     color: rgb(29, 29, 29);
+    font-family: 'Merriweather Sans', sans-serif;
 }
 
 .table .thead-dark th {
@@ -42,23 +50,27 @@ span {
     background-color: whitesmoke;
     border-color: black;
     color: black;
+    font-family: 'Merriweather Sans', sans-serif;
 }
 
 .table .tbody th {
     background-color: whitesmoke;
     border-color: black;
     color: black;
+    font-family: 'Merriweather Sans', sans-serif;
 }
 
-.table .tbody . td {
+.table .tbody td {
     background-color: whitesmoke;
     border-color: black;
     color: black;
+    font-family: 'Merriweather Sans', sans-serif;
 }
 
 h1,
 h2 {
-    color: whitesmoke
+    color: whitesmoke;
+    font-family: 'Merriweather Sans', sans-serif;
 }
 
 .tabellaUtenti {
